@@ -41,8 +41,10 @@ from random import choice
 
 # local packages
 
-# we'll set the door with the prize to 1
-# need to reset before next run
+class Player():
+    def __init__(self):
+        pass
+
 class Doors():
 
     def __init__(self):
