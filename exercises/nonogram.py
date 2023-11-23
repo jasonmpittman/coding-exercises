@@ -23,6 +23,10 @@ Test input:
     nonogramrow([0,0,0,0,1,1,0,0,1,0,1,1,1]) => [2,1,3]
     nonogramrow([1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]) => [1,1,1,1,1,1,1,1]
 
+Started: Nov 22, 2023 @ 7:00am ET
+Intervals: 1
+Ended: Nov 22, 2023 @ 7:30am ET
+
 """
 
 def count_ones(nonogram):
