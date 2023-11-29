@@ -28,10 +28,10 @@ Example: [8, 3, 10, 1, 6, 14, None, None, None, 4, 7, 13, None]
 Started: Nov 28, 2023 @ 5:25am ET
 Intervals: 1
 Ended: Nov 28, 2023 @ 5:55am ET
-
+Comment: spent all the time getting the tree setup lol.
 """
 
-from binarytree import build
+from binarytree import build # need venv to work
 
 def build_tree(nodes):
     binary_tree = build(nodes)
