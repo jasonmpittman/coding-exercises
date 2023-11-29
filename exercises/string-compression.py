@@ -42,7 +42,7 @@ def compress_string(string):
         else:
             compressed_string += string[i] + str(count)
             count = 1
-    compressed_string += string[i] + str(count)
+    compressed_string += string[i] + str(count) # catches the last compressable substring
 
     return compressed_string
 
