@@ -45,7 +45,7 @@ def find_anagrams(s, p, anagrams):
 
         if window in anagrams:
             indices.append(current_index)
-
+            
     return indices
 
 
