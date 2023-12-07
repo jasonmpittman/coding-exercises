@@ -24,8 +24,6 @@ Extensions (If you have extra time):
     Implement the function to handle cases where there might not be a majority element.
     Optimize the function for large arrays.
 
-334244244
-
 Started: Dec 07, 2023 @ 5:20am ET
 Intervals: 1
 Ended: Dec 07, 2023 @ 5:50am ET
@@ -34,27 +32,51 @@ Ended: Dec 07, 2023 @ 5:50am ET
 
 from sys import argv
 
-def find_majority_element(array):
+def find_majority_element(elements, n):
     """Initialize: Start with no candidate element and a count of 0.
 
-    First Pass (Identifying a Candidate):
-        Iterate through the array.
-        If the count is zero, choose the current element as the candidate.
-        If the current element is the same as the candidate, increment the count.
-        Otherwise, decrement the count.
-        At the end of this pass, if there is a majority element, it will be the candidate.
+    First Step (Identifying a Candidate):
+        Initialize a variable say i ,votes = 0, candidate =-1 
+        Traverse through the array using for loop
+        If votes = 0, choose the candidate = arr[i] , make votes=1.
+        else if the current element is the same as the candidate increment votes
+        else decrement votes.
 
-    Second Pass (Confirmation - Optional in this case):
-        It's usually needed to confirm that the candidate is indeed the majority element.
-        Iterate through the array and count the occurrences of the candidate.
-        If the count is greater than n/2, return the candidate; otherwise, conclude there is no majority element."""
+
+    Second Step:
+        Initialize a variable count =0 and increment count if it is the same as the candidate.
+        If the count is >N/2, return the candidate.
+        else return -1.
+"""
     
-    pass
+    votes = 0
+    candidate = -1
+
+    for i in range(n):
+        if votes == 0:
+            votes = 1
+            candidate = int(elements[i])
+        else:
+            if candidate == int(elements[i]):
+                votes += 1
+            else:
+                votes -+ 1
+
+    count = 0
+
+    for i in range(n):
+        if elements[i] == candidate:
+            count += 1
+
+    if count > n // 2:
+        return candidate
+    else:
+        return -1
+    
 
 
-
-
-
+# TODO: works for active list but not commented list
 if __name__ == '__main__':
-    elements = list(input('Enter the array: '))
-    
+    elements = [ 1, 1, 1, 1, 2, 3, 4 ] #[2, 2, 3, 3, 4, 4, 4, 4, 4]
+    majority = find_majority_element(elements, len(elements))
+    print(majority)
