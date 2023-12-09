@@ -32,6 +32,20 @@ Ended: Dec 07, 2023 @ 5:50am ET
 
 from sys import argv
 
+def find_majority(votes, n):
+    majority = None
+    majority_count = 0
+    
+    for vote in votes:
+        if majority_count == 0:
+            majority = vote
+        if vote == majority:
+            majority_count += 1
+        else:
+            majority_count -= 1
+    
+    return majority
+
 def find_majority_element(elements, n):
     """Initialize: Start with no candidate element and a count of 0.
 
@@ -65,7 +79,7 @@ def find_majority_element(elements, n):
     count = 0
 
     for i in range(n):
-        if elements[i] == candidate:
+        if int(elements[i]) == candidate:
             count += 1
 
     if count > n // 2:
@@ -77,6 +91,8 @@ def find_majority_element(elements, n):
 
 # TODO: works for active list but not commented list
 if __name__ == '__main__':
-    elements = [ 1, 1, 1, 1, 2, 3, 4 ] #[2, 2, 3, 3, 4, 4, 4, 4, 4]
-    majority = find_majority_element(elements, len(elements))
+    elements = [2, 2, 1, 1, 2, 2, 2] #[ 1, 1, 1, 1, 2, 3, 4 ]
+    #majority = find_majority_element(elements, len(elements))
+    
+    majority = find_majority(elements, len(elements))
     print(majority)
