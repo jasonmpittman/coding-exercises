@@ -17,7 +17,15 @@ except ImportError as e:
     print(e)
 
 class PancakeSortTest(unittest.TestCase):
-    pass
+    #01234,2 01234,3 01234,5
+    def test_pancake_two(self):
+        self.assertEqual(pancake_sort.flip_front([0, 1, 2, 3, 4], 2), [1, 0, 2, 3, 4], 'The sort is correct')
+
+    #def test_pancake_three(self):
+    #    pass
+
+    #def test_pancake_five(self):
+    #    pass
 
 
 
