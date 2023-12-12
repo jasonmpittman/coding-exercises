@@ -25,7 +25,7 @@ Ended: Dec 10, 2023 @ 3:30am ET
 from sys import argv
 
 def flip_front(array, n):
-    print(array)
+    #print(array)
 
     # get slice of array based on n
     front = array[:n]
@@ -33,7 +33,7 @@ def flip_front(array, n):
         array[i] = front[-1]
         front.pop(-1)
     
-    print(array)
+    return array
 
     
 if __name__ == '__main__':
