@@ -22,12 +22,21 @@ Intervals: 1
 Ended: Dec 10, 2023 @ 3:30am ET
 
 """
+from sys import argv
 
+def flip_front(array, n):
+    print(array)
 
+    # get slice of array based on n
+    front = array[:n]
+    for i in range(len(front)):
+        array[i] = front[-1]
+        front.pop(-1)
+    
+    print(array)
 
-
-
-
-
+    
 if __name__ == '__main__':
-    pass
+    # 01234,2 01234,3 01234,5
+    array, n = argv[1].split(',')
+    flip_front(list(array), int(n))
