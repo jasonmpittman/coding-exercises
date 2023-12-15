@@ -27,7 +27,26 @@ Intervals: 1
 Ended: Nov 30, 2023 @ 6:30am ET   
 
 """
+# added for unittest challenge 12/15/23
+def merge_sorted_lists(list1, list2):
+    i, j = 0, 0
+    merged_list = []
+    while i < len(list1) and j < len(list2):
+        if list1[i] < list2[j]:
+            merged_list.append(list1[i])
+            i += 1
+        else:
+            merged_list.append(list2[j])
+            j += 1
+    while i < len(list1):
+        merged_list.append(list1[i])
+        i += 1
+    while j < len(list2):
+        merged_list.append(list2[j])
+        j += 1
+    return merged_list
 
+# code below here was its own challenge on 11/30/23
 def merge_lists(lists):
     return lists[0] + lists[1]
 
