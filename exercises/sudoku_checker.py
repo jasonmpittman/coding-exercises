@@ -17,9 +17,29 @@ Intervals: 1
 Ended: Dec 26, 2023 @ 6:30am ET
 """
 
-def is_valid_sudoku(board):
-    
+def check_sudoku_row(row):
+    return sorted(row) == list(range(min(row), max(row) + 1))
+
+def check_sudoku_column(column):
     pass
+
+def check_sudoku_subbox(subbox):
+    pass
+
+def is_valid_sudoku(board):
+    is_valid = False
+    
+    #Check Rows: Ensure that each row contains distinct numbers from 1 to 9.
+    for row in board:
+        print(check_sudoku_row(row))
+
+    #Check Columns: Similarly, check each column for distinct numbers.
+    
+    #Check Sub-Boxes: Verify that each 3x3 sub-box also contains distinct numbers.
+    
+    #Return Result: Based on these checks, return True if the board is valid, else return False.
+    
+    return is_valid
 
 if __name__ == '__main__':
     board = [
@@ -33,3 +53,5 @@ if __name__ == '__main__':
     [2, 8, 7, 4, 1, 9, 6, 3, 5],
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ]
+    
+    is_valid_sudoku(board)
