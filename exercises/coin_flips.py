@@ -39,7 +39,14 @@ Ended: Dec 18, 2023 @ 5:00am ET
 
 from sys import argv
 
+def flip_coins(s):
+    n = len(s)
+    
+    f = 0.5
+
 
 if __name__ == '__main__':
     alice = argv[1]
     bob = argv[2]
+
+    flip_coins(alice)

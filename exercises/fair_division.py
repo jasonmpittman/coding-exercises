@@ -27,9 +27,13 @@ Ended: Dec 18, 2023 @ 4:30am ET
 
 from sys import argv
 
-def divide_loot():
-    pass
+def divide_loot(n, m):
+    """n is number of pirates and m is loot"""
+    # find f = p/q where p and q are positive integers
+
+    
 
 
 if __name__ == '__main__':
-    pass
+    n, m = argv[1].split(' ')
+    
