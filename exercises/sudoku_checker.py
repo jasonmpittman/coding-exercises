@@ -17,11 +17,8 @@ Intervals: 1
 Ended: Dec 26, 2023 @ 6:30am ET
 """
 
-def check_sudoku_row(row):
-    return sorted(row) == list(range(min(row), max(row) + 1))
-
-def check_sudoku_column(column):
-    pass
+def is_consecutive_list(lst):
+    return sorted(lst) == list(range(min(lst), max(lst) + 1))
 
 def check_sudoku_subbox(subbox):
     pass
@@ -31,10 +28,15 @@ def is_valid_sudoku(board):
     
     #Check Rows: Ensure that each row contains distinct numbers from 1 to 9.
     for row in board:
-        print(check_sudoku_row(row))
+        print(is_consecutive_list(row))
 
     #Check Columns: Similarly, check each column for distinct numbers.
+    column_size = len(board)
+    columns = [board[i::column_size] for i in range(column_size)]
     
+    for column in columns:
+        print(is_consecutive_list(column[0]))
+
     #Check Sub-Boxes: Verify that each 3x3 sub-box also contains distinct numbers.
     
     #Return Result: Based on these checks, return True if the board is valid, else return False.
