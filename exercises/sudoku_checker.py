@@ -28,19 +28,29 @@ def is_valid_sudoku(board):
     
     #Check Rows: Ensure that each row contains distinct numbers from 1 to 9.
     for row in board:
-        print(is_consecutive_list(row))
+        is_valid = is_consecutive_list(row)
+        
+        if is_valid == False:
+            return is_valid
+        else:
+            is_valid = True
 
     #Check Columns: Similarly, check each column for distinct numbers.
     column_size = len(board)
     columns = [board[i::column_size] for i in range(column_size)]
     
     for column in columns:
-        print(is_consecutive_list(column[0]))
+        is_valid = is_consecutive_list(column[0])
 
-    #Check Sub-Boxes: Verify that each 3x3 sub-box also contains distinct numbers.
+        # TODO: this code needs refactored with the same above
+        if is_valid == False:
+            return is_valid
+        else:
+            is_valid == True
+    
+    #TODO: Check Sub-Boxes: Verify that each 3x3 sub-box also contains distinct numbers.
     
     #Return Result: Based on these checks, return True if the board is valid, else return False.
-    
     return is_valid
 
 if __name__ == '__main__':
@@ -56,4 +66,4 @@ if __name__ == '__main__':
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ]
     
-    is_valid_sudoku(board)
+    print(is_valid_sudoku(board))
