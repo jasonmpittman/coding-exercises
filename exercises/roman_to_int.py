@@ -28,6 +28,33 @@ Ended: Dec 28, 2023 @ 7:15am ET
 """
 from sys import argv
 
+def convert_roman_to_integer(roman):
+    roman_numbers = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+
+    total = 0
+    prev_value = 0
+
+    for r in reversed(roman):  # Iterate through the string in reverse order
+        value = roman_numbers[r]
+        if value < prev_value:
+            # If the current value is less than the previous value, subtract it
+            total -= value
+        else:
+            # Otherwise, add it to the total
+            total += value
+            prev_value = value
+
+    return total
 
 if __name__ == '__main__':
-    pass
+    roman = argv[1]
+    
+    print(convert_roman_to_integer(roman))
