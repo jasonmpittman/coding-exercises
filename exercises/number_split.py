@@ -20,10 +20,29 @@ Examples:
 
 Started: Dec 29, 2023 @ 6:00am ET
 Intervals: 1
-Ended: Dec 29, 2023 @ 6:30am ET
+Ended: Dec 29, 2023 @ 6:10am ET
 """
 
+from sys import argv
 
+
+def split_number(n):
+    numbers = []
+
+    q = n // 2
+    numbers.append(q)
+    
+    if n % 2 != 0:
+        numbers.append(numbers[0] + 1)
+    else:
+        numbers.append(q)
+
+    if n < 0:
+        numbers.sort(reverse=True)
+
+    return numbers
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+    
+    print(split_number(n))
