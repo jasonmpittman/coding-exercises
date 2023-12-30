@@ -16,9 +16,9 @@ Examples:
     number_length(0) ➞ 1
 
 
-Started: Dec 29, 2023 @ 5:45am ET
+Started: Dec 30, 2023 @ 5:45am ET
 Intervals: 1
-Ended: Dec 29, 2023 @ 5:48am ET
+Ended: Dec 30, 2023 @ 5:48am ET
 """
 from sys import argv
 
