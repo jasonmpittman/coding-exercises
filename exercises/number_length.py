@@ -18,10 +18,20 @@ Examples:
 
 Started: Dec 29, 2023 @ 5:45am ET
 Intervals: 1
-Ended: Dec 29, 2023 @ 6:15am ET
+Ended: Dec 29, 2023 @ 5:48am ET
 """
+from sys import argv
 
+def get_number_length(number: str) -> str:
+    length = 0
+
+    for digit in number:
+        length += 1
+
+    return length
 
 
 if __name__ == '__main__':
-    pass
+    number = argv[1]
+
+    print(get_number_length(number))
