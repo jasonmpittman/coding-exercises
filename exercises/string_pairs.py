@@ -18,7 +18,7 @@ Examples:
 
 Started: Dec 30, 2023 @ 5:50am ET
 Intervals: 1
-Ended: Dec 30, 2023 @ 6:20am ET
+Ended: Dec 30, 2023 @ 6:18am ET
 """
 from sys import argv
 
@@ -26,14 +26,21 @@ def get_string_pairs(s):
     pairs = []
     window = 0
 
+    # TODO: this could be refactored
     if len(s) % 2 == 0:
         for i in range(len(s) // 2):
             pair = s[window:(window + 2)]
-            print(pair)
             pairs.append(pair)
             window += 2
     else:
-        pass
+        for i in range((len(s) // 2) + 1):
+            pair = s[window:(window + 2)]
+            
+            if len(pair) == 1:  
+                pair = pair + '*'
+
+            pairs.append(pair)
+            window += 2
 
     return pairs
 
