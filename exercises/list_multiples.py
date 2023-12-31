@@ -16,12 +16,23 @@ Examples:
 
 Started: Dec 31, 2023 @ 6:05am ET
 Intervals: 1
-Ended: Dec 31, 2023 @ 6:35am ET
+Ended: Dec 31, 2023 @ 6:12am ET
 """
 
 from sys import argv
 
+def list_mupltiples(n, m):
+    multiples = [n]
+    base = n
+
+    for _ in range(m - 1):
+        n = n + base
+        multiples.append(n)
+
+    return multiples
 
 
 if __name__ == '__main__':
+    n,m = argv[1].split(',')
 
+    print(list_mupltiples(int(n), int(m)))
