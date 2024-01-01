@@ -33,9 +33,28 @@ Ended: Jan 01, 2024 @ 7:15am ET
 """
 from sys import argv
 
+def get_last_digit(n) -> int:
+    size = len(n)
 
+    if size > 1:
+        return int(n[size - 1])
+    else:
+        return n
 
+def is_last_digit(a: str, b: str, c: str) -> bool:
+
+    last_a = get_last_digit(a)   
+    last_b = get_last_digit(b)
+    last_c = get_last_digit(c)
+
+    if last_a * last_b == last_c:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
-    pass
+    a, b, c = argv[1].split(',')
+
+    print(is_last_digit(a, b, c))
+    
