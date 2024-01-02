@@ -22,6 +22,31 @@ Ended: Jan 02, 2024 @ 6:15am ET
 """
 from sys import argv
 
+# this feels rather hacked with all the type casting?
+def is_automorphic(n: int) -> bool:
+    square = n**2
+    square_string = str(square)
+    size = len(str(n)) * -1
+
+    print(square_string[size:])
+
+    if size == -1:
+        if str(square_string[-1]) == str(n):
+            print(square_string, square_string[-1])
+            return True
+        else:
+            print(square_string, square_string[-1])
+            return False
+    else:
+        if str(square_string[size:]) == str(n):
+            print(square_string, square_string[size:])
+            return True
+        else:
+            print(square_string, square_string[size:])
+            return False
+
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+    
+    print(is_automorphic(n))
