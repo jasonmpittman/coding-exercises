@@ -17,10 +17,20 @@ Examples:
 
 Started: Jan 03, 2024 @ 6:30am ET
 Intervals: 1
-Ended: Jan 03, 2024 @ 7:00am ET
+Ended: Jan 03, 2024 @ 6:45am ET
 """
 from sys import argv
 
+def find_highest_integer(integers):
+    highest = 0
+
+    if len(integers) <= 1:
+        return integers[0]
+    else:
+        highest = find_highest_integer(integers[1:])
+        return highest if highest > integers[0] else integers[0]
+    
 
 if __name__ == '__main__':
-    integers = argv[1]
+    integers = [0, 12, 4, 87] #[8] #[-1, 3, 5, 6, 99, 12, 2]
+    print(find_highest_integer(integers))
