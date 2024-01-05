@@ -16,11 +16,26 @@ Examples:
 
 Started: Jan 05, 2024 @ 3:35am ET
 Intervals: 1
-Ended: Jan 05, 2024 @ 4:05am ET
+Ended: Jan 05, 2024 @ 3:40am ET
 """
 
 from sys import argv
 
+def calculate_multiple(n: int, i: int) -> int:
+    return n * i
+
+def build_array_of_multiples(num: int, length: int) -> list:
+    array_of_multiples = []
+    i = 1
+
+    for _ in range(length):
+        multiple = calculate_multiple(num, i)
+        array_of_multiples.append(multiple)
+        i += 1
+
+    return array_of_multiples
 
 if __name__ == '__main__':
-    pass
+    num, length = argv[1].split(',')
+    
+    print(build_array_of_multiples(int(num), int(length)))
