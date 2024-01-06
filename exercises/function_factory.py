@@ -21,9 +21,25 @@ Examples:
     plusTen(188) ➞ 198
     plusFive(plusTen(0)) ➞ 15
 
+    
+Started: Jan 06, 2024 @ 2:10pm ET
+Intervals: 1
+Ended: Jan 06, 2024 @ 2:15pm ET
 """
+from sys import argv
 
+def make_function(n: int):
+    
+    def made_function(m: int):
+        return n + m
+    
+    return made_function
 
 
 if __name__ == '__main__':
-    pass
+    n, m = argv[1].split(',')
+
+    made = make_function(int(n))
+    sum = made(int(m))
+
+    print(sum)
