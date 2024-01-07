@@ -22,9 +22,9 @@ Examples:
     is_disarium(466) ➞ False
     is_disarium(8) ➞ True
 
-Started: Jan 04, 2024 @ 6:00am ET
-Intervals: 1
-Ended: Jan 04, 2024 @ 6:07am ET
+    Started: Jan 04, 2024 @ 6:00am ET
+    Intervals: 1
+    Ended: Jan 04, 2024 @ 6:07am ET
 """
 from sys import argv
 
