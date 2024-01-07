@@ -18,8 +18,17 @@ Started: Jan 07, 2024 @ 7:00am ET
 Intervals: 1
 Ended: Jan 07, 2024 @ 7:30am ET
 """
+from sys import argv
 
+def build_triangular(n: int):
+    dots = n
 
+    for i in range(1, n):
+        dots += n - i
+
+    return dots
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+
+    print(build_triangular(n))
