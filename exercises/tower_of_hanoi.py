@@ -20,6 +20,17 @@ Ended: Jan 08, 2024 @ 5:20am ET
 """
 from sys import argv
 
+def tower_of_hanoi(disks, source, auxiliary, target):  
+    if disks == 1:  
+        print('Move disk 1 from rod {} to rod {}.'.format(source, target))  
+        return  
+     
+    tower_of_hanoi(disks - 1, source, target, auxiliary)  
+   
+    print('Move disk {} from rod {} to rod {}.'.format(disks, source, target))  
+    
+    tower_of_hanoi(disks - 1, auxiliary, source, target)  
+
 def count_number_of_steps(n: int) -> int:
     return 2**n - 1
 
@@ -29,3 +40,5 @@ if __name__ == '__main__':
     number_of_steps = count_number_of_steps(n)
 
     print(number_of_steps)
+
+    tower_of_hanoi(n, 'A', 'B', 'C')
