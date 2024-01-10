@@ -26,10 +26,24 @@ Examples:
 
 Started: Jan 10, 2024 @ 6:00am ET
 Intervals: 1
-Ended: Jan 10, 2024 @ 6:30am ET
+Ended: Jan 10, 2024 @ 6:10am ET
 """
 from sys import argv
 
+def power_ranger(n: int, a: int, b: int) -> int:
+    number_of_values = 0
+
+    base_values = [x for x in range(1, b)]
+    
+    for i in base_values:
+        temp_value = i**n
+        if temp_value >= a and temp_value <= b:
+            number_of_values += 1
+        
+    return number_of_values
 
 if __name__ == '__main__':
-    pass
+    n, a, b = argv[1].split(',')
+
+    result = power_ranger(int(n), int(a), int(b))
+    print(result)
