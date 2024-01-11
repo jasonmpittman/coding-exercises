@@ -20,10 +20,37 @@ is_prime(primes, 36) ➞ "no"
 
 Started: Jan 11, 2024 @ 6:15am ET
 Intervals: 1
-Ended: Jan 11, 2024 @ 6:45am ET
+Ended: Jan 11, 2024 @ 6:40am ET
 """
+from sys import argv
 
+def is_prime(primes: list, n: int) -> str:
+    """ Implements a binary search algorithm """
+    first_index = 0
+    middle_index = len(primes) // 2
+    last_index = len(primes) - 1
+
+    while 1 <= len(primes) - 1:
+
+        if n == primes[middle_index]:
+            return "yes"
+
+        if n > primes[middle_index]:
+            primes = primes[middle_index:last_index + 1]
+            middle_index = len(primes) // 2
+        
+        if n < primes[middle_index]:
+            primes = primes[first_index:middle_index]
+            middle_index = len(primes) // 2
+        
+        print(primes)
+
+    return "no"
 
 
 if __name__ == '__main__':
     primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    n = int(argv[1])
+
+    print(is_prime(primes, n))
+
