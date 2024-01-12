@@ -28,19 +28,30 @@ Ended: Jan 12, 2024 @ 4:50am ET
 """
 from sys import argv
 
+#TODO: this could be refactored into list comprehensions
 def generate_matrix(n: int) -> list:
     matrix = []
     
-    for i in range(n):
-        row = []
-        for j in range(n):
-            if i == j:
-                row.append(1)
-            else:
-                row.append(0)
-        
-        matrix.append(row)
-        
+    if n >= 0:
+        for i in range(n):
+            row = []
+            for j in range(n):
+                if i == j:
+                    row.append(1)
+                else:
+                    row.append(0)
+            
+            matrix.append(row)
+    else:
+        for i in range(-n): #this works for a 2x2 but not >= 3x3 matrices?
+            row = []
+            for j in range(-n):
+                if i == j: # to fix the bug we need to ensure there is only 1 per row
+                    row.append(0)
+                else:
+                    row.append(1)
+            
+            matrix.append(row)            
 
     return matrix
 
