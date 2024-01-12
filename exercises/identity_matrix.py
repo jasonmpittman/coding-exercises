@@ -22,12 +22,29 @@ Examples:
 
     id_mtrx(0) ➞ []
 
-Started: Jan 12, 2024 @ 4:30am ET
+Started: Jan 12, 2024 @ 4:20am ET
 Intervals: 1
-Ended: Jan 12, 2024 @ 5:00am ET
+Ended: Jan 12, 2024 @ 4:50am ET
 """
 from sys import argv
 
+def generate_matrix(n: int) -> list:
+    matrix = []
+    
+    for i in range(n):
+        row = []
+        for j in range(n):
+            if i == j:
+                row.append(1)
+            else:
+                row.append(0)
+        
+        matrix.append(row)
+        
+
+    return matrix
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+
+    print(generate_matrix(n))
