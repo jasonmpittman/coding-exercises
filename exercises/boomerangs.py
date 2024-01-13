@@ -21,12 +21,32 @@ Examples:
     countBoomerangs([5, 6, 6, 7, 6, 3, 9]) ➞ 1
     countBoomerangs([4, 4, 4, 9, 9, 9, 9]) ➞ 0
 
+Inputs:
+    3,7,3,2,1,5,1,2,2,-2,2 -> 3
+    1,7,1,7,1,7,1 -> 5
+
 Started: Jan 13, 2024 @ 6:30am ET
 Intervals: 1
-Ended: Jan 13, 2024 @ 7:00am ET
+Ended: Jan 13, 2024 @ 6:46am ET
 """
+from sys import argv
 
+def count_boomerangs(boomerangs: list) -> int:
+    count = 0
+    length = len(boomerangs)
+    left = 0
+    right = 2
 
+    while right < length:
+        if boomerangs[left] == boomerangs[right] and boomerangs[left] != boomerangs[left + 1]:
+            count += 1
+
+        left += 1
+        right += 1
+
+    print(count)
 
 if __name__ == '__main__':
-    pass
+    boomerangs = argv[1].split(',')
+
+    count_boomerangs(boomerangs)
