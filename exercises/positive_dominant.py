@@ -20,10 +20,26 @@ Examples:
 
 Started: Jan 14, 2024 @ 5:45am ET
 Intervals: 1
-Ended: Jan 14, 2024 @ 6:15am ET
+Ended: Jan 14, 2024 @ 6:09am ET
 """
 from sys import argv
 
+def is_positive_dominant(numbers: list) -> bool:
+    positive_count = 0
+    negative_count = 0
+
+    # we use len() to get the number of x after the conditional
+    positive_count = len([x for x in numbers if x > 0])
+    negative_count = len([x for x in numbers if x < 0])
+
+    if positive_count > negative_count:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    pass
+    numbers = argv[1].split(',')
+
+    # we use list(map()) to cast str elements to integers
+    result = is_positive_dominant(list(map(int,numbers))) #5,99,832,-3,-4 True
+    print(result)
