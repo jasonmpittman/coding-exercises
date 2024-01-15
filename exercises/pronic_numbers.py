@@ -22,10 +22,22 @@ Examples:
 
 Started: Jan 15, 2024 @ 5:25am ET
 Intervals: 1
-Ended: Jan 15, 2024 @ 5:55am ET
+Ended: Jan 15, 2024 @ 5:32am ET
 """
 from sys import argv
 
+def is_heteromecic(n: int) -> bool:
+    
+    for i in range(n):
+
+        if i * (i + 1) == n:
+            return True
+        
+    return False
+
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+
+    result = is_heteromecic(n)
+    print(result)
