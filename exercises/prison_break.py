@@ -34,6 +34,36 @@ Ended: Jan 17, 2024 @ 5:15am ET
 """
 from sys import argv
 
+def turn_cells(cells: list) -> list:
+    for index in range(len(cells)):
+        if cells[index] == '1':
+            cells[index] = '0'
+        else:
+            cells[index] = '1'
+
+    return cells
+
+# TODO: this works but hits an index out of range on line 53 before ending correctly
+def free_prisoners(cells: list, count_freed = 0, position = 0) -> int:
+    print(count_freed, position, cells) 
+
+    # check first cell, if unlocked free and start else we're done
+    i = 1
+    while i < len(cells):
+        if cells[position] == '1':
+            count_freed += 1
+            position += 1
+        
+            new_cells = turn_cells(cells)
+
+            free_prisoners(new_cells, count_freed, position)
+        else:
+            position += 1
+        
+        i += 1
+
+    return count_freed
 
 if __name__ == '__main__':
-    pass
+    cells = argv[1].split(',') # 1,1,0,0,0,1,0
+    print(free_prisoners(cells))
