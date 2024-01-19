@@ -24,8 +24,39 @@ Started: Jan 19, 2024 @ 6:15am ET
 Intervals: 1
 Ended: Jan 19, 2024 @ 6:45am ET
 """
+from sys import argv
 
+def shift_first_letters(sentence: list) -> str:
+    first_letters = []
+    pointer = 0
+    new_sentence = []
+    sentence_length = len(sentence)
 
+    for word in sentence:
+        first_letters.append(word[0])
+
+    # TODO: could refactor the letter switching to another function
+    for i in range(sentence_length):
+        # this handles the shift of the last word first letter to the first word first letter
+        if i == sentence_length - 1:
+            word = list(sentence[0])
+            word[0] = first_letters[-1]
+            new_word = "".join(word)
+            
+            new_sentence.insert(0, new_word)
+        elif i < sentence_length:
+            word = list(sentence[i + 1])
+            word[0] = first_letters[i]
+            new_word = "".join(word)
+            
+            new_sentence.append(new_word)
+
+    return new_sentence
 
 if __name__ == '__main__':
-    pass
+    sentence = argv[1].split(' ')
+    
+    if len(sentence) <= 1:
+        print(sentence)
+    else:
+        print(shift_first_letters(sentence))
