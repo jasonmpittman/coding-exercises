@@ -36,10 +36,32 @@ Examples:
 
 Started: Jan 20, 2024 @ 5:05am ET
 Intervals: 1
-Ended: Jan 20, 2024 @ 5:35am ET
+Ended: Jan 20, 2024 @ 5:26am ET
 """
 from sys import argv
 
+def build_staircase(n: int):
+    staircase = None
+
+    if n == 0:
+        print("___")
+    
+    if n == 1:
+        print("  _\n_|")
+    
+    if n >= 2:
+        i = 0
+        interval = n
+        staircase = (" " * n) + "  _\n" # creates bottom stair
+        while i < n:
+            staircase = staircase + (" " * interval) + "_|\n"
+            interval -= 1
+            i += 1 
+
+        #staircase = staircase + "\n_|"
+        print(staircase)
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+
+    build_staircase(n)
