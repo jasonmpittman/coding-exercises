@@ -6,7 +6,7 @@ __version__ = "1.0.0"
 __maintainer__ = "Jason M. Pittman"
 __status__ = "Exercise"
 
-""" 100 Prisoners:
+""" 100 Prisoners: https://rosettacode.org/wiki/100_prisoners
 The Problem
 
     100 prisoners are individually numbered 1 to 100
@@ -31,12 +31,58 @@ The task
         First opening the drawer whose outside number is his prisoner number.
         If the card within has his number then he succeeds otherwise he opens the drawer with the same number as that of the revealed card. (until he opens his maximum).
 
+Output:
+    Simulation count: 100000
+    Random play wins:  0.0% of simulations
+    Optimal play wins: 31.1% of simulations
+
 Started: Jan 21, 2024 @ 5:35am ET
 Intervals: 1
 Ended: Jan 21, 2024 @ 6:05am ET
 """
+import random
 
+def create_cupboard(size: int) -> dict:
+    cupboard = {}
 
+    for i in range(1, size + 1):
+        cupboard[i] = random.randint(1, size)
 
-if __name__ == '__main__':
+    return cupboard
+
+def search_blind_cupboard(cupboard: dict, number_of_prisoners=100, number_of_tries=50) -> int:
+    number_of_wins = 0
+    number_of_searches = 0
+
+    for prisoner in range(1, number_of_prisoners):
+        prisoner_attempts = number_of_tries
+        
+        while prisoner_attempts > 0:
+            drawer = random.randint(1, len(cupboard))
+            #print("Prisoner {} is searching drawer {} for attempt {}".format(prisoner, cupboard[drawer], prisoner_attempts))
+            
+            if cupboard[drawer] == prisoner:
+                number_of_wins += 1
+                break
+
+            prisoner_attempts -= 1
+            number_of_searches += 1
+
+    return number_of_wins, number_of_searches
+
+# TODO: implement optimal strategy
+def search_strategy_cupboard():
     pass
+
+# TODO: implement exact output by converting to %
+if __name__ == '__main__':
+    cupboard_size = 100
+    number_of_prisoners = 100
+    search_attempts = 50
+
+    cupboard = create_cupboard(cupboard_size)
+    number_of_wins, number_of_searches = search_blind_cupboard(cupboard, number_of_prisoners, search_attempts)
+    
+    print("Simulation count: ", number_of_searches)
+    print("Number of wins: ", number_of_wins)
+    
