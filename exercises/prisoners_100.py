@@ -36,9 +36,9 @@ Output:
     Random play wins:  0.0% of simulations
     Optimal play wins: 31.1% of simulations
 
-Started: Jan 21, 2024 @ 5:35am ET
-Intervals: 1
-Ended: Jan 21, 2024 @ 6:05am ET
+Started: Jan 21, 2024 @ 5:35am ET; Jan 22, 2024 @ 5:35am ET
+Intervals: 2
+Ended: Jan 21, 2024 @ 6:05am ET; Jan 22, 2024 @ 6:05am ET
 """
 import random
 
@@ -70,9 +70,32 @@ def search_blind_cupboard(cupboard: dict, number_of_prisoners=100, number_of_tri
 
     return number_of_wins, number_of_searches
 
-# TODO: implement optimal strategy
-def search_strategy_cupboard():
-    pass
+
+def search_strategy_cupboard(cupboard: dict, number_of_prisoners=100, number_of_tries=50):
+    number_of_wins = 0
+    current_drawer = 1
+    number_of_searches = 0
+
+    for prisoner in range(1, number_of_prisoners):
+        if cupboard[current_drawer] == prisoner:
+            number_of_wins += 1
+            number_of_searches += 1
+        else:
+            current_drawer = cupboard[prisoner]
+            i = 1
+
+            while i < number_of_tries:
+                
+                if cupboard[current_drawer] == prisoner:
+                    number_of_wins += 1
+                    break
+                else:
+                    current_drawer = cupboard[current_drawer]
+
+                number_of_searches += 1
+                i += 1
+
+    return number_of_wins, number_of_searches
 
 # TODO: implement exact output by converting to %
 if __name__ == '__main__':
@@ -81,8 +104,10 @@ if __name__ == '__main__':
     search_attempts = 50
 
     cupboard = create_cupboard(cupboard_size)
-    number_of_wins, number_of_searches = search_blind_cupboard(cupboard, number_of_prisoners, search_attempts)
-    
-    print("Simulation count: ", number_of_searches)
-    print("Number of wins: ", number_of_wins)
-    
+    number_of_wins_blind, number_of_searches_blind = search_blind_cupboard(cupboard, number_of_prisoners, search_attempts)
+    number_of_wins_strategy, number_of_searches_strategy = search_strategy_cupboard(cupboard, number_of_prisoners, search_attempts)
+
+    print("Blind search count: ", number_of_searches_blind)
+    print("Blind number of wins: ", number_of_wins_blind)
+    print("Strategy search count: ", number_of_searches_strategy)
+    print("Strategy number of wins: ", number_of_wins_strategy)
