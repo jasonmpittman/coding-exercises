@@ -18,10 +18,25 @@ Example:
 
 Started: Jan 26, 2024 @ 4:15am ET
 Intervals: 1
-Ended: Jan 26, 2024 @ 4:45am ET                
+Ended: Jan 26, 2024 @ 4:40am ET                
 """
 
+# TODO: done but small bug with the 1,2 1,3
+def find_adjacencies(vertices: int, edges: list):
+    for adjacency in edges:
+        x = adjacency[0]
+        y = ""
 
+        for edge in edges:
+            if x == edge[0]:
+                y += " " + str(edge[1])
+        
+        print(x, " -> ", y)
+        
 
 if __name__ == '__main__':
-    pass
+    vertices = 3
+    edges = [[0,1], [1,2], [2,0]]
+    #edges = [[0, 1], [1, 2], [1, 3], [2, 3], [3, 0]]
+
+    find_adjacencies(vertices, edges)
