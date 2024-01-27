@@ -32,7 +32,7 @@ Example
 
 Started: Jan 27, 2024 @ 5:20am ET
 Intervals: 1
-Ended: Jan 27, 2024 @ 5:50am ET
+Ended: Jan 27, 2024 @ 5:32am ET
 """
 from sys import argv
 
