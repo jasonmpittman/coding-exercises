@@ -20,8 +20,38 @@ Started: Jan 29, 2024 @ 5:05am ET
 Intervals: 1
 Ended: Jan 29, 2024 @ 5:35am ET
 """
+from sys import argv
+
+def get_numbers(n: str) -> list:
+    numbers = []
+    for c in n:
+        numbers.append(int(c))
+    
+    return numbers
+
+# TODO: need loop to continue additive logic
+def compute_additive_persistance(n: str) -> int:
+    additive_persistence = 0
+    counter = 0
+    numbers = get_numbers(n)
+    
+
+    additive_persistence = sum(numbers)
+    counter += 1
 
 
+    return counter
+
+def compute_multiplicative_persistence(n: str) -> int:
+    multiplicative_persistence = 0
+    numbers = get_numbers(n)
+
+    print(numbers)
+
+    return multiplicative_persistence
 
 if __name__ == '__main__':
-    pass
+    n = argv[1]
+
+    print(compute_additive_persistance(n))
+    #compute_multiplicative_persistence(n)
