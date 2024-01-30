@@ -16,6 +16,10 @@ Create two functions that take an integer as an argument and:
     Return its additive persistence.
     Return its multiplicative persistence.
 
+Examples:
+    1679583 ➞ 3 (additive)
+    123456 ➞ 2 (multiplicative)
+
 Started: Jan 29, 2024 @ 5:05am ET, Jan 30, 2024 @ 5:50am ET 
 Intervals: 2
 Ended: Jan 29, 2024 @ 5:35am ET, Jan 30, 2024 @ 6:04am ET
