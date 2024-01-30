@@ -18,7 +18,7 @@ Create two functions that take an integer as an argument and:
 
 Started: Jan 29, 2024 @ 5:05am ET, Jan 30, 2024 @ 5:50am ET 
 Intervals: 2
-Ended: Jan 29, 2024 @ 5:35am ET, Jan 30, 2024 @ 6:20am ET
+Ended: Jan 29, 2024 @ 5:35am ET, Jan 30, 2024 @ 6:04am ET
 """
 from sys import argv
 
@@ -45,13 +45,28 @@ def compute_additive_persistance(n: str) -> int:
 
     return counter
 
+def multiply_numbers(numbers: list):
+    product = 1
+
+    for x in numbers:
+        product = product * x
+    
+    return product
+
 def compute_multiplicative_persistence(n: str) -> int:
-    multiplicative_persistence = 0
+    multiplicative_persistence = 1
     numbers = get_numbers(n)
+    counter = 0
 
-    print(numbers)
+    multiplicative_persistence = multiply_numbers(numbers)
+    counter += 1
 
-    return multiplicative_persistence
+    while len(str(multiplicative_persistence)) > 1:
+        numbers = get_numbers(str(multiplicative_persistence))
+        multiplicative_persistence = multiply_numbers(numbers)
+        counter += 1
+
+    return counter
 
 if __name__ == '__main__':
     n = argv[1]
@@ -59,5 +74,5 @@ if __name__ == '__main__':
     if len(n) == 1:
         print(0)
     else:
-        print(compute_additive_persistance(n))
-    #compute_multiplicative_persistence(n)
+        print("Additive persistence is: ", compute_additive_persistance(n))
+        print("Multiplicative persistence is: ", compute_multiplicative_persistence(n))
