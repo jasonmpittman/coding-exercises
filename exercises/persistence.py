@@ -16,9 +16,9 @@ Create two functions that take an integer as an argument and:
     Return its additive persistence.
     Return its multiplicative persistence.
 
-Started: Jan 29, 2024 @ 5:05am ET
-Intervals: 1
-Ended: Jan 29, 2024 @ 5:35am ET
+Started: Jan 29, 2024 @ 5:05am ET, Jan 30, 2024 @ 5:50am ET 
+Intervals: 2
+Ended: Jan 29, 2024 @ 5:35am ET, Jan 30, 2024 @ 6:20am ET
 """
 from sys import argv
 
@@ -29,7 +29,6 @@ def get_numbers(n: str) -> list:
     
     return numbers
 
-# TODO: need loop to continue additive logic
 def compute_additive_persistance(n: str) -> int:
     additive_persistence = 0
     counter = 0
@@ -39,6 +38,10 @@ def compute_additive_persistance(n: str) -> int:
     additive_persistence = sum(numbers)
     counter += 1
 
+    while len(str(additive_persistence)) > 1:
+        numbers = get_numbers(str(additive_persistence))
+        additive_persistence = sum(numbers)
+        counter += 1
 
     return counter
 
@@ -53,5 +56,8 @@ def compute_multiplicative_persistence(n: str) -> int:
 if __name__ == '__main__':
     n = argv[1]
 
-    print(compute_additive_persistance(n))
+    if len(n) == 1:
+        print(0)
+    else:
+        print(compute_additive_persistance(n))
     #compute_multiplicative_persistence(n)
