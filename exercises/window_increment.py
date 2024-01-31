@@ -35,8 +35,30 @@ Started: Jan 31, 2024 @ 7:50am ET
 Intervals: 1
 Ended: Jan 31, 2024 @ 8:20am ET
 """
+from sys import argv
 
+# TODO: close - need to replace '1' with '3'
+def window_increment(n: int, iterations: int, step: int) -> int:
+    final_number = str(n)
+    i = 0
+    j = step
 
+    for iteration in range(iterations):
+        value = final_number[i % len(final_number)]
+        index = final_number.index(value)
+        
+        # add 1 to the integer at index in final_number
+        final_number = str(int(final_number[index]) + 1) + final_number[index:]
+        
+        
+        i = i + j
+
+    return final_number
 
 if __name__ == '__main__':
-    pass
+    # 1673 2 16
+    n = int(argv[1])
+    iterations = int(argv[2])
+    step = int(argv[3])
+
+    print(window_increment(n, iterations, step))
