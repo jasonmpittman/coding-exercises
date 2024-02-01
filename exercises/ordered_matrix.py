@@ -23,10 +23,29 @@ Examples:
 
 Started: Feb 01, 2024 @ 6:25am ET
 Intervals: 1
-Ended: Feb 01, 2024 @ 6:55am ET    
+Ended: Feb 01, 2024 @ 6:45am ET    
 """
+from sys import argv
 
+def create_matrix(n: int, m: int) -> list:
+    product = [x for x in range(1, (n * m) + 1)]
 
+    matrix = []
+    start = 0
+    stop = m
+
+    for i in range(n):
+        row = product[start:stop]
+        matrix.append(row)
+        start = stop + 1
+        stop = stop + n
+
+    
+    return matrix
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+    m = int(argv[2])
+
+    matrix = create_matrix(n, m)
+    print(matrix)
