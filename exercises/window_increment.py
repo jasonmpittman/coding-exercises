@@ -6,7 +6,7 @@ __version__ = "1.0.0"
 __maintainer__ = "Jason M. Pittman"
 __status__ = "Exercise"
 
-""" Window Increment: 
+""" Window Increment: https://edabit.com/challenge/XtdTxLB47nD2Cq5jk
 Create a function that takes three integer parameters: a number n, number of iterations, and step. You have to implement an algorithm, which increases the given number as explained below:
 
 s - Starting Position
