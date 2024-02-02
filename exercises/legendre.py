@@ -10,6 +10,8 @@ __status__ = "Exercise"
 
 Legendre's formula finds the exponent of the largest power of some prime p that divides (is a factor of) the factorial of some number n.
 
+Stated differently, given an integer n and a prime number p, find the largest x such that p^x (p raised to power x) divides n! (factorial) 
+
 Examples:
     legendre(5, 100) ➞ 24
     legendre(2, 128) ➞ 127
@@ -20,8 +22,20 @@ Started: Feb 02, 2024 @ 4:00am ET
 Intervals: 1
 Ended: Feb 02, 2024 @ 4:30am ET      
 """
+from sys import argv
 
+def find_largest_power(n: int, p: int) -> int:
+    x = 0
 
+    while n:
+        n /= p
+        x += n
+    
+    return int(x)
 
 if __name__ == '__main__':
-    pass
+    n = int(argv[1])
+    p = int(argv[2])
+
+    result = find_largest_power(n, p)
+    print(result)
