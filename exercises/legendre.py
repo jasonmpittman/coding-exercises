@@ -20,7 +20,7 @@ Examples:
 
 Started: Feb 02, 2024 @ 4:00am ET
 Intervals: 1
-Ended: Feb 02, 2024 @ 4:30am ET      
+Ended: Feb 02, 2024 @ 4:11am ET      
 """
 from sys import argv
 
