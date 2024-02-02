@@ -21,10 +21,28 @@ Examples:
 
 Started: Feb 02, 2024 @ 4:15am ET
 Intervals: 1
-Ended: Feb 02, 2024 @ 4:30am ET     
+Ended: Feb 02, 2024 @ 4:25am ET     
 """
+from sys import argv
 
+def is_positive_dominant(my_list: list) -> bool:
+    negatives = 0
+    positives = 0
 
+    # let's use a lambda function to test for the negative symbol on n as a str
+    for n in my_list:
+        is_negative = lambda n: str(n)[0] == '-' and len(str(n))>1
+        
+        if is_negative(n):
+            negatives += 1
+        else:
+            positives += 1
+    
+    if positives > negatives:
+        return True
+    else:
+        return False
 
 if __name__ == '__main__':
-    pass
+    my_list = argv[1].split(',') # 1,1,1,1,-3,-4 or 0,-4,-1
+    print(is_positive_dominant(my_list))
