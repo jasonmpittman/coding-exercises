@@ -22,10 +22,17 @@ histogram([1, 3, 4], "#") ➞ "#\n###\n####"
 
 Started: Feb 03, 2024 @ 10:20am ET
 Intervals: 1
-Ended: Feb 03, 2024 @ 10:40am ET
+Ended: Feb 03, 2024 @ 10:25am ET
 """
+from sys import argv
+
+def draw_histogram(bar_lengths: list, character: str):
+    for bar in bar_lengths:
+        print(character * int(bar))
 
 
-
-if __name__ == '__main__'
-    pass
+if __name__ == '__main__':
+    bar_lengths = argv[1].split(',')
+    character = argv[2]
+    
+    draw_histogram(bar_lengths, character)
