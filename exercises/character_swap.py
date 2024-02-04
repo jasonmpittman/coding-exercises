@@ -22,5 +22,31 @@ Examples:
 
 Started: Feb 04, 2024 @ 4:30am ET
 Intervals: 1
-Ended: Feb 04, 2024 @ 5:00am ET
+Ended: Feb 04, 2024 @ 4:40am ET
 """
+from sys import argv
+
+def swap_character(string: str, c1: str, c2: str) -> str:
+    i = 0
+    my_string = list(string)
+   
+    for c in my_string:
+        if c == c1:
+            my_string[i] = c2
+        
+        if c == c2:
+            my_string[i] = c1
+
+        i += 1
+    
+    my_string = ''.join(my_string)
+
+    print(my_string)
+
+
+if __name__ == '__main__':
+    string = argv[1]
+    c1 = argv[2]
+    c2 = argv[3]
+
+    swap_character(string, c1, c2) # "aabbccc" "a" "b"
