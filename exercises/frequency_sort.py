@@ -18,3 +18,24 @@ Started: Feb 06, 2024 @ 6:30am ET
 Intervals: 1
 Ended: Feb 06, 2024 @ 7:00am ET
 """
+from sys import argv
+import operator
+
+def sort_by_frequency(numbers: list) -> list:
+    frequency_of_numbers = {}
+    sorted_numbers = []
+
+    for number in numbers:
+        if number not in frequency_of_numbers.keys():
+            frequency_of_numbers[number] = numbers.count(number)
+
+    sorted_numbers = sorted(frequency_of_numbers.items(), key=operator.itemgetter(1), reverse=True)
+
+
+    print(frequency_of_numbers)
+    print(sorted_numbers)
+
+if __name__ == '__main__':
+    # 2,3,5,3,7,9,5,3,7
+    numbers = argv[1].split(',')
+    sort_by_frequency(numbers)
