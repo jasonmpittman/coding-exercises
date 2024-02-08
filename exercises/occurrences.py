@@ -12,11 +12,11 @@ Write a Python program to find a list of integers with exactly two occurrences o
 
 Examples:
     Input:
-    [19, 19, 15, 5, 3, 5, 5, 2]
+    [19, 19, 15, 5, 3, 5, 5, 2] 19,19,15,5,3,5,5,2
     Output:
     True
     Input:
-    [19, 15, 15, 5, 3, 3, 5, 2]
+    [19, 15, 15, 5, 3, 3, 5, 2] 19,15,15,5,3,3,5,2
     Output:
     False
     Input:
@@ -26,12 +26,41 @@ Examples:
 
 Started: Feb 08, 2024 @ 4:30am ET
 Intervals: 1
-Ended: Feb 08, 2024 @ 5:00am ET
+Ended: Feb 08, 2024 @ 4:41am ET
+"""
+from sys import argv
+
+def is_nineteen(numbers: list) -> bool:
+    limit = 2
+
+    if numbers.count('19') == limit:
+        return True
+    else:
+        return False
+
+def is_five(numbers: list) -> bool:
+    limit = 3
+
+    if numbers.count('5') == limit:
+        return True
+    else:
+        return False
+
+# TODO: is the more readable version more, less, or equally optimized as the return evaluation?
+def find_occurrences(numbers: list) -> bool:
+    if is_nineteen(numbers) and is_five(numbers):
+        return True
+    else:
+        return False
+
+"""
+def find_occurrences(numbers: list) -> bool:
+    return numbers.count('19') == 2 and numbers.count('5') == 3
 """
 
 
-
-
-
 if __name__ == '__main__':
-    pass
+    numbers = argv[1].split(',')
+    result = find_occurrences(numbers)
+
+    print(result)
