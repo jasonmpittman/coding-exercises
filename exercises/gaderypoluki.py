@@ -24,8 +24,36 @@ Started: Feb 09, 2024 @ 7:10am ET
 Intervals: 1
 Ended: Feb 09, 2024 @ 7:40am ET
 """
+from sys import argv
 
+def transform_key(key: str) -> str:
+    step = 2
+    transformed_key = ''
+    key = [c for c in key]
+    
+    for i in range(len(key) - 1):
+        transformed_key += str(key[i:step])
+        
+        i += 1
+        step += 1
 
+    return transformed_key
+
+#TODO: need to fix line 50 so that the right char is replaced
+def encrypt(key: str, message: str) -> str:
+    encrypted_message = message
+
+    key = transform_key(key)
+    
+    for c in message:
+        if c in key:
+            encrypted_message = encrypted_message.replace(c, key[key.index(c) - 1], -1)
+
+    return encrypted_message
 
 if __name__ == '__main__':
-    pass
+    key = argv[1] # gaderypoluki "This is an encrypted message"
+    message = argv[2]
+
+    encryptoed_message = encrypt(key, message)
+    print(encryptoed_message)
