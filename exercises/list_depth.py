@@ -18,10 +18,21 @@ Examples:
 
 Started: Feb 10, 2024 @ 12:55pm ET
 Intervals: 1
-Ended: Feb 10, 2024 @ 1:25pm ET
+Ended: Feb 10, 2024 @ 1:06pm ET
 """
 
+def compute_depth(my_list: list) -> int:
 
+    if isinstance(my_list, list):
+        if (len(my_list) == 0):
+            depth = 1
+        else:
+            depth = 1 + max([compute_depth(l) for l in my_list])
+    else:
+        depth = 0
+
+    return depth
 
 if __name__ == '__main__':
-    pass
+    my_list = [1, [2, [3, [4]]]] # [1, [2, [3, 4]]] # [1, [2, 3, 4]] # [1, 2, 3, 4]
+    print(compute_depth(my_list))
