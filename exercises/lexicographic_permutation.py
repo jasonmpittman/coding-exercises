@@ -19,8 +19,32 @@ Started: Feb 14, 2024 @ 5:55am ET
 Intervals: 1
 Ended: Feb 14, 2024 @ 6:25am ET
 """
+from itertools import permutations
+
+def permute(digits):
+    p = list(permutations(digits))
+    print(p[999999])
+    
+
+# TODO: not returning a list of all permutations
+def perms(digits, k = 0, p = []):
+    
+    if len(digits) == k:
+        #print(digits)
+        p.append(digits)
+    else:
+        for i in range(k, len(digits)):
+            digits[k], digits[i] = digits[i], digits[k]
+            perms(digits, k + 1, p)
+            digits[k], digits[i] = digits[i], digits[k]
+    
+    return p
 
 
 
 if __name__ == '__main__':
-    pass
+    digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] # [0, 1, 2] # 
+    p = perms(digits)
+    print(p[999999])
+
+    permute(digits)
