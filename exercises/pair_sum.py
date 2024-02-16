@@ -19,10 +19,21 @@ Examples:
 
 Started: Feb 16, 2024 @ 5:45am ET
 Intervals: 1
-Ended: Feb 16, 2024 @ 6:15am ET
+Ended: Feb 16, 2024 @ 6:01am ET
 """
+from sys import argv
 
+def brute_force(numbers: list, target: int) -> int:
 
+    for i in range(len(numbers) - 1):
+        
+        for j in range(i + 1, len(numbers)):
+            if numbers[i] + numbers[j] == target:
+                print(numbers[i], numbers[j])  
+            
 
 if __name__ == '__main__':
-    pass
+    numbers = [int(x) for x in argv[1].split(',')] # 8,7,2,5,3,1
+    target = int(argv[2])
+
+    brute_force(numbers, target)
