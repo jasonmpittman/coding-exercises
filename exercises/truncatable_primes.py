@@ -35,6 +35,58 @@ Ended: Feb 17, 2024 @ 5:30am ET
 """
 from sys import argv
 
+def is_prime(n: int) -> bool:
+    print(n)
+    if n > 1:
+        for i in range(2, (n // 2) + 1):
+            if n % i == 0:
+                return False
+                break
+        else:
+            return True
+    else:
+        return False
+
+# TODO: from right to left is broken
+def is_truncatable(n: str) -> str:
+    left = False
+    right = False
+    m = n
+    # test if 0 present
+    if '0' in n:
+        return False, False
+    
+    # test if prime from left to right
+    while n:
+        if is_prime(int(n)):
+            n = n[1:]
+            if len(n) >= 1:
+                left = is_prime(int(n))        
+        else:
+            False
+
+    # test if prime from right to left
+    #while m:
+    #    if is_prime(int(m)):
+    #        m = m[:-1]
+    #        if len(m) >= 1:
+    #            right = is_prime(int(m))        
+    #    else:
+    #        False
+
+
+    return left, right
 
 if __name__ == "__main__":
-    pass
+    n = argv[1]
+
+    left, right = is_truncatable(n)
+
+    if left and right:
+        print("Both")
+    elif left and not right:
+        print("Left")
+    elif not left and right:
+        print("Right")
+    else:
+        print("False")
