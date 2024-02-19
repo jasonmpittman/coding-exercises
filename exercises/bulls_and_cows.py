@@ -18,16 +18,57 @@ The program should:
 
 The score is computed as:
 
-    The player wins if the guess is the same as the randomly chosen number, and the program ends.
-    A score of one bull is accumulated for each digit in the guess that equals the corresponding digit in the randomly chosen initial number.
-    A score of one cow is accumulated for each digit in the guess that also appears in the randomly chosen number, but in the wrong position.
+A. The player wins if the guess is the same as the randomly chosen number, and the program ends.
+
+B. A score of one bull is accumulated for each digit in the guess that equals the corresponding digit in the randomly chosen initial number.
+
+C. A score of one cow is accumulated for each digit in the guess that also appears in the randomly chosen number, but in the wrong position.
 
 Started: Feb 19, 2024 @ 5:10am ET
 Intervals: 1
-Ended: Feb 19, 2024 @ 5:40am ET
+Ended: Feb 19, 2024 @ 5:33am ET
 """
+import random
 
+def get_random_number() -> int:
+    random_number = ''
 
+    for i in range (1,5):
+        random_number += str(random.randint(1, 9))
+
+    return random_number
+
+def get_player_guess() -> int:
+    guess = input("Enter a four digit number: ")
+
+    return guess
+    
+# I think this works correctly based on limited testing
+def score_guess(n, guess):
+    bull, cow = 0, 0
+
+    for c in guess:
+        if c in n and guess.index(c) == n.index(c):
+            bull += 1
+        elif c in n:
+            cow += 1
+        
+    return bull, cow
 
 if __name__ == "__main__":
-    pass
+    number = get_random_number()
+    print(number)
+    bulls, cows = 0, 0
+
+    while True:
+        guess = get_player_guess()
+
+        if guess == number:
+            print("You guessed correctly!")
+            break
+        else:
+            b, c = score_guess(number, guess)
+            bulls += b
+            cows += c
+            print("Bulls: {} Cows: {}".format(bulls, cows))
+    
