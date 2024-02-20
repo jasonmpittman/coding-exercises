@@ -36,6 +36,33 @@ Ended: Feb 20, 2024 @ 8:10am ET
 """
 from sys import argv
 
+def generate_kill_list(length: int, step_size: int) -> list:
+    kill_list = []
+    limit = step_size
+
+    while limit <= length:
+        kill_list.append(limit)
+        limit = limit + step_size
+
+    return kill_list
+
+
+def who_goes_free(people: list, step_size: int) -> int:
+    person_freed = 0
+
+    while len(people) > 1:
+        kill_list = generate_kill_list(len(people), step_size)
+        
+        for kill in sorted(kill_list, reverse=True):
+            del people[kill - 1]
+
+        print(people)
+
+    return person_freed
 
 if __name__ == "__main__":
-    pass
+    people = list(map(int, argv[1].split(','))) # 0,1,2,3,4,5,6,7,8
+    step_size = int(argv[2])
+
+    person_freed = who_goes_free(people, step_size)
+    print(person_freed)
