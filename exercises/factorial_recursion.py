@@ -16,6 +16,17 @@ Ended: Feb 21, 2024 @ 6:05am ET
 """
 from sys import argv
 
+def compute_factorial(n: int, factorial = 1) -> int:
+
+    if n == 1:
+        return factorial
+    else:
+        factorial = factorial * n
+        return compute_factorial(n - 1, factorial)    
+
 
 if __name__ == "__main__":
-    pass
+    n = int(argv[1])
+
+    factorial = compute_factorial(n)
+    print(factorial)
