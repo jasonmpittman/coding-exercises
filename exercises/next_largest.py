@@ -26,8 +26,24 @@ Started: Feb 22, 2024 @ 5:00am ET
 Intervals: 1
 Ended: Feb 22, 2024 @ 5:30am ET
 """
+from sys import argv
+from itertools import permutations
 
+# TODO: bug where 19000 returns 19000...all other test cases pass
+def find_next_largest(numbers: list, number: int):
+    largest_integer = 0
 
+    i = numbers.index(number)
+    largest_integer = numbers[i + 1]
+
+    print(largest_integer)
 
 if __name__ == "__main__":
-    pass
+    number = argv[1]
+    
+    permutations_of_number = permutations(number)
+    possible_numbers = [''.join(x) for x in permutations_of_number]
+    print(sorted(possible_numbers))
+
+    find_next_largest(sorted(possible_numbers), number)
+    
