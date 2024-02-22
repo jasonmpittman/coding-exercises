@@ -29,7 +29,8 @@ Ended: Feb 22, 2024 @ 5:30am ET
 from sys import argv
 from itertools import permutations
 
-# TODO: bug where 19000 returns 19000...all other test cases pass
+# TODO: bug where 19000 returns 19000...the list is fucked...all other test cases pass
+# TODO: also, not obvious when number is already largest possible integer
 def find_next_largest(numbers: list, number: int):
     largest_integer = 0
 
