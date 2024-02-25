@@ -17,6 +17,15 @@ Ended: Feb 24, 2024 @ 9:20pm ET
 """
 from sys import argv
 
+def create_new_number(number: str) -> str:
+    new_number = ''
+
+    for n in number:
+        new_number += str(int(n) + 1)
+    
+    print(new_number)
 
 if __name__ == "__main__":
-    pass
+    number = argv[1]
+
+    create_new_number(number)
