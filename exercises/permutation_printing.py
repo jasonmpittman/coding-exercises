@@ -28,6 +28,19 @@ Ended: Feb 27, 2024 @ 4:30am ET
 """
 from sys import argv
 
+def find_permutation(n: int) -> list:
+    permutation = [n]  # Start with the largest integer n...i think this works?
+    
+    for i in range(n - 1, 0, -1):
+        insert_index = 0
+    
+        while insert_index < len(permutation) and (i % permutation[insert_index] == 0 or permutation[insert_index] % i == 0):
+            insert_index += 1
+        permutation.insert(insert_index, i)
+    
+    return permutation    
 
 if __name__ == "__main__":
-    pass
+    n = int(argv[1]) # 4 will output [2 3 4 1] i divides j but i+1 !/ j+1
+
+    print(find_permutation(n))
