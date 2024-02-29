@@ -6,7 +6,7 @@ __version__ = "1.0.0"
 __maintainer__ = "Jason M. Pittman"
 __status__ = "Exercise"
 
-""" Array Equilibrium:
+""" Array Equilibrium: https://www.techiedelight.com/find-equilibrium-index-array/
 
 For an array A consisting n elements, index i is an equilibrium index if the sum of elements of subarray A[0…i-1] is equal to the sum of elements of subarray A[i+1…n-1]. i.e.
 
@@ -19,9 +19,9 @@ Input array {0, -3, 5, -4, -2, 3, 1, 0}.
 Output index 0, 3, and 7.
 
 
-Started: Feb 27, 2024 @ 4:35am ET
+Started: Feb 28, 2024 @ 4:35am ET
 Intervals: 1
-Ended: Feb 27, 2024 @ 5:05am ET
+Ended: Feb 28, 2024 @ 5:05am ET
 """
 from sys import argv
 
