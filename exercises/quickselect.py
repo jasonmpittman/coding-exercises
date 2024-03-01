@@ -27,9 +27,25 @@ Ended: Marc 01, 2024 @ 3:00pm ET
 """
 from sys import argv
 
-def quickselect(n: int) -> int:
+def partition(numbers: list, left: int, right: int) -> list:
     pass
 
+# TODO: basic pseudo code here only
+def quickselect(numbers: list, left: int, right: int, k: int) -> int:
+    if left == right:
+        return numbers[left]
+    
+    pivot = partition(numbers, left, right)
+
+    if k == pivot:
+        return numbers[k]
+    elif k < pivot:
+        right = numbers[:pivot - 1]
+    else:
+        left = numbers[pivot + 1]
 
 if __name__ == "__main__":
-    k = int(argv[1])
+    numbers = list(map(int, argv[1].split(','))) # 7,4,6,3,9,1 2
+    k = int(argv[2])
+
+    print(numbers)
