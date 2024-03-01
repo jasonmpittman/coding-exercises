@@ -27,7 +27,33 @@ Ended: Marc 01, 2024 @ 8:00am ET
 """
 from sys import argv
 
+def sum_values(n: str):
+    return sum([(int(x)**2) for x in n])
 
+# TODO hacky af...getting infinite loop when should be False (107)
+def is_happy_number(n: str) -> bool:
+    value = 0
+    seen = []
+
+    
+    while n != "0" and n not in seen:
+        
+        print("start of while for n is: ", n)
+        
+        if n == "1":
+            print("n is 1")
+            return True
+        else:
+            value = sum_values(n)
+            seen.append(value)
+            n = str(value)
+
+        print("end of while for n is: ", n)
+    
+    return False
+    
 
 if __name__ == "__main__":
-    pass
+    n = argv[1]
+
+    print(is_happy_number(n))
