@@ -20,8 +20,23 @@ Started: Mar 03, 2024 @ 4:35am ET
 Intervals: 1
 Ended: Marc 03, 2024 @ 5:05am ET
 """
+from sys import argv
 
+def rank_array(array: list) -> list:
+    rank = 1
+    indices = [array.index(x) for x in array]
+    array_map = dict(zip(array, indices)) 
+    
+
+    for key in sorted(array_map.keys()):
+        array[array_map.get(key)] = rank
+        rank += 1
+    
+    print(array)
+    
 
 
 if __name__ == "__main__":
-    pass
+    array = list(map(int, argv[1].split(','))) # 10,8,15,12,6,20,1
+
+    rank_array(array)
