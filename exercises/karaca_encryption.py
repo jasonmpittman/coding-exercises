@@ -30,12 +30,47 @@ Output: "1lpp0aca"
 
 Started: Mar 04, 2024 @ 7:00am ET
 Intervals: 1
-Ended: Marc 04, 2024 @ 7:30am ET
+Ended: Marc 04, 2024 @ 7:25am ET
 """
+from sys import argv
 
+def reverse_plaintext(plaintext: str) -> str:
+    return plaintext[::-1]
 
+def replace_vowels(plaintext: str) -> str:
+    vowels = ["o", "i", "u", "e", "a"]
 
+    for vowel in vowels:
+        if vowel in plaintext and vowel == "a":
+            plaintext = plaintext.replace(vowel, "0")
+        elif vowel in plaintext and vowel == "e":
+            plaintext = plaintext.replace(vowel, "1")
+        elif vowel in plaintext and vowel == "i":
+            plaintext = plaintext.replace(vowel, "2")
+        elif vowel in plaintext and vowel == "o":
+            plaintext = plaintext.replace(vowel, "2")
+        elif vowel in plaintext and vowel == "u":
+            plaintext = plaintext.replace(vowel, "3")
+
+    return plaintext
+
+def append(plaintext: str) -> str:
+    return plaintext + "aca"
+
+def encipher(plaintext: str) -> str:
+    ciphertext = ''
+
+    reversed_plaintext = reverse_plaintext(plaintext)
+
+    zeroed_plaintext = replace_vowels(reversed_plaintext)
+
+    ciphertext = append(zeroed_plaintext)
+
+    return ciphertext
 
 
 if __name__ == "__main__":
-    pass
+    plaintext = argv[1]
+
+    ciphertext = encipher(plaintext)
+    print(ciphertext)
