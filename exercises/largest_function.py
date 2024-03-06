@@ -21,14 +21,26 @@ Examples:
 
 Started: Mar 06, 2024 @ 5:40am ET
 Intervals: 1
-Ended: Marc 06, 2024 @ 5:10am ET
+Ended: Marc 06, 2024 @ 5:45am ET
 """
 
+def f():
+    return 25
 
+def g():
+    return 25
 
-
-
+def which_is_larger(f, g) -> str:
+    if f > g:
+        return "f"
+    elif g > f:
+        return "g"
+    elif f == g:
+        return "neither"
+    else:
+        return "something went wrong"
 
 
 if __name__ == "__main__":
-    pass
+    l = which_is_larger(f(), g())
+    print(l)
