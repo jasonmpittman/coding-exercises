@@ -18,12 +18,28 @@ Examples:
 
 Started: Mar 07, 2024 @ 6:00am ET
 Intervals: 1
-Ended: Marc 07, 2024 @ 6:30am ET
+Ended: Marc 07, 2024 @ 6:21am ET
 """
 from sys import argv
 
+def search_binary(array: list, n: str, start: int, end: int) -> int:
+    #start is left, end is right
+    mid = (start + end) // 2
+    
 
-
+    if n == array[mid]:
+        return mid
+        
+    elif n < array[mid]:
+        search_binary(array, n, start, mid -1) 
+        
+    else: #n > array[mid]:
+        search_binary(array, n, mid + 1, end)
+    
 
 if __name__ == "__main__":
-    pass
+    array = list(map(int, argv[1].split(','))) # 2,3,5,7,9
+    n = int(argv[2]) # 7
+
+    index = search_binary(array, n, 0, len(array) - 1)
+    print(index)
