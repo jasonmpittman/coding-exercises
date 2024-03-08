@@ -20,14 +20,17 @@ Examples:
 
 Started: Mar 08, 2024 @ 5:10am ET
 Intervals: 1
-Ended: Marc 08, 2024 @ 5:40am ET
+Ended: Marc 08, 2024 @ 5:20am ET
 """
+from sys import argv
 
-
-
-
+# the 'easy' way
+def sort_unique(array: list) -> list:
+    return set(sorted(array))
 
 
 
 if __name__ == "__main__":
-    pass
+    array = list(map(int, argv[1].split(','))) # 1,2,4,3 # 1,4,4,4,4,4,3,2,1,2
+
+    print(sort_unique(array))
