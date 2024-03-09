@@ -34,14 +34,38 @@ Examples:
 
 Started: Mar 09, 2024 @ 5:40pm ET
 Intervals: 1
-Ended: March 09, 2024 @ 6:10pm ET
+Ended: March 09, 2024 @ 6:05pm ET
 """
 
+def is_magic_square(square: list) -> bool:
+    sums = []
+    # returns sum of each row
+    for i in range(len(square)): #rows
+        sums.append(sum(square[i]))
 
+    # returns sum of each column
+    for i in range(len(square)):
+        sums.append(sum([column[i] for column in square]))
 
+    # returns sum of each diagonal
+    front_diagonal = [square[i][i] for i in range(len(square))]
+    sums.append(sum(front_diagonal))    
 
+    back_diagonal = [row[-i-1] for i, row in enumerate(square)]
+    sums.append(sum(back_diagonal))
 
-
+    return all(i == sums[0] for i in sums) # new use of all()
 
 if __name__ == "__main__":
-    pass
+    # is not magic square
+    square = [[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]]
+
+    # is magic square
+    #square =[[8, 1, 6],
+    #[3, 5, 7],
+    #[4, 9, 2]]
+
+    result = is_magic_square(square)
+    print(result)
