@@ -16,14 +16,27 @@ Examples:
 
 Started: Mar 10, 2024 @ 6:50pm ET
 Intervals: 1
-Ended: March 10, 2024 @ 7:20pm ET
+Ended: March 10, 2024 @ 7:00pm ET
 """
 from sys import argv
 
 
+def is_within_bounds(n: int, lower: int, upper: int) -> bool:
 
-
-
+    if n >= lower and n < upper:
+        return True
+    else:
+        return False
 
 if __name__ == "__main__":
-    pass
+    try:
+        n = int(argv[1])
+        lower = int(argv[2])
+        upper = int(argv[3])
+
+        result = is_within_bounds(n, lower, upper)
+        print(result)
+    
+    except ValueError:
+        print(False)
+
