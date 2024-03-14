@@ -33,13 +33,34 @@ When two numbers are added together, the strange Lunar arithmetic is used on the
 
 Started: Mar 14, 2024 @ 5:30am ET
 Intervals: 1
-Ended: March 14, 2024 @ 6:00am ET
+Ended: March 14, 2024 @ 5:45am ET
 """
+from sys import argv
 
 
+def add(n: list, m: list, mode=None) -> int:
+   total = ""
+
+   if mode is None:
+      for i in range(len(n)):
+         if int(n[i]) > int(m[i]):
+            total += n[i]
+         else:
+            total += m[i]
+
+   if mode == "comp":
+      total = ''.join([n[i] if int(n[i]) > int(m[i]) else m[i] for i in range(len(n))])
 
 
+   return total
 
 
 if __name__ == "__main__":
-    pass
+   n = argv[1].split(',')
+   m = argv[2].split(',')
+
+   total = add(n, m) # 2,4,6 3,1,7
+   print(total)
+
+   total = add(n, m, mode="comp")
+   print(total)
