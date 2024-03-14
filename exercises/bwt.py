@@ -1,5 +1,5 @@
 __author__ = "Jason M. Pittman"
-__copyright__ = "Copyright 2023"
+__copyright__ = "Copyright 2024"
 __credits__ = ["Jason M. Pittman"]
 __license__ = "MIT License"
 __version__ = "1.0.0"
