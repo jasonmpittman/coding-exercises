@@ -11,11 +11,19 @@ You will be given an array of drinks, with each drink being an object with two p
 
 Started: Mar 16, 2024 @ 5:40am ET
 Intervals: 1
-Ended: March 16, 2024 @ 6:10am ET
+Ended: March 16, 2024 @ 6:00am ET
 """
 import json
 
+def sort_drinks(data: dict) -> dict:
+    print(data)
 
+    data['drinks'] = list(sorted(data['drinks'], key=lambda d: d['price']))
+
+    print(data)
 
 if __name__ == "__main__":
-    pass
+    with open("drinks.json") as f: # FileNotFoundError is not run from /exercises
+        data = json.load(f)
+    
+    sort_drinks(data)
