@@ -20,7 +20,17 @@ Intervals: 1
 Ended: March 17, 2024 @ 5:20am ET
 """
 from sys import argv
+from functools import reduce
+import math
 
 
 if __name__ == "__main__":
-    pass
+    numbers = list(map(int, argv[1].split(','))) # 1,2,3,4,5,6,7,8,9
+    
+    # using math package
+    lcm = math.lcm(*numbers)
+    print(lcm)
+
+    # using math.gcd with reduce
+    lcm = reduce(lambda a,b: a * b // math.gcd(a,b), numbers)
+    print(lcm)
