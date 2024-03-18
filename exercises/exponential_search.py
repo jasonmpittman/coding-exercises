@@ -23,9 +23,35 @@ Ended: March 17, 2024 @ 5:25am ET
 """
 from sys import argv
 
+def search(array: list, target: int) -> int:
+    index = 1
+    length = len(array)
 
+    if length == 0:
+        return -1
+    
+    while index < length and array[index] < target:
+        index *= 2
 
+    left = index // 2
+    right = min(index, length - 1)
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if array[mid] == target:
+            return mid
+        elif array[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+        
+    return -1
 
 
 if __name__ == "__main__":
-    array = list(map(int, argv[1].split(',')))
+    array = list(map(int, argv[1].split(','))) # 2,3,4,10,40 10
+    target = int(argv[2])
+
+    result = search(array, target)
+    print(result)
