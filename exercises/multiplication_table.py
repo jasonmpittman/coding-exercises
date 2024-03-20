@@ -29,3 +29,26 @@ Started: Mar 20, 2024 @ 5:35am ET
 Intervals: 1
 Ended: March 20, 2024 @ 6:05am ET
 """
+from sys import argv
+
+def build_multiplication_table(n: int) -> list:
+    table = []
+    start = 1
+    stop = n + 1
+    product = n * n
+
+    for i in range(1, n + 1): # this will generate 1 - product
+        table.append([x for x in range(start, stop)])
+        start = stop
+        stop = stop + n
+            
+    return table
+
+
+if __name__ == "__main__":
+    n = int(argv[1])
+
+    table = build_multiplication_table(n)
+    
+    for t in table:
+        print(t)
