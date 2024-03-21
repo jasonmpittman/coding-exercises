@@ -16,5 +16,27 @@ Examples:
 
 Started: Mar 21, 2024 @ 5:45am ET
 Intervals: 1
-Ended: March 21, 2024 @ 6:15am ET
+Ended: March 21, 2024 @ 5:56am ET
 """
+from sys import argv
+
+
+def mix_salad(strings: str) -> list:
+    chunks = []
+
+    # create chunks
+    for s in strings:
+        length = len(s)
+        chunks.append(s[:length // 2])
+        chunks.append(s[length // 2:])
+
+    # sort the chunks
+    mixed_strings = sorted(chunks)
+
+    return ''.join(mixed_strings)
+
+if __name__ == "__main__":
+    strings = argv[1].split(',') # apple,pear,grapes
+
+    mixed_strings = mix_salad(strings)
+    print(mixed_strings)
