@@ -16,5 +16,21 @@ Examples:
 
 Started: Mar 22, 2024 @ 6:00am ET
 Intervals: 1
-Ended: March 22, 2024 @ 6:30am ET
+Ended: March 22, 2024 @ 6:12am ET
 """
+from sys import argv
+
+
+def reverse_array(array: list, start: int, stop:int) -> list:
+
+    array[start: stop + 1] = array[stop : start - 1: -1]
+
+    return array
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 1,2,3,4,5,6
+    start = int(argv[2])
+    stop = int(argv[3])
+
+    reversed_array = reverse_array(array, start, stop)
+    print(reversed_array)
