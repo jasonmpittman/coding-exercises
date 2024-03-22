@@ -28,7 +28,7 @@ def reverse_array(array: list, start: int, stop:int) -> list:
     return array
 
 if __name__ == "__main__":
-    array = list(map(int, argv[1].split(','))) # 1,2,3,4,5,6
+    array = list(map(int, argv[1].split(','))) # 1,2,3,4,5,6 1 3
     start = int(argv[2])
     stop = int(argv[3])
 
