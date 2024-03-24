@@ -23,5 +23,31 @@ Examples:
 
 Started: Mar 24, 2024 @ 5:50am ET
 Intervals: 1
-Ended: March 24, 2024 @ 6:20am ET
+Ended: March 24, 2024 @ 6:01am ET
 """
+from sys import argv
+
+def seesaw(number: str) -> str:
+    length = len(number)
+
+    if length % 2 != 0:
+        left = int(number[:length // 2])
+        right = int(number[(length // 2) + 1:])
+    else:
+        left = int(number[:length // 2])
+        right = int(number[length // 2:])
+
+    if left > right:
+        return "left"
+    elif left < right:
+        return "right"
+    elif left == right:
+        return "balanced"
+    else:
+        return "something went wrong"
+
+if __name__ == "__main__":
+    number = argv[1]
+
+    result = seesaw(number)
+    print(result)
