@@ -19,9 +19,42 @@ Examples:
     maxPossible(9132, 5564) ➞ 9655
     maxPossible(8732, 91255) ➞ 9755
 
-Started: Mar 25, 2024 @ 4:45am ET
+Started: Mar 25, 2024 @ 4:40am ET
 Intervals: 1
-Ended: March 25, 2024 @ 5:15am ET
+Ended: March 25, 2024 @ 4:56am ET
 """
+from sys import argv
+
+def maximize_number(first_number: list, second_number: list) -> int:
+    i = 0
+    m = 0
+    j = 0
+
+    for n in first_number:
+        if len(second_number) == 0:
+            break
+
+        m = max(second_number)
+        
+        if n < m:
+            first_number[i] = m
+            
+            #clean up second number array
+            j = second_number.index(m)
+            second_number.pop(j)
+    
+        i += 1
+    return int(''.join(first_number))
 
 
+if __name__ == "__main__":
+    n = argv[1]
+    first_number = [x for x in n]
+    
+    m = argv[2]
+    second_number = [x for x in m]
+
+    print("maximizing {} from {}".format(first_number, second_number))
+
+    result = maximize_number(first_number, second_number)
+    print(result)
