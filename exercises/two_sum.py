@@ -23,3 +23,27 @@ Started: Mar 27, 2024 @ 4:40am ET
 Intervals: 1
 Ended: March 27, 2024 @ 5:10am ET
 """
+from sys import argv
+import math
+
+    
+def find_sum(array: list, target: int) -> tuple:
+
+    if len(array) < 2:
+        return tuple()
+
+    # compute the complementary of target and number in array and if in array return number & complementary
+    # greedy match
+    for i, number in enumerate(array[:-1]):
+        complementary = target - number # f.ex: 10 - 8 = c
+        if complementary in array[i + 1:]:
+            return number, complementary
+        
+    return tuple()
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    target = int(argv[2])
+
+    result = find_sum(array, target)
+    print(result)
