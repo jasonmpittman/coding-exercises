@@ -19,3 +19,26 @@ Started: Mar 27, 2024 @ 4:50am ET
 Intervals: 1
 Ended: March 27, 2024 @ 5:20am ET
 """
+from sys import argv
+
+def select_activities(activities: list) -> list:
+    sorted_activities = sorted(activities, key = lambda x: x[1])
+
+    selected_activities = [sorted_activities[0]]
+    prev_finish_time = sorted_activities[0][1]
+
+    # Iterate through sorted activities and select sequential activities
+    for activity in sorted_activities[1:]:
+        start_time, finish_time = activity
+        if start_time >= prev_finish_time:
+            selected_activities.append(activity)
+            prev_finish_time = finish_time
+
+    return selected_activities
+
+
+if __name__ == "__main__":
+    activities = [(1, 4), (3, 5), (0, 6), (5, 7), (3, 8), (5, 9), (6, 10), (8, 11), (8, 12), (2, 13), (12, 14)] 
+
+    selected = select_activities(activities)
+    print(selected)
