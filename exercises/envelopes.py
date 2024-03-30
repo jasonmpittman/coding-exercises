@@ -28,3 +28,25 @@ Started: Mar 30, 2024 @ 5:45am ET
 Intervals: 1
 Ended: March 30, 2024 @ 6:15am ET
 """
+from bisect import bisect_left
+
+def next_envelop(envelope: list, envelopes: list):
+    #print(envelopes)
+    return envelopes.index(envelope)
+
+def stuff_envelopes(envelopes: list) -> int:
+    envelopes.sort(key = lambda x: (x[0], -x[1]))
+    
+    ne = []
+    for _,height in envelopes:
+        left = bisect_left(ne, height)
+        if left == len(ne): ne.append(height)
+        else: ne[left] = height
+    
+    return len(ne)
+
+if __name__ == "__main__":
+    envelopes = [[5,4],[6,4],[6,7],[2,3]]
+
+    result = stuff_envelopes(envelopes)
+    print(result)
