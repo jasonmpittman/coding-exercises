@@ -30,9 +30,6 @@ Ended: March 30, 2024 @ 6:15am ET
 """
 from bisect import bisect_left
 
-def next_envelop(envelope: list, envelopes: list):
-    #print(envelopes)
-    return envelopes.index(envelope)
 
 def stuff_envelopes(envelopes: list) -> int:
     envelopes.sort(key = lambda x: (x[0], -x[1]))
