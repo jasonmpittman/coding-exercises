@@ -27,3 +27,52 @@ Started: Mar 31, 2024 @ 5:25am ET
 Intervals: 1
 Ended: March 31, 2024 @ 5:55am ET
 """
+from sys import argv
+
+def is_prime(n: int) -> bool:
+    if n > 1:
+        # Iterate from 2 to n // 2
+        for i in range(2, (n//2)+1):
+            # If num is divisible by any number between
+            # 2 and n / 2, it is not prime
+            if (n % i) == 0:
+                return False
+        else:
+            return True
+    else:
+        return False
+
+def is_emirp(n: int) -> bool:
+    # do i need to check n is not palindromatic?
+    if len(str(n)) > 1 and is_prime(int(str(n)[::-1])):
+        return True
+    else:
+        return False
+
+def is_bemirp(n: int) -> bool:
+    str_n = str(n)
+    
+    if '6' in str_n:
+        bemirp = str_n.replace('6', '9')
+
+    if is_emirp(int(bemirp)) and is_prime(int(bemirp)):
+        return True
+    else:
+        return False
+
+def flip_prime(n: int) -> str:
+    if is_prime(n) == False:
+        print("C")
+    elif is_prime(n) and is_emirp(n) and is_bemirp(n):
+        print("B")
+    elif is_prime(n) and is_emirp(n) and not is_bemirp(n): 
+        print("E")
+    elif is_prime(n) and not is_emirp(n) and not is_bemirp(n): 
+        print("P")
+    
+ 
+
+if __name__ == "__main__":
+    n = argv[1]
+
+    flip_prime(int(n))
