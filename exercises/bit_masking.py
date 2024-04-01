@@ -28,3 +28,18 @@ Started: April 01, 2024 @ 7:05am ET
 Intervals: 1
 Ended: April 01, 2024 @ 7:35am ET
 """
+from sys import argv
+
+
+
+if __name__ == "__main__":
+    integer = int(argv[1])
+    mask = int(argv[2])
+
+    # neat trick to get a binary string
+    b = "{0:b}".format(integer)
+    
+    # little hack to get index from right
+    index = (len(b) - mask) - 1
+    
+    print(b[index])
