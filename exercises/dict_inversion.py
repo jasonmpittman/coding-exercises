@@ -21,5 +21,22 @@ invert({ "zebra": "koala", "horse": "camel" })
 
 Started: April 02, 2024 @ 3:55am ET
 Intervals: 1
-Ended: April 02, 2024 @ 4:25am ET
+Ended: April 02, 2024 @ 4:01am ET
 """
+
+def invert_dictionary(my_dict: dict, mode='short') -> dict:
+    
+    if mode == 'short':
+        inverted_dict = dict((v,k) for k,v in my_dict.items())
+    elif mode == 'long':
+        inverted_dict = {}
+        for k,v in my_dict.items():
+            inverted_dict[v] = k
+
+    return inverted_dict
+
+if __name__ == "__main__":
+    my_dict = { "zebra": "koala", "horse": "camel" }
+    inverted_dict = invert_dictionary(my_dict, mode='short')
+
+    print(inverted_dict)
