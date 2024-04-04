@@ -21,4 +21,54 @@ Started: April 04, 2024 @ 5:15am ET
 Intervals: 1
 Ended: April 04, 2024 @ 5:45am ET
 """
+from sys import argv
 
+def is_happy(index, array):
+    #check first element in array
+    if index == 0:
+        if array[index] == '0' and array[index + 1] == '1':
+            return False 
+        elif array[index] == '1' and array[index + 1] == '0':
+            return False
+        else:
+            return True
+    
+    #check last element in array
+    if index == len(array) - 1:
+        if array[index] == '0' and array[index - 1] == '1':
+            return False
+        elif array[index] == '1' and array[index - 1] == '0':
+            return False
+        else:
+            return True
+
+    #check middle elements in array
+    if index in range(1, len(array) - 1):
+        if array[index] == '0' and array[index - 1] == '1' and array[index + 1] == '1':
+            return False
+        elif array[index] == '1' and array[index - 1] == '0' and array[index + 1] == '0':
+            return False
+        else:
+            return True
+
+def calculate_portion(zeroes: int, ones: int, total: int) -> int:
+    return (zeroes + ones) / total
+
+
+if __name__ == "__main__":
+    array = argv[1].split(',') # 0,1,0,1,0  0,0,0,1,1   1,0,0,1,1
+
+    size = len(array)
+    zeroes = 0
+    ones = 0
+
+    for i in range(0, size - 1):
+        result = is_happy(i, array)
+
+        if array[i] == '0' and result == True:
+            zeroes += 1
+        elif array[i] == '1' and result == True:
+            ones += 1
+
+    portion = calculate_portion(zeroes, ones, size)
+    print(portion)
