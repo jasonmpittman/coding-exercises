@@ -25,3 +25,20 @@ Started: April 05, 2024 @ 7:05am ET
 Intervals: 1
 Ended: April 05, 2024 @ 7:35am ET
 """
+from sys import argv
+
+def find_winner(games: list) -> str:
+
+    if games.count('A') > games.count('D'):
+        print("Anton")
+    
+    if games.count('D') > games.count('A'):
+        print("Danik")
+    
+    if games.count('A') == games.count('D'):
+        print("Friendship")
+    
+
+if __name__ == "__main__":
+    games = argv[1].split(',')
+    find_winner(games)
