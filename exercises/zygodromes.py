@@ -23,5 +23,26 @@ Examples:
 
 Started: April 07, 2024 @ 7:20am ET
 Intervals: 1
-Ended: April 07, 2024 @ 7:50am ET
+Ended: April 07, 2024 @ 7:36am ET
 """
+from sys import argv
+
+# this is some lazy spaghetti
+def is_zygodrome(n :str) -> bool:
+    if len(n) < 2:
+        return False
+
+    if len(n) == 2 and n[0] == n[1]:
+        return True
+
+    if len(n) > 2 and len(n) % 2 != 0 and n[0] != n[2]:
+        return False 
+
+    if n[-2] == n[-1]:
+        return True
+
+    return False
+
+if __name__ == "__main__":
+    n = argv[1]
+    print(is_zygodrome(n))
