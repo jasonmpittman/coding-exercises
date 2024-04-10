@@ -19,5 +19,32 @@ Create a function that returns true or false depending upon whether the given nu
 
 Started: April 10, 2024 @ 7:25am ET
 Intervals: 1
-Ended: April 10, 2024 @ 7:55am ET
+Ended: April 10, 2024 @ 7:36am ET
 """
+from sys import argv
+
+def is_narcissistic_opt(number: str) -> bool:
+    """An optimized version of the function"""
+    length = len(number)
+
+    narcissistic_sum = sum(int(digit) ** length for digit in number)
+    return narcissistic_sum == int(number)
+
+def is_narcissistic(number: str) -> bool:
+    """A standard logic implementation"""
+    length = len(number)
+    result = 0
+
+    for n in number:
+        result = result + int(n)**length
+
+    if result == int(number):
+        return True
+    else:
+        return False
+
+if __name__ == "__main__":
+    number = argv[1]
+
+    print(is_narcissistic(number))
+    print(is_narcissistic_opt(number))
