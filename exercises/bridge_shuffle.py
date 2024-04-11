@@ -21,5 +21,20 @@ Examples:
 
 Started: April 11, 2024 @ 6:35am ET
 Intervals: 1
-Ended: April 11, 2024 @ 7:05am ET
+Ended: April 11, 2024 @ 7:00am ET
 """
+from sys import argv
+from itertools import zip_longest
+
+
+def bridge_shuffle(array_1: list, array_2: list) -> list:
+    #return [j for i in zip(array_1, array_2) for j in i] # here zip is limited to shortest array
+    return [j for i in zip_longest(array_1, array_2) for j in i] # we get a None padded but we could remove it with extra code
+
+
+if __name__ == "__main__":
+    array_1 = argv[1].split(',') # a,a,a b,b,b
+    array_2 = argv[2].split(',')
+
+    shuffled_array = bridge_shuffle(array_1, array_2)
+    print(shuffled_array)
