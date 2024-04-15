@@ -16,6 +16,26 @@ Examples
 
 Started: April 15, 2024 @ 2:50pm ET
 Intervals: 1
-Ended: April 13, 2024 @ 3:20pm ET
+Ended: April 13, 2024 @ 3:14pm ET
 """
+from sys import argv
+import re
 
+
+def find_longest_zeroes(binary_string: str) -> str:
+    longest_zeroes = ''
+
+    pattern = re.compile(r'[0]+')
+    matches = re.findall(pattern, binary_string)
+
+    for match in matches:
+        if len(match) > len(longest_zeroes):
+            longest_zeroes = match
+
+    return longest_zeroes
+
+if __name__ == "__main__":
+    binary_string = argv[1]
+
+    longest = find_longest_zeroes(binary_string)
+    print(longest)
