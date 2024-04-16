@@ -16,7 +16,7 @@ Examples
 
 Started: April 15, 2024 @ 2:50pm ET
 Intervals: 1
-Ended: April 13, 2024 @ 3:14pm ET
+Ended: April 15, 2024 @ 3:14pm ET
 """
 from sys import argv
 import re
