@@ -19,3 +19,33 @@ Started: April 17, 2024 @ 5:40am ET
 Intervals: 1
 Ended: April 17, 2024 @ 6:10am ET
 """
+from sys import argv
+
+#TODO: small bug check ex 2 and 4
+def remove_duplicates(array: list) -> list:
+    for i in array:
+        for j in range(1, len(array) - 1):
+            if i == array[j]:
+                array.pop(j)
+
+    return array
+
+def convert_to_set(array: list, cast="no") -> list:
+    if cast == "yes":
+        print("Using cast method")
+        return set(array)
+    
+    if cast == "no":
+        print("Using manual method")
+        # sort the list
+        sorted_array = sorted(array)
+
+        # loop and if i == j, remove
+        return remove_duplicates(sorted_array)
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    cast = argv[2]
+
+    result = convert_to_set(array, cast)
+    print(result)
