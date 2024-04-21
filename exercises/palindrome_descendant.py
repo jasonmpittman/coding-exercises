@@ -33,8 +33,42 @@ Ended: April 21, 2024 @ 6:25am ET
 """
 from sys import argv
 
-def is_palindrome_descendant():
-    pass
+def is_palindrome(number: str) -> bool:
+    if len(number) == 2 and number[0] == number[1]:
+        return True
+    else:
+        return False
+
+def add_adjacent(number: str) -> int:
+    new_number = ''
+    i = 0
+    j = 1  
+
+    if len(number) >= 2 and is_palindrome(number) is False:
+        for _ in range(0, len(number) - 1, 2):
+            a = number[i]
+            b = number[j]
+            new_number +=  str(int(a) + int(b))
+            i += 2
+            j += 2
+        print(new_number)
+        return add_adjacent(new_number)
+        
+    elif len(number) == 2 and is_palindrome(number):
+        return True
+    
+    else:
+        return False
+
+def is_palindrome_descendant(number: int) -> int:
+    new_number = add_adjacent(number)
+
+    print(new_number)
 
 if __name__ == "__main__":
-    number = int(argv[1])
+    number = argv[1]
+
+    if len(number) % 2 != 0:
+        print("Invalid number")
+    else:
+        is_palindrome_descendant(number)
