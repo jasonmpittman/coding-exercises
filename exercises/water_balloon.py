@@ -20,5 +20,28 @@ Examples
 
 Started: April 20, 2024 @ 6:05am ET
 Intervals: 1
-Ended: April 20, 2024 @ 6:35am ET
+Ended: April 20, 2024 @ 6:16am ET
 """
+from sys import argv
+
+
+def pop_balloon(array: list) -> list:
+    size = len(array)
+    center = len(array) // 2
+    effect = 1
+
+    for i in range(1, center):
+        array[i] += effect
+        effect += 1
+    
+    for i in range(center + 1, size):
+        effect -= 1
+        array[i] += effect
+    
+    return array
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 0,0,0,0,4,0,0,0,0 0,   0,2,0,0
+
+    print(pop_balloon(array))

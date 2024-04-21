@@ -21,11 +21,34 @@ Started: Mar 12, 2024 @ 5:25pm ET
 Intervals: 1
 Ended: March 12, 2024 @ 5:55pm ET
 """
+from sys import argv
+import math
+
+def is_prime(n: int) -> bool:
+    if n <= 1:
+        return False
+    
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    
+    return True
 
 
+def filter_primes(numbers: list, mode=None) -> list:
+    primeless = []
 
+    if mode == None:
+        # brute force method
+        for number in numbers:
+            if is_prime(number):
+                primeless.append(number)
+    
+    return primeless
 
 
 
 if __name__ == "__main__":
-    pass
+    numbers = list(map(int, argv[1].split(',')))
+
+    print(filter_primes(numbers)) # 7,9,3,9,10,11,27 # 10007,1009,1007,27,147,77,1001,70 # 1009,10,10,10,3,33,9,4,1,61,63,69,1087,1091,1093,1097
