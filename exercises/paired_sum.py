@@ -21,6 +21,24 @@ Output: ()
 
 Started: April 24, 2024 @ 5:50am ET
 Intervals: 1
-Ended: April 24, 2024 @ 6:20am ET
+Ended: April 24, 2024 @ 6:01am ET
 """
+from sys import argv
 
+def find_paired_sum(array: list, target: int) -> tuple:
+    sums = []
+
+    # 8,2 and 2,8 are unqiue in this non-greedy version
+    for number in array:
+        for i in range(len(array)):
+            if number + array[i] == target:
+                pair = (number, array[i])
+                sums.append(pair)
+
+    print(sums)
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    target = int(argv[2])
+
+    find_paired_sum(array, target) # 8,7,2,5,3 10
