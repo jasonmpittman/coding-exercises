@@ -25,6 +25,30 @@ Output: False
 
 Started: April 25, 2024 @ 6:25am ET
 Intervals: 1
-Ended: April 25, 2024 @ 6:55am ET
+Ended: April 25, 2024 @ 6:42am ET
 """
+from sys import argv
 
+def find_subarrays(array: list) -> list:
+    subarrays = []
+
+    for i in range(len(array)):
+        values = []
+        values.append(array[i])
+        
+        for j in range(i + 1, len(array)):
+            values.append(array[j])
+        
+            if sum(values) == 0:
+                subarrays.append(values)  
+                break
+
+    return subarrays
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 3,4,-7,3,1,3,1,-4,-2,-2
+    subarrays = find_subarrays(array)
+
+    for subarray in subarrays:
+        print(subarray)
