@@ -19,5 +19,21 @@ Explanation: The 4th largest array element is 4
 
 Started: April 26, 2024 @ 3:20am ET
 Intervals: 1
-Ended: April 26, 2024 @ 3:50am ET
+Ended: April 26, 2024 @ 3:34am ET
 """
+from sys import argv
+
+def find_kth_largest(array: list, k) -> int:
+    sorted_array = sorted(array)
+    
+    return sorted_array[-2]
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    k = int(argv[2])
+    
+    kth_largest = find_kth_largest(array, k) # 7,4,6,3,9,1 2
+    print(kth_largest)
+
+
