@@ -20,3 +20,35 @@ Started: April 28, 2024 @ 5:00am ET
 Intervals: 1
 Ended: April 28, 2024 @ 5:30am ET
 """
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def remove_duplicate(head: ListNode) -> ListNode:
+    linked_list = head
+
+    if head is None:
+        return None
+            
+    while linked_list is not None and linked_list.next is not None:
+        if linked_list.val == linked_list.next.val:
+            linked_list.next == linked_list.next.next
+        else:
+            linked_list = linked_list.next
+            
+    return head
+
+if __name__ == "__main__":
+    nums = [1,1,2]
+    head = ListNode(nums[0])
+    current = head
+    
+    # Iterate over the remaining elements in nums and create nodes
+    for num in nums[1:]:
+        current.next = ListNode(num)
+        current = current.next
+
+    print(remove_duplicate(head))
