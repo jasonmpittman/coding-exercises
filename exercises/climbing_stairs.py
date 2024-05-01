@@ -30,5 +30,34 @@ Explanation: There are three ways to climb to the top.
 
 Started: May 01, 2024 @ 3:20am ET
 Intervals: 1
-Ended: May 01, 2024 @ 3:50am ET
+Ended: May 01, 2024 @ 3:45am ET
 """
+from sys import argv
+
+def climb_stairs(n: int, steps = []):
+    # Base cases
+    if n == 0:
+        print(' + '.join(str(step) + ' step' for step in steps))
+        return 1
+    elif n == 1:
+        steps.append(1)
+        print(' + '.join(str(step) + ' step' for step in steps))
+        steps.pop()
+        return 1
+    
+    # Recursive cases
+    steps.append(1)
+    ways_without_two_steps = climb_stairs(n - 1, steps)
+    steps.pop()
+    
+    steps.append(2)
+    ways_with_two_steps = climb_stairs(n - 2, steps)
+    steps.pop()
+    
+    return ways_without_two_steps + ways_with_two_steps
+
+if __name__ == "__main__":
+    n = int(argv[1])
+
+    result = climb_stairs(n)
+    print(result)
