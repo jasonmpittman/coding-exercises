@@ -38,3 +38,23 @@ Started: May 02, 2024 @ 6:35am ET
 Intervals: 1
 Ended: May 02, 2024 @ 7:05am ET
 """
+from sys import argv
+
+def canBeIncreasing(nums):
+    def isIncreasing(arr):
+        for i in range(1, len(arr)):
+            if arr[i - 1] >= arr[i]:
+                return False
+        return True
+    
+    for i in range(len(nums)):
+        if isIncreasing(nums[:i] + nums[i+1:]):
+            return True
+    
+    return False
+
+if __name__ == "__main__":
+    nums = list(map(int, argv[1].split(',')))
+
+    result = canBeIncreasing(nums)
+    print(result)
