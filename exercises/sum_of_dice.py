@@ -24,3 +24,26 @@ Started: May 05, 2024 @ 5:30am ET
 Intervals: 1
 Ended: May 05, 2024 @ 6:00am ET
 """
+from sys import argv
+
+def compute_outcomes(n: int, s: int, k: int) -> list:
+   
+    dp = [[0] * (k + 1) for _ in range(n + 1)]
+    dp[0][0] = 1 
+
+    for i in range(1, n + 1):
+        for j in range(1, k + 1):
+            for x in range(1, min(j, s) + 1):
+                dp[i][j] += dp[i - 1][j - x]
+    
+    return dp[n][k]
+
+if __name__ == "__main__":
+    n = int(argv[1])
+    s = int(argv[2])
+    k = int(argv[3])
+
+    outcomes = compute_outcomes(n, s, k)
+    print(outcomes)
+
+
