@@ -24,5 +24,22 @@ Examples
 
 Started: May 06, 2024 @ 6:15am ET
 Intervals: 1
-Ended: May 06, 2024 @ 6:45am ET
+Ended: May 06, 2024 @ 6:19am ET
 """
+from sys import argv
+import re
+
+# TODO: is this supposed to be for every word starting with 's'?
+def is_parseltongue(sentence: str) -> bool:
+    pattern = "s{2,}"
+    match = re.search(pattern, sentence)
+
+    if match:
+        return True
+    else:
+        return False
+
+if __name__ == "__main__":
+    sentence = argv[1] # Sshe ssselects to eat that apple. 
+    result = is_parseltongue(sentence)
+    print(result)
