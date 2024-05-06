@@ -22,5 +22,20 @@ Examples
 
 Started: May 06, 2024 @ 6:05am ET
 Intervals: 1
-Ended: May 06, 2024 @ 6:35am ET
+Ended: May 06, 2024 @ 6:07am ET
 """
+from sys import argv
+
+def count_animal_legs(chickens: int, cows: int, pigs: int) -> int:
+    total_legs = (chickens*2) + (cows*4) + (pigs*4)
+
+    return total_legs
+
+
+if __name__ == "__main__":
+    chickens = int(argv[1])
+    cows = int(argv[2])
+    pigs = int(argv[3])
+
+    result = count_animal_legs(chickens, cows, pigs)
+    print(result)
