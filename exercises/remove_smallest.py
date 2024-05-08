@@ -21,5 +21,28 @@ Notes
 
 Started: May 08, 2024 @ 5:55am ET
 Intervals: 1
-Ended: May 08, 2024 @ 6:25am ET    
+Ended: May 08, 2024 @ 6:06am ET    
 """
+from sys import argv
+
+def remove_smallest(array: list) -> list:
+    """ iterates through array and removes smallest value """
+
+    current = array[0]
+
+    for i in range(1, len(array) - 1):
+        if array[i] < current:
+            current = array[i]
+
+    array.remove(current)
+    return array
+
+
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 1,2,3,4,5 # 5,3,2,1,4 # 2,2,1,2,1
+    
+    smallest_removed = remove_smallest(array)
+    print(smallest_removed)
+
