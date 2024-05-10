@@ -16,5 +16,23 @@ Examples:
 
 Started: May 10, 2024 @ 4:10am ET
 Intervals: 1
-Ended: May 10, 2024 @ 4:40am 
+Ended: May 10, 2024 @ 4:17am 
 """
+
+def find_mine(minefield: list) -> list:
+    coordinates = []
+
+    for i in range(len(minefield)):
+        for j in range(len(minefield[i])):
+            if minefield[i][j] == 1:
+                coordinates.append(i) 
+                coordinates.append(j)
+                #break # uncomment here if we want to stop after finding a single mine
+
+    return coordinates
+
+if __name__ == "__main__":
+    minefield = [ [0, 0, 0], [0, 1, 0], [0, 1, 0] ] # [ [0, 0, 0], [0, 1, 0], [0, 0, 0] ]
+
+    location = find_mine(minefield)
+    print(location)
