@@ -35,3 +35,35 @@ Started: April 29, 2024 @ 7:15am ET
 Intervals: 1
 Ended: April 29, 2024 @ 7:45am ET
 """
+from sys import argv
+
+# TODO: implement non-contiguous search
+def sum_three(nums: int, contiguous=True) -> list:
+    sums = []
+    i, j, k = 0, 1, 2
+    length = len(nums)
+
+    if contiguous is True:
+        for _ in range(length - 2):
+            # make sure i != j, i != k, and j != k
+            if nums[i] == nums[j] or nums[i] == nums[k] or nums[j] == nums[k]:
+                return sums
+            elif (nums[i] + nums[j] + nums[k]) == 0:
+                triplet = [nums[i], nums[j], nums[k]]
+                sums.append(triplet)
+
+            i += 1
+            j += 1
+            k += 1
+        
+        return sums
+    
+    # for each i, search for j and k across rest of nums 
+    if contiguous is False:
+        pass
+
+
+if __name__ == "__main__":
+    nums = list(map(int, argv[1].split(',')))
+
+    print(sum_three(nums))
