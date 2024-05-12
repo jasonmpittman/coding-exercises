@@ -21,5 +21,28 @@ Examples
 
 Started: May 12, 2024 @ 7:00am ET
 Intervals: 1
-Ended: May 12, 2024 @ 7:30am
+Ended: May 12, 2024 @ 7:12am
 """
+from sys import argv
+
+def is_difference(a: int, b: int) -> bool:
+    if a - b == 2:
+        return True
+    else:
+        return False
+
+def sort_by_differences(array: list) -> list:
+    sorted_array = []
+
+    for i in range(len(array)):
+        for j in range(len(array)):
+            if is_difference(array[i], array[j]):
+                sorted_array.append(sorted((array[i], array[j])))
+
+    return sorted_array
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    
+    sorted_array = sort_by_differences(array)
+    print(sorted_array)
