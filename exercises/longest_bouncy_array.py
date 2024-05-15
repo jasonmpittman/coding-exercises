@@ -19,3 +19,59 @@ Started: May 15, 2024 @ 4:35am ET
 Intervals: 1
 Ended: May 15, 2024 @ 5:05am
 """
+from sys import argv
+
+def is_nonincreasing(number: list) -> bool:
+    # 987542 is nonincreasing (true)
+
+    # naive approach to testing if number is descending order sorted
+    for i in range(len(number) - 1):
+        if number[i] > number[i + 1]:
+            nonincreasing = True
+        else:
+            nonincreasing = False
+            break
+    
+    return nonincreasing
+
+def is_nondecreasing(number: list) -> bool:
+    # 12345 is nondecreasing (true)
+    
+    # naive approach to testing if number is ascending order sorted
+    for i in range(len(number) - 1):
+        if number[i] < number[i + 1]:
+            nondecreasing = True
+        else:
+            nondecreasing = False
+            break
+    
+    return nondecreasing
+
+#TODO: need to find 'longest'...function finds all bouncy of len = k
+def find_longest_bouncy(array: list, k: int) -> list:
+    bouncy_subarrays = []
+    head = 0
+    tail = k + 1
+
+    while tail <= len(array): 
+        # if both is_ are false, number is bouncy
+        subarray = array[head:tail]
+        #print(subarray)
+        
+        if not is_nondecreasing(subarray) and not is_nonincreasing(subarray):
+            bouncy_subarrays.append(subarray)
+        
+        head += 1
+        tail += 1
+    
+    return bouncy_subarrays
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 7,9,6,10,5,11,10,12,13,4,2,5,1,6,4,8 7
+    k = int(argv[2])
+
+    bouncy_subarrays = find_longest_bouncy(array, k)
+    print(bouncy_subarrays)
+
+    #print(is_nondecreasing([7,9,6,10,5,11,10,12]))
+    #print(is_nonincreasing([7,9,6,10,5,11,10,12]))
