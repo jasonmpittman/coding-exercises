@@ -46,3 +46,20 @@ Started: May 15, 2024 @ 11:55am ET
 Intervals: 1
 Ended: May 15, 2024 @ 12:15pm
 """
+from sys import argv
+
+# TODO: implement pseudocode algorithm
+def blow_candles(candles: list) -> str:
+    candles_string = ''
+    breath = 3 # this is how many candles we can affect each blow
+    number_of_candles = len(candles)
+
+    # for candle in candles
+    # if candle not 0
+    # while candles[0] is > 0
+    # -1 to candles 0,1,2 (don't allow negative)
+    #
+
+
+if __name__ == "__main__":
+    candles = list(map(int, argv[1].split(',')))
