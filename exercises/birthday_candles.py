@@ -42,9 +42,11 @@ Examples
     This should return 5.
 
 
-Started: May 15, 2024 @ 11:55am ET
-Intervals: 1
+Started: May 15, 2024 @ 11:55am ET 
+         May 16, 2024 @ 5:50am ET
+Intervals: 2
 Ended: May 15, 2024 @ 12:15pm
+Ended: May 16, 2024 @ 6:20am
 """
 from sys import argv
 
