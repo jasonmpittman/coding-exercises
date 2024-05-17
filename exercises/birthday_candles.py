@@ -50,18 +50,24 @@ Ended: May 16, 2024 @ 6:20am
 """
 from sys import argv
 
-# TODO: implement pseudocode algorithm
-def blow_candles(candles: list) -> str:
-    candles_string = ''
-    breath = 3 # this is how many candles we can affect each blow
-    number_of_candles = len(candles)
-
-    # for candle in candles
-    # if candle not 0
-    # while candles[0] is > 0
-    # -1 to candles 0,1,2 (don't allow negative)
-    #
-
+# TODO: working but not correct output
+def blow_candles(candles: str) -> int:
+    blows = 0
+    
+    while '1' in candles or '2' in candles or '3' in candles:
+        i = 0
+        while i < len(candles):
+            if candles[i] != '0':
+                j = min(i + 3, len(candles))
+                candles = candles[:i] + ''.join(['0' for _ in range(i, j)]) + candles[j:]
+                blows += 1
+            else:
+                i += 1
+    
+    return blows
 
 if __name__ == "__main__":
-    candles = list(map(int, argv[1].split(',')))
+    candles = argv[1] # 1321 # 2113 # 0323456
+    
+    blows = blow_candles(candles)
+    print(blows)
