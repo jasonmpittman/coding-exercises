@@ -21,5 +21,25 @@ Examples
 
 Started: May 18, 2024 @ 5:40am ET
 Intervals: 1
-Ended: May 18, 2024 @ 6:10am
+Ended: May 18, 2024 @ 5:51am
 """
+from sys import argv
+
+def find_odd_integer(array: list) -> int:
+    #odd_integer = {}
+
+    # find the most occuring number in array
+    #for number in array:
+    #    odd_integer[number] = array.count(number)
+
+    #return max(odd_integer)
+
+    for number in array:
+        if array.count(number) % 2 != 0:
+            return number
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+
+    odd_integer = find_odd_integer(array)
+    print(odd_integer)
