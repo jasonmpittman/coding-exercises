@@ -15,5 +15,31 @@ Examples
 
 Started: May 20, 2024 @ 6:25am ET
 Intervals: 1
-Ended: May 20, 2024 @ 6:55am
+Ended: May 20, 2024 @ 6:39am
 """
+from sys import argv
+
+def split_and_pad_array(n: int, array: list, padding: str) -> list:
+    #get split location with offset for odd length
+    if len(array) % 2 == 0:
+        split = (len(array) // 2)
+    else:
+        split = len(array) // 2 + 1
+    
+    left_split = array[0:split]
+    right_split = array[split:]
+
+    #add padding if len not equal
+    if len(right_split) < len(left_split):
+        for i in range((len(left_split) - len(right_split))):
+            right_split.append(padding)
+
+    return left_split, right_split
+
+if __name__ == "__main__": # 2 1,2,3,4 nil
+    n = int(argv[1])
+    array = argv[2].split(',')
+    padding = argv[3]
+
+    split_array = split_and_pad_array(n, array, padding)
+    print(split_array)
