@@ -33,3 +33,33 @@ Started: May 21, 2024 @ 5:50am ET
 Intervals: 1
 Ended: May 21, 2024 @ 6:20am
 """
+from sys import argv
+
+def check_digits(number: str) -> str:
+    digits = []
+    factor = 2
+
+    for n in reversed(number):
+        if factor == 7:
+            factor = 2
+        
+        digits.append(factor * int(n))
+        factor += 1
+    
+    summed = sum(digits)
+    remainder = summed % 11
+
+    if remainder == 0:
+        checked_digit = number + '0'
+    elif remainder == 1:
+        checked_digit = number + 'X'
+    else:
+        checked_digit = number + str(11 - remainder)
+
+    return checked_digit
+
+if __name__ == "__main__":
+    number = argv[1] # 036532
+
+    checked = check_digits(number)
+    print(checked)
