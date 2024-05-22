@@ -19,5 +19,23 @@ Write a function that will return the count of distinct case-insensitive alphabe
 
 Started: May 22, 2024 @ 6:35am ET
 Intervals: 1
-Ended: May 22, 2024 @ 7:05am
+Ended: May 22, 2024 @ 6:38am
 """
+from sys import argv
+
+def count_duplicates(string: str) -> int:
+    duplicates = {}
+
+    for s in string:
+        if string.count(s) > 1 and s not in duplicates:
+            count = string.count(s)
+            duplicates[s] = count
+
+    return duplicates
+
+
+if __name__ == "__main__":
+    string = argv[1].lower()
+
+    duplicates = count_duplicates(string)
+    print(duplicates)
