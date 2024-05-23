@@ -24,5 +24,23 @@ Examples:
 
 Started: May 23, 2024 @ 6:05am ET
 Intervals: 1
-Ended: May 23, 2024 @ 6:35am ET
+Ended: May 23, 2024 @ 6:15am ET
 """
+from sys import argv
+
+def find_subarray(array: list, subarray: list) -> int:
+
+    if len(subarray) != 2:
+        raise Exception("Subarray is not length 2")
+    
+    if subarray not in array:
+        return -1
+
+    return array.index(subarray)
+
+if __name__ == "__main__":
+    subarray = list(map(int, argv[1].split(',')))
+    array = [[1,2],[3,4],[5,6]]
+
+    index = find_subarray(array, subarray)
+    print(index)
