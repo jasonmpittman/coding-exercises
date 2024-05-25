@@ -29,3 +29,19 @@ Started: May 26, 2024 @ 6:00am ET
 Intervals: 1
 Ended: May 26, 2024 @ 6:30am ET
 """
+from sys import argv
+
+def each_nth(array: list, n: int) -> list:
+    nth = []
+    for i in range(n, len(array) + n, n):
+        nth.append(i)
+
+    return nth
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    n = int(argv[2])
+
+    nth = each_nth(array, n)
+    print(nth)
