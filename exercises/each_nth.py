@@ -33,8 +33,10 @@ from sys import argv
 
 def each_nth(array: list, n: int) -> list:
     nth = []
-    for i in range(n, len(array) + n, n):
-        nth.append(i)
+
+    if len(array) > n:
+        for i in range(n, len(array) + 1, n):
+            nth.append(i)
 
     return nth
 
