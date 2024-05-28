@@ -19,5 +19,26 @@ Examples:
 
 Started: May 28, 2024 @ 7:40am ET
 Intervals: 1
-Ended: May 28, 2024 @ 8:10am ET
+Ended: May 28, 2024 @ 7:45am ET
 """
+from sys import argv
+
+def expand_string(string: str) -> str:
+    expanded_string = ''
+    numerals = [str(x) for x in range(1,10)]
+
+    #for character in string:
+    for i in range(len(string)):
+        if string[i] in numerals and string[i + 1] not in numerals:
+            expanded_string += int(string[i]) * string[i + 1]
+        elif string[i] not in numerals:
+            expanded_string += string[i] 
+
+    return expanded_string
+
+
+if __name__ == "__main__":
+    string = argv[1]
+
+    expanded_string = expand_string(string)
+    print(expanded_string)
