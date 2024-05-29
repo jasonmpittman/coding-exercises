@@ -21,5 +21,22 @@ Examples
 
 Started: May 29, 2024 @ 4:35am ET
 Intervals: 1
-Ended: May 29, 2024 @ 5:05am ET
+Ended: May 29, 2024 @ 4:40am ET
 """
+from sys import argv
+
+def difference_of_two(array: list) -> list:
+    twos = []
+
+    for i in range(len(array)):
+        for a in array:
+            if array[i] - a == 2:
+                twos.append(sorted([array[i], a]))
+    
+    print(twos)
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 1,2,3,4
+
+    difference_of_two(array)
