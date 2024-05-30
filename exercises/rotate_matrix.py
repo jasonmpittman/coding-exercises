@@ -21,3 +21,15 @@ Started: May 30, 2024 @ 5:40am ET
 Intervals: 1
 Ended: May 30, 2024 @ 6:10am ET
 """
+
+def rotate_matrix(matrix: list) -> list:
+    # Transpose the matrix to convert rows to columns using zip and then reverse each row
+    rotated_matrix = [list(row) for row in zip(*matrix)][::-1]
+
+    for row in rotated_matrix:
+        print(row)
+
+
+if __name__ == "__main__":
+    matrix = [[-1, 4, 5], [2, 3, 4]]
+    rotate_matrix(matrix)
