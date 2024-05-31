@@ -19,5 +19,22 @@ Examples
 
 Started: May 31, 2024 @ 7:15am ET
 Intervals: 1
-Ended: May 31, 2024 @ 7:45am ET
+Ended: May 31, 2024 @ 7:19am ET
 """
+from sys import argv
+
+def count_shared_letters(A: str, B: str) -> int:
+    count = 0
+
+    for a in A:
+        if a in B:
+            count += 1
+
+    return count
+
+if __name__ == "__main__":
+    A = argv[1]
+    B = argv[2]
+
+    count = count_shared_letters(A, B) # apple meaty
+    print(count)
