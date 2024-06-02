@@ -15,5 +15,31 @@ For example (Input --> Output):
 
 Started: June 02, 2024 @ 6:30am ET
 Intervals: 1
-Ended: June 02, 2024 @ 7:00am ET
+Ended: June 02, 2024 @ 6:50am ET
 """
+from sys import argv
+
+def multiply(number: int) -> int:
+    result = 1
+    
+    for digit in str(number):
+        result *= int(digit)
+    
+    return result
+
+def multiplicative_persistence(number: int):
+    if number < 10:
+        return 0
+    
+    count = 0
+    while number > 10:
+        number = multiply(number)
+        count += 1
+    
+    return count
+
+if __name__ == "__main__":
+    number = int(argv[1])
+
+    persistence = multiplicative_persistence(number)
+    print(persistence)
