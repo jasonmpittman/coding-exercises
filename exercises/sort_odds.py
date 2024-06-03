@@ -15,5 +15,23 @@ Examples
 
 Started: June 03, 2024 @ 6:00am ET
 Intervals: 1
-Ended: June 03, 2024 @ 6:30am ET
+Ended: June 03, 2024 @ 6:10am ET
 """
+from sys import argv
+
+def sort_odds(array: list) -> list:
+    # extract odd integers from array
+    odds = [(index, number) for index, number in enumerate(array) if number % 2 != 0]
+    
+    # sort the odds integers
+    sorted_odds = sorted([num for _, num in odds])
+
+    # reinsert the odds in array
+    for (index, _), num in zip(odds, sorted_odds):
+        array[index] = num
+
+    print(array)
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+    sort_odds(array)
