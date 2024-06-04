@@ -30,3 +30,32 @@ Started: June 04, 2024 @ 4:30am ET
 Intervals: 1
 Ended: June 04, 2024 @ 5:00am ET
 """
+from sys import argv
+
+def get_chunks(string: str, group_size) -> list:
+    chunks = []
+    right = 0
+    left = group_size
+    length = len(string) + group_size
+
+    while left <= length:
+        #print(left)
+        chunks.append(string[right:left:])
+        right = right + group_size
+        left = left + group_size
+
+    return chunks
+
+# TODO: chunking works, need to test for consecutive and increment group_size
+def is_consecutive_ascending(string: str, group_size=1, consecutive=False) -> bool:
+
+    #while consecutive is False:
+    #    pass
+    chunks = get_chunks(string, 2)
+    print(chunks)
+
+if __name__ == "__main__":
+    string = argv[1]
+    result = is_consecutive_ascending(string)
+
+    print(result)
