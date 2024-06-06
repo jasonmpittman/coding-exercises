@@ -21,6 +21,38 @@ Examples
 
 Started: June 06, 2024 @ 5:00am ET
 Intervals: 1
-Ended: June 06, 2024 @ 5:30am ET
+Ended: June 06, 2024 @ 5:12am ET
 """
+from sys import argv
 
+def factorial(n: int) -> int:
+    x = n - 1
+    f = n
+    for _ in range(n - 1):
+        f = (f * x)
+        x -= 1
+    
+    return f
+
+
+def r_combination(n: int, r: int) -> int:
+    """Impliments binomail coefficient as c(n,r) = n! / (r!(n - r)!)"""
+    if n == r:
+        return 1
+    
+    n_factorial = factorial(n)
+    r_factorial = factorial(r)
+    nr_factoral = factorial(n - r)
+
+    c = n_factorial / (r_factorial * nr_factoral)
+    
+    return int(c)
+
+
+
+if __name__ == "__main__":
+    n = int(argv[1])
+    r = int(argv[2])
+
+    result = r_combination(n, r)
+    print(result)
