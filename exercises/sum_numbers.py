@@ -18,5 +18,17 @@ Examples (a, b) --> output (explanation)
 
 Started: June 07, 2024 @ 6:30am ET
 Intervals: 1
-Ended: June 07, 2024 @ 7:00am ET
+Ended: June 07, 2024 @ 6:34am ET
 """
+from sys import argv
+
+def sum_numbers(a: int, b: int) -> int:
+    """ Returns sum of numbers between a and b, inclusive"""
+    number = sum([x for x in range(a, b + 1)])
+    print(number)
+
+if __name__ == "__main__":
+    a, b = int(argv[1]), int(argv[2])
+
+    result = sum_numbers(a, b)
+    
