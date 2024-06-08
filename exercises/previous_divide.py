@@ -19,5 +19,33 @@ Examples
 
 Started: June 08, 2024 @ 5:20am ET
 Intervals: 1
-Ended: June 08, 2024 @ 5:50am ET
+Ended: June 08, 2024 @ 5:34am ET
 """
+from sys import argv
+
+def divide_previous(number: str) -> list:
+    is_divisble = ['false']
+    numbers = [int(x) for x in number] # why doesn't this cast to int work?
+    
+
+    for i in range(1, len(number)):
+        # check for division by zero and skip
+        if int(number[i - 1]) == 0:
+            is_divisble.append('false')
+            continue
+
+        # check if n % n - 1 == 0
+        if int(number[i]) % int(number[i - 1]) == 0:
+        # if so, add true to list
+            is_divisble.append('true')
+        else:
+            is_divisble.append('false')
+    
+    return is_divisble
+    
+
+if __name__ == "__main__":
+    number = argv[1]
+
+    results = divide_previous(number)
+    print(results)
