@@ -26,5 +26,28 @@ output = [
 
 Started: June 09, 2024 @ 7:35am ET
 Intervals: 1
-Ended: June 09, 2024 @ 8:05am ET
+Ended: June 09, 2024 @ 7:52am ET
 """
+from sys import argv
+
+def elimination(array: list) -> list:
+    new_array = []
+    
+    if len(array) > 1:
+        
+        for i in range(0,len(array) - 1,2):
+            if array[i] > array[i + 1]:
+                print('fight: ', array[i], array[i+1])
+                new_array.append(array[i])
+        #print(new_array)    
+        elimination(new_array)
+    else:
+        print(array)
+        
+
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(','))) # 9,5,4,7,6,3,8,2
+
+    elimination(array)
+    
