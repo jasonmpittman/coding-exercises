@@ -13,5 +13,20 @@ Example:
 
 Started: June 10, 2024 @ 4:40am ET
 Intervals: 1
-Ended: June 10, 2024 @ 5:10am ET
+Ended: June 10, 2024 @ 4:47am ET
 """
+
+def move_zeroes(array: list) -> list:
+    for element in array:
+        if element == 0:
+            index = array.index(element)
+            array.append(0)
+            del array[index]
+    
+    print(array)
+
+
+if __name__ == "__main__":
+    array = ["false",1,0,1,2,0,1,3,"a"]
+
+    move_zeroes(array)
