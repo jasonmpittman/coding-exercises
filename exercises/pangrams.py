@@ -13,5 +13,26 @@ Given a string, detect whether or not it is a pangram. Return True if it is, Fal
 
 Started: June 11, 2024 @ 5:35am ET
 Intervals: 1
-Ended: June 11, 2024 @ 6:05am ET
+Ended: June 11, 2024 @ 5:47am ET
 """
+import string
+from sys import argv
+
+
+def is_pangram(sentence: str) -> bool:
+    # build a dictionary of lowercase letters as keys and 0 as value for each
+    alphabet = dict.fromkeys(string.ascii_lowercase, 0)
+    
+    for letter in sentence:
+        if letter != " " or letter.isdigit == False:
+            alphabet[letter.lower()] += 1
+
+    # all is true when every value in dictionary is > 0 else false
+    return all(value > 0 for value in alphabet.values())
+
+
+if __name__ == "__main__":
+    sentence = argv[1]
+
+    result = is_pangram(sentence)
+    print(result)
