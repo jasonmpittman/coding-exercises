@@ -15,6 +15,25 @@ Examples
 
 Started: June 13, 2024 @ 5:15am ET
 Intervals: 1
-Ended: June 13, 2024 @ 5:45am ET
+Ended: June 13, 2024 @ 5:21am ET
 """
+from sys import argv
 
+def sum_sequence(n: int) -> list:
+    sequence = []
+
+    for i in range(1, abs(n) + 2):
+        m = sum([x for x in range(1, i)])
+        
+        if n < 0:
+            sequence.append(m * -1)
+        else:
+            sequence.append(m)
+
+    return sequence
+
+if __name__ == "__main__":
+    n = int(argv[1])
+
+    sequence = sum_sequence(n)
+    print(sequence)
