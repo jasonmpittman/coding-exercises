@@ -14,5 +14,21 @@ Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36
 
 Started: June 14, 2024 @ 10:30am ET
 Intervals: 1
-Ended: June 14, 2024 @ 11:00am ET
+Ended: June 14, 2024 @ 10:35am ET
 """
+from sys import argv
+
+def square_digits(number: int) -> int:
+    squared_number = '' 
+
+    for digit in str(number):
+        squared_digit = int(digit)**2
+        squared_number += str(squared_digit) 
+    
+    return squared_number
+
+if __name__ == "__main__":
+    number = int(argv[1])
+
+    squared_number = square_digits(number)
+    print(squared_number)
