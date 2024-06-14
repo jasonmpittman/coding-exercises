@@ -25,7 +25,7 @@ def square_digits(number: int) -> int:
         squared_digit = int(digit)**2
         squared_number += str(squared_digit) 
     
-    return squared_number
+    return int(squared_number)
 
 if __name__ == "__main__":
     number = int(argv[1])
