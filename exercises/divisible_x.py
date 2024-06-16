@@ -18,5 +18,40 @@ Examples:
 
 Started: June 16, 2024 @ 9:10am ET
 Intervals: 1
-Ended: June 16, 2024 @ 9:40am ET
+Ended: June 16, 2024 @ 9:32am ET
 """
+from sys import argv
+
+
+def is_divisible(a: int, b: int) -> bool:
+    """Test if a is divisible by b"""
+    if a % b == 0:
+        return True
+    else:
+        return False
+
+def count_multiples(m: int, x: str) -> int:
+    """Count the number of numbers in the range 1, m divisible by x"""
+    numbers = [z for z in range(1, m + 1)]
+    count = 0
+    multiples = x.split(' ')
+
+    if 'or' in x:
+        for n in numbers:
+            if is_divisible(n, int(multiples[0])) or is_divisible(n, int(multiples[2])): #need a way to handle two digit numbers
+                count += 1
+
+    if 'and' in x:
+        for n in numbers:
+            if is_divisible(n, int(multiples[0])) and is_divisible(n, int(multiples[2])): #need a way to handle two digit numbers
+                count += 1
+
+    return count
+
+
+if __name__ == "__main__":
+    m = int(argv[1])
+    x = argv[2]
+
+    result = count_multiples(m, x)
+    print(result)
