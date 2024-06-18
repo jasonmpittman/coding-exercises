@@ -20,5 +20,22 @@ Example:
 
 Started: June 18, 2024 @ 3:40am ET
 Intervals: 1
-Ended: June 18, 2024 @ 4:10am ET
+Ended: June 18, 2024 @ 3:51am ET
 """
+from sys import argv
+
+def compute_geometric_sum(a: int, r: int, n: int) -> int:
+    sequence = [a]
+    
+    for i in range(0, n - 1):
+        t = sequence[i] * r
+        sequence.append(t)
+
+    print(sequence, sum(sequence))
+
+if __name__ == "__main__":
+    a = int(argv[1])
+    r = int(argv[2])
+    n = int(argv[3])
+
+    compute_geometric_sum(a, r, n)
