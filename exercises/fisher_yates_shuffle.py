@@ -17,5 +17,22 @@ for i from n-1 down to 1 do
 
 Started: June 19, 2024 @ 6:05am ET
 Intervals: 1
-Ended: June 19, 2024 @ 6:35am ET
+Ended: June 19, 2024 @ 6:12am ET
 """
+from sys import argv
+from random import randrange
+
+def shuffle(array: list) -> list:
+
+    for i in reversed(range(1, len(array) - 1)):
+        j = randrange(i + 1)
+        array[i], array[j] = array[j], array[i]
+
+    return array
+
+if __name__ == "__main__":
+    array = list(map(int, argv[1].split(',')))
+
+    shuffled_array = shuffle(array)
+    print(shuffled_array)
+
