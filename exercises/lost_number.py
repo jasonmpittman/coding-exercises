@@ -18,5 +18,17 @@ If no number was deleted from the starting array, your function should return th
 
 Started: June 01, 2024 @ 7:05am ET
 Intervals: 1
-Ended: June 01, 2024 @ 7:35am ET
+Ended: June 01, 2024 @ 7:13am ET
 """
+
+def find_lost_number(source_list: list, mixed_list: list) -> int:
+    lost_number = set(source_list).difference(set(mixed_list))
+
+    return lost_number
+
+if __name__ == "__main__":
+    source_list = 1,2,3,4,5,6,7,8,9
+    mixed_list = 3,2,4,6,7,8,1,9
+
+    lost_number = find_lost_number(source_list, mixed_list)
+    print(lost_number)

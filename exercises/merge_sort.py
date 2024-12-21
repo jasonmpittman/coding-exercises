@@ -16,3 +16,16 @@ Started: June 14, 2024 @ 10:20am ET
 Intervals: 1
 Ended: June 14, 2024 @ 10:50am ET
 """
+
+
+def merge_sort(array: list) -> list:
+    """Returns sorted array"""
+
+    divided_array = [[x] for x in array]
+    
+
+if __name__ == "__main__":
+    array = [38, 27, 43, 3, 9, 82, 10]
+
+    sorted_array = merge_sort(array)
+    print(sorted_array)
