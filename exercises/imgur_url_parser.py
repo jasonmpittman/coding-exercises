@@ -30,6 +30,7 @@ Ended: Feb 05, 2025 @ 3:48am ET
 
 from urllib.parse import urlparse
 
+# TODO: need to fix image parse formatting
 def parse_url(url):
     link_id = ''
     link_type = ''
