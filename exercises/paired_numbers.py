@@ -26,7 +26,7 @@ Notes
     
 Started: Feb 06, 2025 @ 5:25am ET
 Intervals: 1
-Ended: Feb 06, 2025 @ 5:40am ET
+Ended: Feb 06, 2025 @ 6:03am ET
 """
 
 def extract_pair(pairs: list, i: int) -> list:
@@ -43,11 +43,18 @@ def pair_numbers(pairs: list) -> list:
     for i in range(0, int((pairs_length / 2))):
         paired_numbers.append(extract_pair(pairs, i))
 
+    if pairs_length % 2 != 0:
+        middle_pair = [pairs[ int(pairs_length / 2) ],
+                       pairs[ int(pairs_length / 2) ]
+                       ]
+        paired_numbers.append(middle_pair)
+
     print(paired_numbers)
 
     return paired_numbers
 
 if __name__ == "__main__":
-    pairs = [1,2,3,4,5,6]
+    #pairs = [1,2,3,4,5,6]
+    pairs = [5,9,8,1,2]
 
     pair_numbers(pairs)
