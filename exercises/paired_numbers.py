@@ -28,3 +28,26 @@ Started: Feb 06, 2025 @ 5:25am ET
 Intervals: 1
 Ended: Feb 06, 2025 @ 5:40am ET
 """
+
+def extract_pair(pairs: list, i: int) -> list:
+    pair = []
+
+    pair.append([pairs[i], pairs[-1 + (-i)]])
+
+    return pair
+
+def pair_numbers(pairs: list) -> list:
+    paired_numbers = []
+    pairs_length = len(pairs)
+
+    for i in range(0, int((pairs_length / 2))):
+        paired_numbers.append(extract_pair(pairs, i))
+
+    print(paired_numbers)
+
+    return paired_numbers
+
+if __name__ == "__main__":
+    pairs = [1,2,3,4,5,6]
+
+    pair_numbers(pairs)
