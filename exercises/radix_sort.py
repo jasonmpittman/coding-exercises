@@ -24,3 +24,41 @@ Started: Feb 07, 2025 @ 4:40am ET
 Intervals: 1
 Ended: Feb 07, 2025 @ 5:00am ET
 """
+
+from os import wait
+
+# TODO: list index out of range line 51
+def sort_by_msd(array):
+    max_value = max(array)
+    array_length = max_value + 1
+    
+    # generate number of needed buckets
+    buckets = [0] * array_length 
+
+    # same for end state sorted array
+    sorted_array = [0] * len(array) 
+
+
+    # frequency count 
+    for a in array:
+        buckets[a] += 1        
+
+    for i in range(1, array_length):
+        buckets[i] += buckets[i - 1]
+
+    i = array_length - 1
+    while i >= 0:
+        current_a = array[i]
+        buckets[current_a] -= 1
+        position = buckets[i]
+        sorted_array = current_a
+        i -= 1
+
+    return sorted_array
+
+if __name__ == "__main__":
+    #array = [38, 57, 45, 18, 47, 39]
+    array = [2,2,0,6,1,9,9,7]
+
+    sorted_array = sort_by_msd(array)
+    print(sorted_array)
