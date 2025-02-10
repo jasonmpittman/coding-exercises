@@ -28,3 +28,45 @@ Started: Feb 11, 2025 @ 3:20am ET
 Intervals: 1
 Ended: Feb 11, 2025 @ 3:50am ET
 """
+
+import random
+
+def roll_dice() -> list:
+    dice = []
+
+    for i in range(5):
+        dice.append(random.randrange(1, 6))
+
+    return dice
+
+# TODO: implement full house logic
+def score_dice(rolled_dice: list) -> int:
+    rolled_dice.sort()
+
+    for die in rolled_dice:
+        # all same number
+        if rolled_dice.count(rolled_dice[die]) == len(rolled_dice):
+            return 50
+
+        # four same number
+        elif rolled_dice.count(rolled_dice[die]) == 4:
+            return 40
+        
+        # full house
+
+        # straight sequence
+        s = "".join(str(i) for i in rolled_dice)
+        if any(sublist in s for sublist in ('12345', '23456', '34561', '13654', '62534')):
+            return 20 
+
+        # else zero
+        else:
+            return 0
+
+
+if __name__ == "__main__":
+    rolled_dice = roll_dice()
+    print(rolled_dice)
+
+    score = score_dice(rolled_dice)
+    print(score)
