@@ -23,3 +23,26 @@ Started: Feb 12, 2025 @ 7:05am ET
 Intervals: 1
 Ended: Feb 12, 2025 @ 7:35am ET
 """
+
+def find_mine(field: list) -> tuple:
+    row = 0
+    column = 0
+    number_of_rows = len(field)
+    coordinates = []
+    
+    for field[row] in field:
+        if row <= number_of_rows:
+            
+            for column in field[row]:
+                if field[row][column] == 1:
+                    return (row, column)
+                column += 1
+
+            row += 1
+        else:
+            break
+
+if __name__ == "__main__":
+    field = [ [0, 0, 0], [0, 1, 0], [0, 0, 0] ]
+    coordinates = find_mine(field)
+    print(coordinates)
