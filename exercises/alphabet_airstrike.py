@@ -40,9 +40,31 @@ Intervals: 1
 Ended: Feb 13, 2025 @ 7:35am ET
 """
 
-def drop_bomb(fight: str) -> str:
-    pass
+def remove_at(i: int, s: str) -> str:
+    return s[:i] + s[i+1:]
 
+# TODO: base case implemented. Need to handle multiple bombs and edge detection...oh, we could use .split() maybe on '*' in a loop
+def airstrike(fight: str) -> str:
+    left_side = ['w', 'p', 'b', 's']
+    right_side = ['m', 'q', 'd', 'z']
+
+    list_of_soldiers = list(fight)        
+    location = list_of_soldiers.index('*')
+
+    list_of_soldiers.pop(location + 1)
+    list_of_soldiers.pop(location - 1)
+
+    list_of_soldiers.remove('*')
+    print(list_of_soldiers)
+
+    if list_of_soldiers[0] in right_side:
+        return "Right side wins!"
+
+    if list_of_soldiers[0] in left_side:
+        return "Left side wins!"
 
 if __name__ == "__main__":
-    pass
+    fight = "s*zz"
+
+    aftermath = airstrike(fight)
+    print(aftermath)
