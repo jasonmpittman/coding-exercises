@@ -17,3 +17,18 @@ Started: Feb 17, 2025 @ 7:25am ET
 Intervals: 1
 Ended: Feb 17, 2025 @ 7:55am ET
 """
+
+def average_string(number_string: str) -> int:
+    average = 0
+
+    numbers = number_string.split(' ')
+    for number in numbers:
+        average += int(number)
+
+    return average // len(numbers)
+
+if __name__ == "__main__":
+    number_string = "0 9 5 2"
+
+    result = average_string(number_string)
+    print(result)
