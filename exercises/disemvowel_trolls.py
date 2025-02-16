@@ -18,5 +18,18 @@ For example, the string "This website is for losers LOL!" would become "Ths wbst
 
 Started: Feb 16, 2025 @ 7:15pm ET
 Intervals: 1
-Ended: Feb 16, 2025 @ 7:45am ET
+Ended: Feb 16, 2025 @ 7:23am ET
 """
+
+def disemvowel_string(string: str) -> str:
+    vowels = ["a", "i", "e", "o", "u"]
+
+    for vowel in vowels:
+        string = string.replace(vowel, "")
+    
+    print(string)
+
+
+if __name__ == "__main__":
+    string = "This website is for losers LOL!"
+    disemvowel_string(string)
