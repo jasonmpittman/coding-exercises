@@ -17,6 +17,16 @@ Part Two: develop neighborhood function
 Started: Feb 20th, 2025 @ 6:50am ET
 Intervals: 1
 Ended: Feb 20th, 2025 @ 7:20am ET
+
+Part Three: develop neighborhood function 
+Started: Feb 21th, 2025 @ 7:45am ET
+Intervals: 1
+Ended: Feb 21th, 2025 @ 8:15am ET
+
+Part Four: develop neighborhood function 
+Started: Feb 22th, 2025 @ 7:25am ET
+Intervals: 1
+Ended: Feb 22th, 2025 @ 7:55am ET
 """
 import sys
 
@@ -46,32 +56,41 @@ def build_rule_set(converted_rule: str):
     return rule_set
 
 def get_neighborhood(pattern: list, cell: int) -> list:
-    if pattern[cell] != pattern[0] or pattern[cell] != pattern[len(pattern)]:
-        return [pattern[cell - 1], pattern[cell + 1]]
+    if pattern.index(cell) != 0 or pattern.index(cell) != len(pattern):
+        return "".join([str(pattern[cell - 1]), str(cell), str(pattern[cell + 1])])
 
-def update_cell_state(current_state: int, neighborhood: str, rule: str) -> int:
-    updated_stated = 0
+def update_cell_state(neighborhood: str, rule_set: list) -> int:
+    updated_state = rule_set[neighborhood] 
 
+    return updated_state
 
-
-    return updated_stated
-
+# TODO: verify rule is applied correctly in update cell state function
 def run_ca(starting_pattern: list, rule_set: dict, time: int):
     pattern = starting_pattern
     i = 1
+    
+    while i <= time:
+        print("Generation {}: {}".format(i, pattern))
+        
+        for cell in pattern:
+            index = pattern.index(cell)
+            #print("Index of current cell: ", index)
+            neighborhood = get_neighborhood(pattern, cell)
+            #print("Current neighborhood: ", neighborhood)
+            updated_cell = update_cell_state(neighborhood, rule_set)
+            #print("Updated cell value: ", updated_cell)
+            pattern[index] = int(updated_cell)
 
-    while time >= 0:
-       pass
-       
-       
-       #update_cell_state(1, '101', rule) 
-
+        i += 1
 
 if __name__ == "__main__":
     rule = sys.argv[1]
     starting_pattern = [0,1,0,0,1,0,1,0]
+    time = 10
 
     converted_rule = convert_rule(int(rule))
     rule_set = build_rule_set(converted_rule)
 
-    
+    #print(rule_set)
+
+    run_ca(starting_pattern, rule_set, time)    
