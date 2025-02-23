@@ -20,3 +20,26 @@ Started: Feb 24th, 2025 @ 07:05am ET
 Intervals: 1
 Ended: Feb 24th, 2025 @ 7:35am ET
 """
+import sys
+
+def get_multiples(n: int) -> list:
+    multiples = [n for n in range(1, n) if n % 3 == 0 or n % 5 == 0]
+    
+    return multiples
+
+def get_sum(multiples: list) -> int:
+    s = 0
+    
+    for m in multiples:
+        s = s + m
+    
+    print(s)
+
+if __name__ == "__main__":
+    n = int(sys.argv[1])
+
+    if n < 0:
+        print(0)
+    else:
+        multiples = get_multiples(n)
+        get_sum(multiples)
