@@ -70,22 +70,25 @@ def run_ca(starting_pattern: list, rule_set: dict, time: int):
     i = 1
     
     while i <= time:
-        print("Generation {}: {}".format(i, pattern))
-        
+        print("Generation {}:\t{}".format(i, pattern))
+        c = 0    
         for cell in pattern:
-            index = pattern.index(cell)
+            #index = pattern.index(cell)
             #print("Index of current cell: ", index)
             neighborhood = get_neighborhood(pattern, cell)
             #print("Current neighborhood: ", neighborhood)
+            
             updated_cell = update_cell_state(neighborhood, rule_set)
             #print("Updated cell value: ", updated_cell)
-            pattern[index] = int(updated_cell)
+            
+            pattern[c] = int(updated_cell)
+            c += 1
 
         i += 1
 
 if __name__ == "__main__":
     rule = sys.argv[1]
-    starting_pattern = [0,1,0,0,1,0,1,0]
+    starting_pattern = [0,0,0,0,1,0,0,0]
     time = 10
 
     converted_rule = convert_rule(int(rule))
