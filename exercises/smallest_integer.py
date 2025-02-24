@@ -20,3 +20,15 @@ Started: Feb 25th, 2025 @ 06:10am ET
 Intervals: 1
 Ended: Feb 25th, 2025 @ 6:40am ET
 """
+from heapq import heappop, heapify, heappush
+
+def sort_heap(numbers: list) -> list:
+    heapify(numbers)
+
+    return numbers 
+
+if __name__ == "__main__":
+    numbers = [34, -345, -1, 100]
+
+    heap = sort_heap(numbers)
+    print(heap[0])
