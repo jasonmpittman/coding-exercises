@@ -10,17 +10,26 @@ __status__ = "Exercise"
 Complete the keysAndValues function so that it takes in an object and returns the keys and values as separate arrays.
 
 Example:
-
-keysAndValues({a: 1, b: 2, c: 3}) // should return [['a', 'b', 'c'], [1, 2, 3]]
-
-Style Points (JS/CoffeeScript only): This kata only tests for data that uses object literal notation (simple objects). For extra style, can you get your method to check for objects that extend their prototype?
+    keysAndValues({a: 1, b: 2, c: 3}) // should return [['a', 'b', 'c'], [1, 2, 3]]
 
 
 Started: Feb 28th, 2025 @ 6:25am ET (estimated)
 Intervals: 1
-Ended: Feb 28th, 2025 @ 6:55am ET
+Ended: Feb 28th, 2025 @ 6:30am ET
 """
 
+def get_keys_and_values(d: dict) -> list:
+    keys_and_values = [[],[]]
 
+    for key, value in d.items():
+        keys_and_values[0].append(key)
+        keys_and_values[1].append(value)
+    
+    return keys_and_values
+
+if __name__ == "__main__":
+    d = {'a': 1, 'b': 2, 'c':3}
+
+    keys_and_values = get_keys_and_values(d)
 
 
