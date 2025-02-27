@@ -15,8 +15,15 @@ Example:
 
 Started: Feb 28th, 2025 @ 6:25am ET (estimated)
 Intervals: 1
-Ended: Feb 28th, 2025 @ 6:30am ET
+Ended: Feb 28th, 2025 @ 6:40am ET
 """
+
+def get_keys_and_values_comprehension(d: dict) -> list:
+    keys_and_values = []
+    keys_and_values.append([key for key in d.keys()])
+    keys_and_values.append([value for value in d.values()])
+
+    print(keys_and_values)
 
 def get_keys_and_values(d: dict) -> list:
     keys_and_values = [[],[]]
@@ -30,6 +37,13 @@ def get_keys_and_values(d: dict) -> list:
 if __name__ == "__main__":
     d = {'a': 1, 'b': 2, 'c':3}
 
+    # naive method
     keys_and_values = get_keys_and_values(d)
+    print(keys_and_values)
+
+    #comprehesion method
+    get_keys_and_values_comprehension(d)
+
+
 
 
