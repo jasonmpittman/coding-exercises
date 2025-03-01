@@ -19,5 +19,22 @@ given a string, replace every letter with its position in the alphabet. If anyth
 
 Started: Mar 2nd, 2025 @ 3:25am ET (estimated)
 Intervals: 1
-Ended: Mar 2nd, 2025 @ 3:55am ET
+Ended: Mar 2nd, 2025 @ 3:39am ET
 """
+
+def convert_string_to_number(input: str) -> str:
+    string = 'abcdefghijklmnopqrstuvwxyz'
+    alphabet = list(string)
+    converted_string = ''
+
+    for i in input.lower():
+        if i in alphabet:
+            value = alphabet.index(i)
+            converted_string += ' ' + str(value + 1)
+    
+    print(converted_string)
+
+
+if __name__ == "__main__":
+    input = "The sunset sets at twelve o' clock."
+    convert_string_to_number(input)
