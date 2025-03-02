@@ -17,5 +17,21 @@ An isogram is a word that has no repeating letters, consecutive or non-consecuti
 
 Started: Mar 3rd, 2025 @ 7:40am ET (estimated)
 Intervals: 1
-Ended: Mar 3rd, 2025 @ 8:10am ET
+Ended: Mar 3rd, 2025 @ 7:55am ET
 """
+import sys
+
+def is_isogram(string: str) -> bool:
+
+    for letter in string:
+        if string.count(letter) > 1:
+            return False
+
+    return True
+
+
+if __name__ == "__main__":
+    string = sys.argv[1].lower()
+    result = is_isogram(string)
+
+    print(result)
