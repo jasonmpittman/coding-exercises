@@ -23,3 +23,30 @@ Started: Mar 4th, 2025 @ 9:00am ET (estimated)
 Intervals: 1
 Ended: Mar 4th, 2025 @ 9:30am ET
 """
+
+new_array = []
+
+def is_list(array: list) -> bool:
+    if isinstance(array, list) is True:
+        return True
+    else:
+        return False
+
+#TODO: we're overflattening here...need to stop the recursion at 2 deep and just remove empty nested lists
+def flatten_array(array: list) -> list:
+    
+    for a in array:
+        if is_list(a):
+            #print(a)
+            flatten_array(a)
+        else:
+            new_array.append(a)
+
+    return new_array
+
+
+if __name__ == "__main__":
+    array = [1, [2, 3], [4, 5, [6, 7, 8], 9, 10, [11, [12, [13, 14], 15], 16], 17], 18] #[1,[2, 3, [], [4, [], 5]]] 
+
+    result = flatten_array(array)
+    print(result)
