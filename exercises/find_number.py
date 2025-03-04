@@ -40,3 +40,28 @@ Started: Mar 5th, 2025 @ 3:20am ET (estimated)
 Intervals: 1
 Ended: Mar 5th, 2025 @ 3:50am ET
 """
+
+#TODO: how can this function be optimized?
+def find_number(array: list) -> int:
+    array.sort()
+    unique_numbers = []
+    duplicate_numbers = []
+
+    for a in array:
+        if array.count(a) > 1:
+            duplicate_numbers.append(a)
+        else:
+            unique_numbers.append(a)
+
+    if len(set(unique_numbers)) == 1:
+        return set(unique_numbers)
+    else:
+        return set(duplicate_numbers) 
+
+
+
+if __name__ == "__main__":
+    array = [9,8,7,1,2,3,9,7,1,2,3,4,4,5,5,6,6] # [1,2,3,1,2,3,4] # [1,2,3,6,5,4,1]
+    result = find_number(array)
+
+    print(result)
