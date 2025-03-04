@@ -38,7 +38,7 @@ input                                output
 
 Started: Mar 5th, 2025 @ 3:20am ET (estimated)
 Intervals: 1
-Ended: Mar 5th, 2025 @ 3:50am ET
+Ended: Mar 5th, 2025 @ 3:34am ET
 """
 
 #TODO: how can this function be optimized?
