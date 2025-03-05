@@ -35,3 +35,35 @@ Started: Mar 6th, 2025 @ 4:20am ET (estimated)
 Intervals: 1
 Ended: Mar 6th, 2025 @ 4:50am ET
 """
+import sys
+from time import process_time_ns
+
+def find_x(n: int) -> int:
+    x = 0
+    for i in range(n):
+        for j in range(2*n):
+            x += j + i
+    return x
+
+def find_x_optimized(n: int) -> int:
+    x = 0
+
+    for i in range(n):
+        x += sum([j + i for j in range(2*n)])
+
+    return x
+
+if __name__ == "__main__":
+    n = int(sys.argv[1])
+
+    t = process_time_ns()
+    result = find_x(n)
+    elapsed_time = process_time_ns() - t
+
+    print("Obtained {} in {} nanoseconds".format(result, elapsed_time))
+
+    t_optimized = process_time_ns()
+    optimized_result = find_x_optimized(n)
+    elapsed_optimized_time = process_time_ns() - t_optimized
+
+    print("Obtained {} in {} nanoseconds".format(result, elapsed_optimized_time))
