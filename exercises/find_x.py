@@ -33,7 +33,7 @@ So your task is to optimize the function findX/find_x, so it works well for larg
 
 Started: Mar 6th, 2025 @ 4:20am ET (estimated)
 Intervals: 1
-Ended: Mar 6th, 2025 @ 4:50am ET
+Ended: Mar 6th, 2025 @ 4:39am ET
 """
 import sys
 from time import process_time_ns
