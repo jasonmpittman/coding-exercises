@@ -18,5 +18,24 @@ Examples
 
 Started: Mar 7th, 2025 @ 6:25am ET (estimated)
 Intervals: 1
-Ended: Mar 7th, 2025 @ 6:55am ET
+Ended: Mar 7th, 2025 @ 6:28am ET
 """
+import sys
+
+def encode_duplicates(string: str) -> str:
+    encoded_string = ''
+
+    for char in string:
+        if string.count(char) >= 2:
+            encoded_string += ')'
+        else:
+            encoded_string += '('
+
+    return encoded_string
+
+
+if __name__ == "__main__":
+    string = sys.argv[1]
+
+    encoded_string = encode_duplicates(string)
+    print(encoded_string)
