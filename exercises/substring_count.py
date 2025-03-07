@@ -20,7 +20,7 @@ full_text = "aaabbbcccc", search_text = "bbb"
 
 Started: Mar 8th, 2025 @ 9:05am ET (estimated)
 Intervals: 1
-Ended: Mar 8th, 2025 @ 9:03am ET
+Ended: Mar 8th, 2025 @ 9:10am ET
 """
 import sys
 
