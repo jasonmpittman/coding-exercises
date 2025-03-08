@@ -19,5 +19,23 @@ You need to find out if the cat can catch the mouse from its current position. T
 
 Started: Mar 9th, 2025 @ 6:55am ET (estimated)
 Intervals: 1
-Ended: Mar 9th, 2025 @ 7:25am ET
+Ended: Mar 9th, 2025 @ 6:59am ET
 """
+import sys
+
+def is_caught(position: str) -> bool:
+    escaped = True 
+
+    if position.count('.') > 3:
+        escaped = False
+    
+    return escaped 
+
+if __name__ == "__main__":
+    position = sys.argv[1]
+
+    result = is_caught(position)
+    if result == True:
+        print("Caught!")
+    else:
+        print("Escaped!")
