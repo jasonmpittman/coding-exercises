@@ -29,3 +29,39 @@ Started: Mar 20th, 2025 @ :10:05am ET
 Intervals: 1
 Ended: Mar 20th, 2025 @ 10:35am ET
 """
+import sys
+from itertools import combinations
+
+def generate_combinations(number: str) -> list:
+    #   slight riff on the problem - here we produce unique subsets only so (3,4,8) is the same as (4,3,8) or (8,3,4)
+    combos = []
+    s = list(number)
+    
+    for L in range(len(s) + 1):
+        for subset in combinations(s, L):
+            combos.append(subset)
+
+    return combos
+
+def score_permutations(combos: list) -> int:
+    score = 0
+
+    for p in combos:
+        if len(p) == 1:
+            score += int(p[0])
+        else:
+            score += sum([int(x) for x in p])
+
+    return score
+
+
+def main():
+    number = sys.argv[1]
+    combos = generate_combinations(number)
+    
+    score = score_permutations(combos)
+
+    print(score)
+
+if __name__ == "__main__":
+    main()
