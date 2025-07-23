@@ -23,14 +23,24 @@ Examples:
     Output: false
     Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
-Start:
-End:
+Start: 4:21am
+End: 4:34am
 """
+from sys import argv
 
-def main():
-    pass
+def main(x: str) -> bool:
+    is_palindrome = False
 
+    digits = list(x)
+    y = "".join(digits[::-1]) # use slicing to reverse list and then join to string
 
+    if y == x:
+        is_palindrome = True
+
+    return is_palindrome
 
 if __name__ == "__main__":
-    main()
+    x = argv[1]
+
+    result = main(x)
+    print(result)
