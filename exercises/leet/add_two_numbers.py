@@ -32,9 +32,27 @@ End:
 from sys import argv
 
 def main(a: list, b: list) -> list:
-    pass
+    #   reverse the input lists
+    a.reverse()
+    b.reverse()
 
+    #   join and cast to int
+    x = int("".join(a))
+    y = int("".join(b))
+
+    #   summation
+    z = x + y
+
+    #   reverse sum and return cast to list
+    result = list(str(z))
+    result.reverse()
+
+    return result
 
 
 if __name__ == "__main__":
-    pass
+    a = list(argv[1])
+    b = list(argv[2])
+
+    result = main(a, b)
+    print(result)
