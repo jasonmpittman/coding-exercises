@@ -28,7 +28,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 
 
 Start: 12:28pm
-End:
+End: 12:49pm
 """
 from sys import argv
 
