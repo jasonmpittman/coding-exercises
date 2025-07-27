@@ -24,14 +24,20 @@ Example 3:
 
 
 Start: 8:00am
-End: 
+End: 8:05am
 """
 
 from sys import argv
 
-def main()
-    pass
+def main(array: list, n: int) -> list:
+    array.remove(array[-n])
+
+    return array
 
 
 if __name__ == "__main__":
-    pass
+    array = argv[1].split(',')
+    n = int(argv[2])
+
+    result = main(array, n)
+    print(result)
