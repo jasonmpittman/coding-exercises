@@ -19,13 +19,31 @@ Example 2:
     Output: ["()"]
 
 Start: 8:20am
-End:
+End: 8:31am 
 """
+from sys import argv
 
-def main():
-    pass
+def main(n: int) -> list:
+    combinations = []
 
+    #   TODO: partial solution...just not feeling it today
+    def backtrack(current_string, open_count, closed_count):
+        if len(current_string) == 2 * n:
+            combinations.append(current_string)
+            return
+    
+        if open_count < n:
+            backtrack(current_string + "(", open_count + 1, closed_count)
+        
+        if closed_count < n:
+            backtrack(current_string + ")", open_count, closed_count + 1)
+    
+    backtrack("", 0, 0)
+    return combinations
 
 
 if __name__ == "__main__":
-    pass
+    n = int(argv[1])
+
+    result = main(n)
+    print(result)
