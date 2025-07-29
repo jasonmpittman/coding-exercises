@@ -21,8 +21,21 @@ Start: 7.29.25 3:00am
 End:
 Cycles: 1
 """
+import argparse
 
+#   -c The number of bytes in each input file is written to the standard output.  This will cancel out any prior usage of the -m option.
+def get_file_bytes(file: str) -> int:
+    number_of_bytes = 0
 
+    print(file)
+
+    return number_of_bytes
 
 if __name__ == "__main__":
-    pass
+    parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
+    parser.add_argument('-c', help='The number of bytes in each input file')
+
+    args = vars(parser.parse_args())
+
+    if args['c']:
+        result = get_file_bytes(args['c']) 
