@@ -17,9 +17,9 @@ part 4: clone -m argument
 part 5: clone default as -clw
 part 6: clone read from stdout as input
 
-Start: 7.29.25 3:00am, 8.01.25 5:45am
+Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.24 5:42am
 End:
-Cycles: 1
+Cycles: 3
 """
 import os
 import argparse
@@ -47,10 +47,27 @@ def get_number_of_lines(file: str) -> int:
 
     return number_of_lines
 
+#   TODO: over counts based on newlines, empty spaces, special characters when a py file is tested
+def get_number_of_words(file: str) -> int:
+    number_of_words = 0
+
+    try:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                words = line.split(' ')
+                
+                number_of_words = number_of_words + len(words)
+    except Exception as e:
+        print(f'An error occured whlie attempting to access the file: {e}')
+
+    return number_of_words
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
     parser.add_argument('-c', help='The number of bytes in each input file')
     parser.add_argument('-l', help='The number of lines in each input file')
+    parser.add_argument('-w', help='The number of words in each input file')
 
     args = vars(parser.parse_args())
 
@@ -61,3 +78,7 @@ if __name__ == "__main__":
     if args['l']:
         result = get_number_of_lines(args['l'])
         print('    ' + str(result) + ' ' + args['l'])
+    
+    if args['w']:
+        result = get_number_of_words(args['w'])
+        print('    ' + str(result) + ' ' + args['w'])
