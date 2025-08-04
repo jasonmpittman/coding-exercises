@@ -22,6 +22,7 @@ End:
 Cycles: 3
 """
 import os
+import re
 import argparse
 
 #   -c The number of bytes in each input file is written to the standard output.  This will cancel out any prior usage of the -m option.
@@ -47,17 +48,23 @@ def get_number_of_lines(file: str) -> int:
 
     return number_of_lines
 
-#   TODO: over counts based on newlines, empty spaces, special characters when a py file is tested
+#   TODO: undercounting because of pattern match filter
 def get_number_of_words(file: str) -> int:
     number_of_words = 0
+    clean_words = []
+    pattern = r"\b\w+\b"
 
     try:
         with open(file, 'r') as f:
             lines = f.readlines()
+
             for line in lines:
                 words = line.split(' ')
-                
-                number_of_words = number_of_words + len(words)
+                for word in words:
+                    if re.match(pattern, word):
+                        clean_words.append(word)
+
+            number_of_words = number_of_words + len(clean_words)
     except Exception as e:
         print(f'An error occured whlie attempting to access the file: {e}')
 
