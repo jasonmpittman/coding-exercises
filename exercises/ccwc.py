@@ -48,7 +48,6 @@ def get_number_of_lines(file: str) -> int:
 
     return number_of_lines
 
-#   TODO: undercounting because of pattern match filter
 def get_number_of_words(file: str) -> int:
     number_of_words = 0
     clean_words = []
