@@ -17,7 +17,7 @@ part 4: clone -m argument
 part 5: clone default as -clw
 part 6: clone read from stdout as input
 
-Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.24 5:42am
+Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.25 5:42am, 8.04.25 6:25am
 End:
 Cycles: 3
 """
@@ -63,11 +63,16 @@ def get_number_of_words(file: str) -> int:
 
     return number_of_words
 
+def get_number_of_characters(file: str) -> int:
+    """ The number of characters in each input file is written to the standard output. """
+    pass
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
     parser.add_argument('-c', help='The number of bytes in each input file')
     parser.add_argument('-l', help='The number of lines in each input file')
     parser.add_argument('-w', help='The number of words in each input file')
+    parser.add_argument('-m', help='The number of characters in each input file')
 
     args = vars(parser.parse_args())
 
@@ -81,4 +86,8 @@ if __name__ == "__main__":
     
     if args['w']:
         result = get_number_of_words(args['w'])
+        print('    ' + str(result) + ' ' + args['w'])
+    
+    if args['m']:
+        result = get_number_of_characters(args['m'])
         print('    ' + str(result) + ' ' + args['w'])
