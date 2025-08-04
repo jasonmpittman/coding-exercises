@@ -19,7 +19,7 @@ part 6: clone read from stdout as input
 
 Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.25 5:42am, 8.04.25 6:25am
 End:
-Cycles: 3
+Cycles: 4
 """
 import os
 import re
@@ -32,7 +32,7 @@ def get_file_bytes(file: str) -> int:
     try:
         number_of_bytes = os.path.getsize(file)
     except Exception as e:
-        print(f'An error occured while attempting to get bytes in file: {e}')
+        print(f'An error occurred while attempting to get bytes in file: {e}')
 
     return number_of_bytes
 
@@ -44,7 +44,7 @@ def get_number_of_lines(file: str) -> int:
         with open(file, 'r') as f:
             number_of_lines = len(f.readlines())
     except Exception as e:
-        print(f'An error occured while attempting to access the file: {e}')
+        print(f'An error occurred while attempting to access the file: {e}')
 
     return number_of_lines
 
@@ -65,13 +65,27 @@ def get_number_of_words(file: str) -> int:
 
             number_of_words = number_of_words + len(clean_words)
     except Exception as e:
-        print(f'An error occured whlie attempting to access the file: {e}')
+        print(f'An error occurred whlie attempting to access the file: {e}')
 
     return number_of_words
 
 def get_number_of_characters(file: str) -> int:
     """ The number of characters in each input file is written to the standard output. """
-    pass
+    number_of_characters = 0
+    pattern = r"\b\w+\b"
+    
+    try:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                words = line.split(' ')
+                for word in words:
+                    if re.match(pattern, word):
+                        number_of_characters = number_of_characters + len(word)
+    except Exception as e:
+        print(f'An error occurred while attempting to access the file: {e}')
+    print(number_of_characters) 
+    return number_of_characters
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
@@ -96,4 +110,4 @@ if __name__ == "__main__":
     
     if args['m']:
         result = get_number_of_characters(args['m'])
-        print('    ' + str(result) + ' ' + args['w'])
+        print('    ' + str(result) + ' ' + args['m'])
