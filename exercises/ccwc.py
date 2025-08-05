@@ -89,10 +89,10 @@ def get_number_of_characters(file: str) -> int:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
-    parser.add_argument('-c', help='The number of bytes in each input file')
-    parser.add_argument('-l', help='The number of lines in each input file')
-    parser.add_argument('-w', help='The number of words in each input file')
-    parser.add_argument('-m', help='The number of characters in each input file')
+    parser.add_argument('-c', metavar='FILE', help='The number of bytes in FILE')
+    parser.add_argument('-l', metavar='FILE', help='The number of lines in FILE')
+    parser.add_argument('-w', metavar='FILE', help='The number of words in FILE')
+    parser.add_argument('-m', metavar='FILE', help='The number of characters in FILE')
 
     args = vars(parser.parse_args())
 
