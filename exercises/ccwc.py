@@ -17,12 +17,13 @@ part 4: clone -m argument
 part 5: clone default as -clw
 part 6: clone read from stdout as input
 
-Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.25 5:42am, 8.04.25 6:25am
+Start: 7.29.25 3:00am, 8.01.25 5:45am, 8.02.25 5:42am, 8.04.25 6:25am, 8.05.25 5:35am
 End:
-Cycles: 4
+Cycles: 5
 """
 import os
 import re
+import sys
 import argparse
 
 #   -c The number of bytes in each input file is written to the standard output.  This will cancel out any prior usage of the -m option.
@@ -91,11 +92,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A Python clone of the wc utility')
     parser.add_argument('-c', metavar='FILE', help='The number of bytes in FILE')
     parser.add_argument('-l', metavar='FILE', help='The number of lines in FILE')
-    parser.add_argument('-w', metavar='FILE', help='The number of words in FILE')
+    parser.add_argument('-w', metavar='FILE', default=sys.stdin, help='The number of words in FILE')
     parser.add_argument('-m', metavar='FILE', help='The number of characters in FILE')
 
     args = vars(parser.parse_args())
 
+    #   TODO: need to detect if FILE or sys.stdin
+    #   ERROR: when sys.stdin, the arg is a _io.TextWrapper
     if args['c']:
         result = get_file_bytes(args['c'])
         print('    ' + str(result) + ' ' + args['c'])
@@ -104,9 +107,12 @@ if __name__ == "__main__":
         result = get_number_of_lines(args['l'])
         print('    ' + str(result) + ' ' + args['l'])
     
-    if args['w']:
+    if args['w'] and sys.stdin.isatty():
         result = get_number_of_words(args['w'])
         print('    ' + str(result) + ' ' + args['w'])
+    elif not sys.stdin.isatty():
+        print(f'The input string is: {sys.stdin.read().strip()}') # okay, we need an overloaded function above?
+   
     
     if args['m']:
         result = get_number_of_characters(args['m'])
