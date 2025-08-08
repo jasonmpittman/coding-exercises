@@ -22,6 +22,15 @@ class Redis:
             print(f'Waiting for a connection')
             connection, client_address = self.sock.accept()
 
+            try:
+                print(f'Connection from {client_address}')
+                data = connection.recv(16)
+
+            except Exception as e:
+                print(f'An error occured: {e}')
+            finally:
+                connection.close()
+
 
 
 
