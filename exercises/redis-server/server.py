@@ -7,6 +7,12 @@ __maintainer__ = "Jason M. Pittman"
 __status__ = "Exercise"
 __difficuluty__ = ""
 
+"""
+Start: 8.08.25 6:30am, 8.09.25 6:50am
+End:
+Cycles: 2
+"""
+
 import socket
 
 class Redis:
@@ -24,7 +30,10 @@ class Redis:
 
             try:
                 print(f'Connection from {client_address}')
-                data = connection.recv(16)
+                data = connection.recv(1024)
+                
+                if data:
+                    connection.sendall(b'PONG\r\n')
 
             except Exception as e:
                 print(f'An error occured: {e}')
