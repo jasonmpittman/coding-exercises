@@ -13,13 +13,31 @@ End:
 Cycles: 1
 """
 import socket
+import sys
 
 class RedisClient:
-    def __init__(self):
+    def __init__(self, host='localhost', port=6389):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        
+        try:
+            self.sock.connect((host, port))
+        except Exception as e:
+            print(f'There was an error connecting to host: {e}')
+    
+    def set(self):
         pass
+
+    def get(self):
+        pass
+
+    def close(self):
+        self.sock.close()
 
 
 
 
 if __name__ == "__main__":
-    pass
+    host = sys.argv[1]
+    port = int(sys.argv[2])
+
+    client = RedisClient(host, port)
