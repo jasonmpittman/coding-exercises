@@ -16,7 +16,7 @@ import socket
 import sys
 
 class RedisClient:
-    def __init__(self, host='localhost', port=6389):
+    def __init__(self, host='localhost', port=6379):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         
         try:
@@ -37,7 +37,11 @@ class RedisClient:
 
 
 if __name__ == "__main__":
-    host = sys.argv[1]
-    port = int(sys.argv[2])
 
-    client = RedisClient(host, port)
+    if len(sys.argv) == 3:
+        host = sys.argv[1]
+        port = int(sys.argv[2])
+
+        client = RedisClient(host, port)
+    else:
+        client = RedisClient()
