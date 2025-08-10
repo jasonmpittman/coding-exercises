@@ -15,7 +15,7 @@ Cycles: 2
 
 import socket
 
-class Redis:
+class RedisServer:
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_address = ('0.0.0.0', 6379)
@@ -44,5 +44,5 @@ class Redis:
 
 
 if __name__ == "__main__":
-    redis = Redis()
+    redis = RedisServer()
     redis.run()
