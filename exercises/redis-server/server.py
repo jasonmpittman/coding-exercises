@@ -8,7 +8,7 @@ __status__ = "Exercise"
 __difficuluty__ = ""
 
 """
-Start: 8.08.25 6:30am, 8.09.25 6:50am
+Start: 8.08.25 6:30am, 8.09.25 6:50am, 8.11.25 6:55am
 End:
 Cycles: 2
 """
