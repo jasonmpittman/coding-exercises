@@ -13,36 +13,47 @@ End:
 Cycles: 2
 """
 
-import socket
+import asyncio
 
 class RedisServer:
     def __init__(self):
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_address = ('0.0.0.0', 6379)
-        self.sock.bind(self.server_address)
+        print('Starting Redis Server')
 
-    def run(self):
-        self.sock.listen(1)
+    async def handle_client(self, reader, writer):
+        addr = writer.get_extra_info('peername')
 
+        data_buffer = bytearray()
         while True:
-            print(f'Waiting for a connection')
-            connection, client_address = self.sock.accept()
+            data = await reader.read(512)
 
-            try:
-                print(f'Connection from {client_address}')
-                data = connection.recv(1024)
-                
-                if data:
-                    connection.sendall(b'PONG\r\n')
+            if not data:
+                break
 
-            except Exception as e:
-                print(f'An error occured: {e}')
-            finally:
-                connection.close()
+            data_buffer.extend(data)
+        
+        message = data_buffer.decode()
+        print(f'Message received from {addr}: {message}')
 
+        writer.write(data_buffer)
+        await writer.drain()
+
+        print(f'Closing connection with {addr}')
+        writer.close()
+
+    
+    async def run(self):
+        server = await asyncio.start_server(
+            self.handle_client, '0.0.0.0', 6379
+        )
+        
+        addr = server.sockets[0].getsockname()
+        print(f'Redis available on {addr}')
+
+        async with server:
+            await server.serve_forever()
 
 
 
 if __name__ == "__main__":
     redis = RedisServer()
-    redis.run()
+    asyncio.run(redis.run())
