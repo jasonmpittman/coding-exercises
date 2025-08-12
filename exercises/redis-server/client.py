@@ -8,12 +8,12 @@ __status__ = "Exercise"
 __difficuluty__ = ""
 
 """
-Start: 8.10.25 7:10am
+Start: 8.10.25 7:10am, 8.12.25 9:55am
 End:
-Cycles: 1
+Cycles: 2
 """
+import argparse
 import socket
-import sys
 
 class RedisClient:
     def __init__(self, host='localhost', port=6379):
@@ -38,10 +38,17 @@ class RedisClient:
 
 if __name__ == "__main__":
 
-    if len(sys.argv) == 3:
-        host = sys.argv[1]
-        port = int(sys.argv[2])
+    args_parser = argparse.ArgumentParser(description='A simple Redis client')
 
-        client = RedisClient(host, port)
+    args_parser.add_argument('--ip', '-i', help='The IP address you want to connect with. Default is localhost')
+    args_parser.add_argument('--port', '-p', type=int, help='The port the host listens on. Default is 6379')
+    args_parser.add_argument('--action', '-a', help='The action to take once connected. Options are SET, GET')
+
+    args = args_parser.parse_args()
+
+    print(args)
+
+    if args.ip != None and args.port != None:
+        client = RedisClient(args.ip, args.port)
     else:
         client = RedisClient()
