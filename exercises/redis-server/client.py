@@ -49,6 +49,10 @@ if __name__ == "__main__":
     print(args)
 
     if args.ip != None and args.port != None:
-        client = RedisClient(args.ip, args.port)
+        client = RedisClient(host=args.ip, port=args.port)
+    elif args.ip != None and args.port == None:
+        client = RedisClient(host=args.ip)
+    elif args.ip == None and args.ip != None:
+        client = RedisClient(port=args.port)
     else:
         client = RedisClient()
