@@ -8,9 +8,9 @@ __status__ = "Exercise"
 __difficuluty__ = ""
 
 """
-Start: 8.10.25 7:10am, 8.12.25 9:55am
+Start: 8.10.25 7:10am, 8.12.25 9:55am, 8.13.25 7:00am
 End:
-Cycles: 2
+Cycles: 3
 """
 import argparse
 import socket
