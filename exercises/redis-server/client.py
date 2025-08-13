@@ -23,7 +23,14 @@ class RedisClient:
             self.sock.connect((host, port))
         except Exception as e:
             print(f'There was an error connecting to host: {e}')
-    
+
+    def _encode_resp(self, value):
+        encoded_value = value.encode('utf-8')
+        return f"${len(encoded_value)}\r\n{encoded_value.decode('latin-1')}\r\n"
+
+    def _decode_resp(self):
+        pass
+
     def set(self):
         pass
 
@@ -56,3 +63,8 @@ if __name__ == "__main__":
         client = RedisClient(port=args.port)
     else:
         client = RedisClient()
+
+    if args.action == 'SET':
+        value = input('Enter KEY,VALUE: ')
+        msg = client._encode_resp(value)
+        print(f'{msg}')
