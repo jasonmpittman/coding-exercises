@@ -8,7 +8,7 @@ __status__ = "Exercise"
 __difficuluty__ = ""
 
 """
-Start: 8.10.25 7:10am, 8.12.25 9:55am, 8.13.25 7:00am
+Start: 8.10.25 7:10am, 8.12.25 9:55am, 8.13.25 7:00am, 8.14.25 3:25am
 End:
 Cycles: 3
 """
@@ -16,28 +16,22 @@ import argparse
 import socket
 
 class RedisClient:
-    def __init__(self, host='localhost', port=6379):
+
+    def set(self, key, value, *args):
+        """ SET key value"""
+        pass
+
+    def get(self, get):
+        pass
+
+    def connect(self, ip, port):
+        """ """
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        
-        try:
-            self.sock.connect((host, port))
-        except Exception as e:
-            print(f'There was an error connecting to host: {e}')
+        self.sock.connect((ip, port))
 
-    def _encode_resp(self, value):
-        encoded_value = value.encode('utf-8')
-        return f"${len(encoded_value)}\r\n{encoded_value.decode('latin-1')}\r\n"
 
-    def _decode_resp(self):
-        pass
-
-    def set(self):
-        pass
-
-    def get(self):
-        pass
-
-    def close(self):
+    def disconnect(self):
+        """ """
         self.sock.close()
 
 
@@ -56,15 +50,18 @@ if __name__ == "__main__":
     print(args)
 
     if args.ip != None and args.port != None:
-        client = RedisClient(host=args.ip, port=args.port)
+        client = RedisClient()
+        client.connect(ip=args.ip, port=args.port)
     elif args.ip != None and args.port == None:
-        client = RedisClient(host=args.ip)
+        client = RedisClient()
+        client.connect(ip=args.ip)
     elif args.ip == None and args.ip != None:
-        client = RedisClient(port=args.port)
+        client = RedisClient()
+        client.connect(port=args.port)
     else:
         client = RedisClient()
 
     if args.action == 'SET':
         value = input('Enter KEY,VALUE: ')
-        msg = client._encode_resp(value)
-        print(f'{msg}')
+        msg_key, msg_value = value.split(',')
+        print(f'{msg_key} holds {msg_value}')
