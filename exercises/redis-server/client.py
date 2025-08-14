@@ -16,18 +16,47 @@ import argparse
 import socket
 
 class RedisClient:
+    def __init__(self, ip='localhost', port=6379):
+        self.ip = ip
+        self.port = port
+        self.socket = None
 
-    def set(self, key, value, *args):
-        """ SET key value"""
+    def _send_command(self, command, *args):
+        """
+        Constructs the RESP array for the command
+
+        command (str):
+        *args :
+        """
+        command_parts = [command] + list(args)
+        resp_array = f"*{len(command_parts)}\r\n"
+
+        for part in command_parts:
+            part_bytes = str(part).encode('utf-8')
+            resp_array += f"${len(part_bytes)}\r\n{part_bytes.decode('utf-8')}\r\n"
+
+        self.socket.sendall(resp_array.encode('utf-8'))
+
+    def _read_response(self):
         pass
+
+    def set(self, key, value):
+        """ SET key value"""
+        self._send_command("SET", key, value)
 
     def get(self, get):
         pass
 
-    def connect(self, ip, port):
-        """ """
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((ip, port))
+    def connect(self, ip="localhost", port=6379):
+        """ 
+        Establish a IPv4 TCP connection to target redis server.
+
+        Args:
+            ip (str): The IPv4 address of the redis server. The default is localhost.
+            port (int): The TCP port of the redis server. The default is 6379.
+        """
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((self.ip, self.port))
 
 
     def disconnect(self):
@@ -50,18 +79,19 @@ if __name__ == "__main__":
     print(args)
 
     if args.ip != None and args.port != None:
-        client = RedisClient()
-        client.connect(ip=args.ip, port=args.port)
+        client = RedisClient(ip=args.ip, port=args.port)
+        client.connect()
     elif args.ip != None and args.port == None:
-        client = RedisClient()
-        client.connect(ip=args.ip)
+        client = RedisClient(ip=args.ip)
+        client.connect()
     elif args.ip == None and args.ip != None:
-        client = RedisClient()
-        client.connect(port=args.port)
+        client = RedisClient(port=args.port)
+        client.connect()
     else:
         client = RedisClient()
+        client.connect()
 
     if args.action == 'SET':
         value = input('Enter KEY,VALUE: ')
         msg_key, msg_value = value.split(',')
-        print(f'{msg_key} holds {msg_value}')
+        set_response = client.set(msg_key, msg_value)
