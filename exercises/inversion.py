@@ -9,7 +9,7 @@ __difficuluty__ = ""
 
 """
 Start: 5:30am
-End:
+End: 5:35am
 Cycles: 1
 
 Write a function that inverts the keys and values of a dictionary.
@@ -29,8 +29,16 @@ import sys
 
 
 def main():
-    pass
+    my_dict = { "z": "q", "w": "f" }
+    inverted_dict = {}
+
+    for key, value in my_dict.items():
+        inverted_dict[value] = key
+    
+    print(my_dict)
+    print(inverted_dict)
+
 
 
 if __name__ == "__main__":
-    pass
+    main()
