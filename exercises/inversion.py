@@ -9,7 +9,7 @@ __difficuluty__ = ""
 
 """
 Start: 5:30am
-End: 5:35am
+End: 5:40am
 Cycles: 1
 
 Write a function that inverts the keys and values of a dictionary.
