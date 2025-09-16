@@ -32,9 +32,16 @@ def main():
     my_dict = { "z": "q", "w": "f" }
     inverted_dict = {}
 
+    #   for loop inversion
     for key, value in my_dict.items():
         inverted_dict[value] = key
     
+    print(my_dict)
+    print(inverted_dict)
+
+
+    #   dictionary comprehension inverstion
+    inverted_dict = {value: key for key, value in my_dict.items()}
     print(my_dict)
     print(inverted_dict)
 
