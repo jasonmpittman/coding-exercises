@@ -21,9 +21,22 @@ Cycles: 1
 """
 import sys
 
-def create_diamond_array(input: int) -> list:
-    pass
+def build_input_list(input: str) -> list:
+    i = 1
+    input_list = []
+
+    while i <= int(input):
+        input_list.append(i)
+        i += 1
+
+    return input_list
+
+def create_diamond_array(input: str) -> list:
+    array_count = input
+    outer_array = []
+    input_list = build_input_list(input)
+
 
 if __name__ == "__main__":
-    input = int(sys.argv[1])
+    input = sys.argv[1]
     create_diamond_array(input)
