@@ -16,26 +16,33 @@ Examples
     diamondArrays(5) ➞ [[1], [2, 2], [3, 3, 3], [4, 4, 4, 4], [5, 5, 5, 5, 5], [4, 4, 4, 4], [3, 3, 3], [2, 2], [1]]
 
 Start: 8:45am
-End: am
+End: 9:09am
 Cycles: 1
 """
 import sys
 
-def build_input_list(input: str) -> list:
-    i = 1
-    input_list = []
-
-    while i <= int(input):
-        input_list.append(i)
-        i += 1
-
-    return input_list
-
 def create_diamond_array(input: str) -> list:
-    array_count = input
+    array_count = int(input)
     outer_array = []
-    input_list = build_input_list(input)
 
+    i = 1
+
+    #   ascending order
+    while i <= array_count:
+        inner_array = [x for x in (str(i) * i)]
+        outer_array.append(inner_array)
+        
+        i += 1
+    
+    #   descending order
+    j = array_count - 1
+    while j >= 1:
+        inner_array = [x for x in str(j) * j]
+        outer_array.append(inner_array)
+
+        j -= 1
+    
+    print(outer_array)
 
 if __name__ == "__main__":
     input = sys.argv[1]
