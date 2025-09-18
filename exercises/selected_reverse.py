@@ -16,12 +16,35 @@ Examples
     sel_reverse([5,7,2,6,0,4,6], 100) ➞ [6,4,0,6,2,7,5]
 
 Start: 5:25am
-End: :am
+End: 5:50:am
 Cycles: 1
 """
+import sys
 
 def reverse_selection(array: list, n: int) -> list:
-    pass
+
+    #   If length exceeds the list length, reverse everything.
+    if n >= len(array):
+        array.reverse()
+        return array
+    
+    #   If length is zero, return the original list.
+    elif n == 0:
+        return array
+    
+    else:
+        subarrays = [array[i:i + n] for i in range(0, len(array), n)]
+        print(subarrays)
+
+        for subarray in subarrays:
+            subarray.reverse()
+
+
+        return subarrays
 
 if __name__ == "__main__":
-    pass
+    array = sys.argv[1].split(',')
+    n = sys.argv[2]
+
+    reversed_array = reverse_selection(array, int(n))
+    print(reversed_array)
