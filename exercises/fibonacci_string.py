@@ -23,7 +23,36 @@ Cycles: 1
 """
 import sys
 
+def build_substring(length: int, first_letter: str, second_letter: str) -> str:
+    substring = ''
+
+    if length == 0:
+        substring = first_letter
+        return substring
+    elif length == 1:
+        substring = second_letter
+        return substring
+    else:
+        for i in range(1, length + 1):
+            if i % 2 != 0:
+                substring += second_letter 
+            else:
+                substring += first_letter   #   more correctly, we should += substring when len >= 2
+        return substring
 
 
 if __name__ == "__main__":
-    pass
+    generations = int(sys.argv[1])
+    first_letter = sys.argv[2]
+    second_letter = sys.argv[3]
+    fib_string = []
+    first = True
+    i = 0
+
+    while i < generations:
+        substring = build_substring(i, first_letter, second_letter)
+        fib_string.append(substring)
+
+        i += 1
+    
+    print(fib_string)
