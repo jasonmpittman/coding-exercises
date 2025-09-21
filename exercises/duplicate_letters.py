@@ -19,6 +19,24 @@ Examples
     # Duplicate letters in "apple", "keeps", "doctor", and "away".
 
 Start: 7:10am
-End: 7:40:am
+End: 7:18:am
 Cycles: 1
 """
+from sys import argv
+
+def has_duplicate_letters(sentence: str) -> bool:
+    has_duplicate = True
+
+    words = sentence.split(' ')
+    
+    for word in words:
+        if len(word) != len(set(word)):
+            has_duplicate = False
+
+    return has_duplicate
+
+if __name__ == "__main__":
+    sentence = argv[1]
+
+    result = has_duplicate_letters(sentence)
+    print(result)
