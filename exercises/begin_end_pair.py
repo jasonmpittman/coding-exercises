@@ -17,6 +17,26 @@ Examples
     pairs([]) ➞ []
 
 Start: 5:55am
-End: 6:25:am
+End: 6:08:am
 Cycles: 1
 """
+from sys import argv
+
+def get_pair(array: list, n: int, m: int) -> list:
+    pair = [array[n], array[m]]
+
+    return pair
+
+if __name__ == "__main__":
+    array = argv[1].split(',')
+    n = 0
+    m = len(array) - 1
+    pairs = []
+
+    while n <= m:
+        pair = get_pair(array, n, m)
+        pairs.append(pair)
+        n += 1
+        m -= 1    
+
+    print(pairs)
