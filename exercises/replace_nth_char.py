@@ -28,6 +28,28 @@ replace_nth("Writing a list of random sentences is harder than I initially thoug
 ➞ "Writ3ng a list of random sentences 3s harder than I in3tially thought 3t would be."
 
 Start: 5:35am
-End: 6:05:am
+End: 6:02:am
 Cycles: 1
 """
+from sys import argv
+
+def replace_nth(txt: str, nth: int, old_char: str, new_char: str) -> str:
+    txt_length = len(txt)
+    print(f'Text length is: {txt_length}')
+
+    for i in range(nth - 1, txt_length, nth - 1):
+        if txt[i] == old_char:
+            txt = txt.replace(old_char, new_char, 1)
+
+    
+    return txt
+
+if __name__ == "__main__":
+    txt = argv[1]
+    nth = int(argv[2])
+    old_char = argv[3]
+    new_char = argv[4]
+
+    result = replace_nth(txt, nth, old_char, new_char)
+    print(result)
+    print("Vader soid: No, I am your fother!")
