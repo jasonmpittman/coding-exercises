@@ -18,13 +18,32 @@ Examples:
     character_mapping("hmmmmm") ➞ [0, 1, 1, 1, 1, 1]
 
 Start: 6:25am
-End: 6:55:am
+End: 6:51:am
 Cycles: 1
 """
-from sys import argv[1]
+from sys import argv
 
+def create_map(word: list) -> list:
+    char_map = {}
+    values = []
+    index = 0
 
+    for character in word:
+        if character in char_map.keys():
+            print(f'{character} is in our char_map.')
+            print(f'value of {character} is {char_map[character]}.')
+            values.append(char_map[character])
+        else:
+            print(f'{character} not in our char_map')
+            char_map[character] = index
+            values.append(index)
+            index += 1
+            
+    return values
 
 if __name__ == "__main__":
-    pass
+    word = list(argv[1])
+
+    values = create_map(word)
+    print(values)
 
