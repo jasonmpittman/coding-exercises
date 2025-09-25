@@ -24,7 +24,24 @@ Examples
     get_length([1, [2], 1, [2], 1]) ➞ 5
 
 Start: 5:10am
-End: 5:40:am
+End: 5:35:am
 Cycles: 1
 """
+
+def get_length(array: list) -> int:
+    count = 0
+    for item in array:
+        if isinstance(item, list):
+            count += get_length(item)  #    recursively count elements in array
+        else:
+            count += 1  #   base 
+    return count
+
+if __name__ == "__main__":
+    array = [1, [2, [3, [4, [5, 6]]]]]
+
+    result = get_length(array)        
+    
+    print(result)
+
 
