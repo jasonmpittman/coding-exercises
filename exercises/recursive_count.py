@@ -16,8 +16,23 @@ Examples
     count(638476) ➞ 6
 
 Start: 5:40am
-End: 6:20:am
+End: 5:46:am
 Cycles: 1
 """
+
+from sys import argv
+
+def count_digits(digits: list) -> int:
+    if not digits:
+        return 0
+    else:
+        return 1 + count_digits(digits[1:])    
+
+
+if __name__ == "__main__":
+    number = list(argv[1])
+
+    result = count_digits(number)
+    print(result)
 
 
