@@ -25,4 +25,23 @@ Start: 6:00am
 End: 6:30:am
 Cycles: 1
 """
+from sys import argv
+
+def is_harshad(number: str) -> bool:
+    total = 0
+    numbers = list(number)
+    
+    for n in numbers:
+        total += int(n)
+
+    if int(number) % total == 0:
+        return True
+    else:
+        return False
+
+if __name__ == "__main__":
+    numbers = argv[1]
+
+    result = is_harshad(numbers)
+    print(result)
 
