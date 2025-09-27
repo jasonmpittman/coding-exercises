@@ -22,7 +22,7 @@ Examples
     is_harshad(200) ➞ True
 
 Start: 6:00am
-End: 6:30:am
+End: 6:08:am
 Cycles: 1
 """
 from sys import argv
