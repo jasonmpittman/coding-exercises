@@ -33,8 +33,8 @@ Examples
 
     cutting_grass([1, 0, 1, 1], 1, 1, 1) ➞ ["Done", "Done", "Done"]
 
-Start: 6:00am
-End: 6:08:am
+Start: 12:50am
+End: 01:20:am
 Cycles: 1
 """
 
