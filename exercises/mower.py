@@ -34,7 +34,24 @@ Examples
     cutting_grass([1, 0, 1, 1], 1, 1, 1) ➞ ["Done", "Done", "Done"]
 
 Start: 12:50am
-End: 01:20:am
+End: 01:01:am
 Cycles: 1
 """
+
+def mow_lawn(lawn: list, cut: int) -> list:
+
+    for grass in lawn:
+        if grass - cut == 0:
+            return "Done"
+        else:
+            return [grass - cut for grass in lawn]
+
+if __name__ == "__main__":
+    landscape = [[5, 6, 7, 5], 1, 2, 1] # [[4, 4, 4, 4], 1, 1, 1, 1]
+    lawn = landscape.pop(0)
+
+    for i in range(len(landscape)):
+        lawn = (mow_lawn(lawn, landscape[i]))
+        print(lawn)
+
 
