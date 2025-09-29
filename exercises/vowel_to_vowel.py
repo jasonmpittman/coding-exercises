@@ -20,8 +20,28 @@ vowel_links("an open fire") ➞ False
 vowel_links("a sudden applause") ➞ False
 
 Start: 06:50am
-End: 07:20:am
+End: 07:00:am
 Cycles: 1
 """
+from sys import argv
 
+def is_vowel_to_vowel(sentence: str) -> bool:
+    words = sentence.split(' ')
+    is_vowel_link = False
+    vowels = ['a', 'e', 'i', 'o', 'u']
+
+    for i in range(len(words) - 1):
+        last_letter = words[i][len(words[i]) - 1] # last letter of current word
+        first_letter = words[i + 1][0] # first letter of next word
+
+        if last_letter in vowels and first_letter in vowels:
+            is_vowel_link = True
+
+    return is_vowel_link
+
+if __name__ == "__main__":
+    sentence = argv[1]
+
+    result = is_vowel_to_vowel(sentence)
+    print(result)
 
