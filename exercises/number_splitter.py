@@ -17,11 +17,23 @@ Examples
     number_split(-9) ➞ [-5, -4]
 
 Start: 04:45am
-End: 05:05:am
+End: 04:54:am
 Cycles: 1
 """
-from sys import argv[1]
+from sys import argv
 
+def split_number(number: int) -> list:
+    if number % 2 == 0:
+        number_parts = [int(number / 2), int(number / 2)]
+    elif number > 0:
+        number_parts = [int(number / 2), int(number /2) + 1]
+    elif number < 0:
+        number_parts = [int(number / 2) + -1, int(number /2)]
+
+    return number_parts
 
 if __name__ == "__main__":
-    pass
+    number = int(argv[1])
+
+    result = split_number(number)
+    print(result)
