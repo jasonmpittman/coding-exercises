@@ -17,8 +17,24 @@ Examples
     unrepeated("call 911") ➞ "cal 91"
 
 Start: 05:55am
-End: 06:25:am
+End: 06:03:am
 Cycles: 1
 """
+from sys import argv
 
+
+def remove_repeats(word: str) -> str:
+    new_word = ''
+
+    for i in range(len(word)):
+        if word[i] not in new_word:
+            new_word = new_word + word[i]
+
+    return new_word
+
+if __name__ == "__main__":
+    word = argv[1]
+
+    result = remove_repeats(word)
+    print(result)
 
