@@ -16,12 +16,26 @@ Examples
     gauss([1975, 165]) ➞ 1937770
 
 Start: 05:30am
-End: 06:00:am
+End: 05:55:am
 Cycles: 1
 """
 from sys import argv
 
+def add(m: int, n: int) -> int:
+    #   (n(n+1)/2) - (m(m-1)/2)
+    total = 0
 
+    a = (m * (m - 1) // 2)
+    b = (n * (n + 1) // 2)
+    total = b - a
+
+    return total
 
 if __name__ == "__main__":
-    pass
+    m = int(argv[1])
+    n = int(argv[2])
+
+    result = add(m, n)
+    print(result)
+
+    
