@@ -27,9 +27,54 @@ Examples
     periodic("314159265") ➞ 12210
 
 Start: 05:25am
-End: 05:55:am
+End: 05:45:am
 Cycles: 1
 """
+from sys import argv
+
+def sum_digits(term):
+    sum_of_digits = 0
+
+    for digit in term:
+        sum_of_digits += int(digit)
+    
+    return sum_of_digits
+
+def periodic(first_term: str, series=None) -> int:
+    series_length = 0
+    series = []
+    is_periodic = False
+
+    while is_periodic == False:
+        #   sum of digits in first term
+        term_sum = sum_digits(first_term)
+        
+        print(f'sum of digits in first term is {term_sum}')
+
+        #   append sum to first term then
+        appended_term = first_term + str(term_sum)
+        print(f'Appended term is {appended_term}')
+
+        #   truncate left digit(s) to keep term the same length to get next term
+        truncate_length = len(appended_term) - len(first_term)
+        truncated_term = appended_term[truncate_length::]
+        print(f'Truncated term is {truncated_term}')
+
+        #   if new term in set of terms, length of set has become periodic
+        if truncated_term in series:
+            series_length = len(series) + 1 #   need to add 1 bc we don't add the first term to the list
+            is_periodic = True
+        else:
+            series.append(truncated_term)
+            first_term = truncated_term #   little hack to make the loop work?
+
+    return series_length
+
+if __name__ == "__main__":
+    first_term = argv[1]
+
+    result = periodic(first_term)
+    print(result)
 
 
 
