@@ -27,6 +27,52 @@ Start: 05:20am
 End: 05:50:am
 Cycles: 1
 """
+from sys import argv
+
+def build_identity_matrix(n: int) -> list:
+    matrix = []
+
+    #   handles positive integer n    
+    if n >= 0:
+        for i in range(n):
+            row = []
+            col_count = 0
+            for j in range(n):
+                if col_count == i:
+                    row.append(1)
+                    col_count += 1
+                else:
+                    row.append(0)
+                    col_count += 1
+            
+            matrix.append(row)
+
+    #   TODO: not handling correctly
+    #   handles negative integer n
+    if n < 0:
+       for i in range(abs(n)):
+            row = []
+            col_count = 0
+            for j in range(abs(n)):
+                if col_count == i:
+                    row.append(0)
+                    col_count += 1
+                elif col_count == i + 1:
+                    row.append(0)
+                    col_count += 1
+                else:
+                    row.append(1)
+                    col_count += 1
+            
+            matrix.append(row)
+
+    return matrix        
+
+if __name__ == "__main__":
+    n = int(argv[1])
+
+    identity_matrix = build_identity_matrix(n)
+    print(identity_matrix)
 
 
 
