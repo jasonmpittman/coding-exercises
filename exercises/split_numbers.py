@@ -16,6 +16,23 @@ Examples
     num_split(100) ➞ [100, 0, 0]
 
 Start: 04:40am
-End: 05:00:am
+End: 04:58:am
 Cycles: 1
 """
+from sys import argv
+
+def num_split(num: str) -> list:
+    numbers = []
+    l = len(num) - 1
+
+    for i in range(len(num)):
+        numbers.append(num[i] + ('0' * l))
+        l -= 1
+
+    return numbers
+
+if __name__ == "__main__":
+    num = argv[1]
+
+    numbers = num_split(num)
+    print(numbers)
