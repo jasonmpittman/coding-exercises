@@ -32,5 +32,34 @@ Start: 06:30am
 End: 07:00:am
 Cycles: 1
 """
+from sys import argv
 
+def who_goes_free(people: list, k: int) -> list:
+
+    target = 0
+
+    while len(people) > 1:
+        number_of_people = len(people)
+        shot = []
+
+        for person in people:
+            if (people.index(person) + 1 + target) % k == 0:
+                shot.append(person)
+
+            target = (number_of_people + target) % k 
+
+        for i in people:
+            if i in shot:
+                people.remove(i)
+
+    return people
+
+if __name__ == "__main__":
+    n = int(argv[1])
+    k = int(argv[2])
+
+    people = [x for x in range(n)]
+
+    result = who_goes_free(people, k)
+    print(result)
 
