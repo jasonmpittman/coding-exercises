@@ -58,7 +58,45 @@ final(3, 3, ["2r", "2c", "1r", "0c"])
   [2, 1, 2]
 ]
 
-Start: 06:30am
-End: 07:00:am
+Start: 06:00am
+End: 06:30:am
 Cycles: 1
 """
+
+def initialize_matrix(r: int, c: int) -> list:
+    """ List comprehension initialization of 0s matrix """
+    matrix = [[0 for _ in range(n)] for _ in range(m)]
+
+    return matrix
+
+
+def increment_rows_columns(r: int, c: int, increments: list) -> list:
+    matrix = initialize_matrix(r, c)
+
+    for increment in increments:
+        print(f'working on {increment}')
+
+        location = int(increment[0])
+        r_or_c = increment[1]
+        
+        #   location is row r
+        if r_or_c == 'r':
+            row = matrix[location]
+            for i in range(len(row)):
+                matrix[location][i] += 1            
+
+        #   location is column c
+        elif r_or_c == 'c':
+            pass
+
+    return matrix
+
+if __name__ == "__main__":
+    m = 3
+    n = 3
+    increments = ["2r", "2c", "1r", "0c"]
+
+    matrix = increment_rows_columns(m, n, increments)
+    
+    for i in range(len(matrix)):
+        print(matrix[i])
