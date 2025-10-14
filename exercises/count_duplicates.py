@@ -22,9 +22,28 @@ Example
     "ABBA" -> 2 # 'A' and 'B' each occur twice
 
 Start: 05:40am
-End: 06:10:am
+End: 05:48:am
 Cycles: 1
 """
+from sys import argv
 
+def count_duplicates(string: str) -> int:
+    count = 0
+    already_counted = []
+
+    for character in string.lower():
+        if string.lower().count(character) > 1 and character not in already_counted:
+            count += 1
+            already_counted.append(character)
+             
+
+    return count
+
+
+if __name__ == "__main__":
+    string = argv[1]
+
+    result = count_duplicates(string)
+    print(result)
 
 
