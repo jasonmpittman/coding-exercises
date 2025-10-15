@@ -20,6 +20,36 @@ Examples
     [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd)
 
 Start: 05:50am
-End: 06:20:am
+End: 06:04:am
 Cycles: 1
 """
+from sys import argv
+
+def find_the_odd_number(numbers: list) -> str:
+    
+    for number in numbers:
+        if numbers.count(number) % 2 != 0:
+            return number
+
+def find_the_odd_count(numbers: list) -> int:
+    searched = []
+    counts = []
+
+    for number in numbers:
+        if number not in searched:
+            searched.append(number)
+            if numbers.count(number) % 2 != 0:
+                counts.append(numbers.count(number))
+
+    counts.sort(reverse=True)
+    return counts[0]
+
+if __name__ == "__main__":
+    numbers = argv[1].split(',') #  if time allows change to comprehension for int()
+    print(numbers)
+
+    result = find_the_odd_number(numbers)
+    print(f'The number occuring odd times is {result}')
+
+    result = find_the_odd_count(numbers)
+    print(f'The number occurs {result} times')
