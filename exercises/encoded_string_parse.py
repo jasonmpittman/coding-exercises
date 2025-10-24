@@ -33,5 +33,26 @@ Start: 07:00am
 End: 07:30am
 Cycles: 1
 """
+import re
+from sys import argv
 
+def parse_code(encoded_string: str) -> dict:
+
+    split_string = encoded_string.split('0')
+    string_list = list(filter(lambda a: a != '', split_string))
+    
+    parsed_code = {
+        'first_name': string_list[0],
+        'last_name': string_list[1],
+        'id': string_list[2]
+    }
+
+
+    return parsed_code
+
+if __name__ == "__main__":
+    encoded_string = argv[1]
+
+    result = parse_code(encoded_string)
+    print(result)
 
