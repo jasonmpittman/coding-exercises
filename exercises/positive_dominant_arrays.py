@@ -25,3 +25,39 @@ Start: 04:00am
 End: 04:30am
 Cycles: 1
 """
+from sys import argv
+
+def is_positive_dominant_int(array: list) -> bool:
+
+    int_array = set([int(x) for x in array])
+    positive_count = sum(1 for num in int_array if num > 0)
+    negative_count = sum(1 for num in int_array if num < 0)
+
+    if positive_count > negative_count:
+        return True
+    
+    if positive_count < negative_count:
+        return False
+
+def is_positive_dominant_string(array: list) -> bool:
+
+    unique_values = set(array)
+    
+    positive_count = sum(1 for value in unique_values if '-' not in value)
+    negative_count = sum(1 for value in unique_values if '-' in value)
+
+    if positive_count > negative_count:
+        return True
+    
+    if positive_count < negative_count:
+        return False
+
+if __name__ == "__main__":
+    string = argv[1]
+    array = string.split(',')
+
+    string_result = is_positive_dominant_string(array)
+    int_result = is_positive_dominant_int(array)
+
+    print(string_result)
+    print(int_result)
