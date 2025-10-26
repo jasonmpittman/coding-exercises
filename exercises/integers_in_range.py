@@ -16,7 +16,7 @@ Examples
     intWithinBounds(4.5, 3, 8) ➞ false
 
 Start: 02:05pm
-End: 02:35pm
+End: 02:15pm
 Cycles: 1
 """
 from sys import argv
