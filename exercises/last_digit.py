@@ -8,9 +8,9 @@ __status__ = "Exercise"
 __difficuluty__ = ""
 
 """
-Define a function that takes in two non-negative integers aaa and bbb and returns the last decimal digit of aba^bab. Note that aaa and bbb may be very large!
+Define a function that takes in two non-negative integers a and b and returns the last decimal digit of a^b. Note that a and b may be very large!
 
-For example, the last decimal digit of 979^797 is 999, since 97=47829699^7 = 478296997=4782969. The last decimal digit of (2200)2300({2^{200}})^{2^{300}}(2200)2300, which has over 109210^{92}1092 decimal digits, is 666. Also, please take 000^000 to be 111.
+For example, the last decimal digit of 9^7 is 9, since 97=4782969. Also, please take 0^0 to be 1.
 
 You may assume that the input will always be valid.
 
@@ -22,10 +22,21 @@ Examples
     lastDigit (2^200) (2^300) `shouldBe` 6
 
 Start: 07:10pm
-End: 07:40pm
+End: 07:18pm
 Cycles: 1
 """
+from sys import argv
 
+def find_last_digit(a: int, b: int) -> int:
+    power = a**b
+
+    return power % 10 # mod 10 always returns last digit of a number
+
+if __name__ == "__main__":
+    a, b = int(argv[1]), int(argv[2])
+
+    result = find_last_digit(a, b)
+    print(result)
 
 
 
