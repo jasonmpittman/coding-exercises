@@ -18,8 +18,26 @@ Examples:
     solution('1', '2', '3', '2')  -->  true
 
 Start: 05:25pm
-End: 05:55pm
+End: 05:31pm
 Cycles: 1
 """
+from sys import argv
+
+
+def solution(arguments: list) -> bool:
+
+    unique_solution = set(arguments) #  this drops duplicates
+
+    if len(unique_solution) < len(arguments):
+        return True
+    else:
+        return False
+
+
+if __name__ == "__main__":
+    arguments = argv[1::] # take list after the 0th element which is the program name
+
+    result = solution(arguments)
+    print(result)
 
 
