@@ -21,8 +21,24 @@ Examples
 'xyz'      --> 'y'
 
 Start: 10:25pm
-End: 10:55pm
+End: 10:29pm
 Cycles: 1
 """
+from sys import argv
+
+
+def remove_first_and_last(string: str) -> str:
+    """ remove the first and last characters from a string """
+
+    if len(string) >= 2:
+        return string[1:len(string) - 1:]
+    else:
+        return None
+
+if __name__ == "__main__":
+    string = argv[1]
+
+    result = remove_first_and_last(string)
+    print(result)
 
 
