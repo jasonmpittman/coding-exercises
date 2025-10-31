@@ -14,6 +14,23 @@ Example
     "abc123" -> "abc"
 
 Start: 6:50pm
-End: 07:20pm
+End: 07:00pm
 Cycles: 1
 """
+from sys import argv
+
+def remove_digits(string: str) -> str:
+    digits = "01234567890"
+    clean_string = ''
+
+    for char in string:
+        if char not in digits:
+            clean_string += char
+        
+    return clean_string
+
+if __name__ == "__main__":
+    string = argv[1]
+
+    result = remove_digits(string)
+    print(result)
