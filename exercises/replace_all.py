@@ -16,7 +16,27 @@ Example:
     Example: replaceAll [1,2,2] 1 2 -> in list [1,2,2] we replace 1 with 2 to get new list [2,2,2]
 
 Start: 5:55pm
-End: 06:20pm
+End: 06:00pm
 Cycles: 1
 """
+from sys import argv
 
+def replace_all(string: str, s: str, r: str) -> str:
+    new_string = ''
+
+    for char in string:
+        if char == s:
+            new_string += r
+        else:
+            new_string += char
+
+    return new_string
+
+
+if __name__ == "__main__":
+    string = argv[1]
+    s = argv[2]
+    r = argv[3]
+
+    result = replace_all(string, s, r)
+    print(result)
