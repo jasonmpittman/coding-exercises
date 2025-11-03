@@ -17,8 +17,35 @@ Examples
     blur('fieowg') -> 'fiieeoowwg'
 
 Start: 8:30am
-End: 09:00am
+End: 08:37am
 Cycles: 1
 """
+from sys import argv
 
+def get_middle(string: str) -> str:
+    return string[1:len(string) - 1]
+
+def blur(string: str) -> str:
+    blurred_string = ''
+    
+
+    if len(string) > 2:
+        blurred_string += string[0]
+        middle_substring = get_middle(string)
+        
+        for char in middle_substring:
+            blurred_string += char * 2
+        
+        blurred_string += string[len(string) - 1]
+    else:
+        return string
+
+    return blurred_string
+
+
+if __name__ == "__main__":
+    string = argv[1]
+
+    result = blur(string)
+    print(result)
 
