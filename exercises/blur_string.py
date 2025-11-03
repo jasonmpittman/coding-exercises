@@ -16,8 +16,8 @@ Examples
     blur('asdf') -> 'assddf'
     blur('fieowg') -> 'fiieeoowwg'
 
-Start: 5:55pm
-End: 06:00pm
+Start: 8:30am
+End: 09:00am
 Cycles: 1
 """
 
