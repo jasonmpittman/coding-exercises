@@ -17,9 +17,29 @@ Examples
     "(( @"     =>  "))((" 
 
 Start: 4:40am
-End: 05:10am
+End: 04:45am
 Cycles: 1
 """
+from sys import argv
 
+def get_letter_count(string: str, letter: str) -> int:
+    return string.count(letter) 
+
+def encode(string: str) -> str:
+    encoded_string = ''
+
+    for letter in string:
+        if get_letter_count(string, letter) > 1:
+            encoded_string += ')'
+        else:
+            encoded_string += '('
+
+    return encoded_string
+
+if __name__ == "__main__":
+    plain_string = argv[1]
+
+    result = encode(plain_string.lower())
+    print(result)
 
 
