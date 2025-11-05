@@ -17,7 +17,7 @@ Examples
     [1, 2, [3, 4, [5, 6]], 7, [8]] --> 8
 
 Start: 6:20am
-End: 06:50am
+End: 06:37am
 Cycles: 1
 """
 
