@@ -16,7 +16,7 @@ Examples
     [2, 452, 5, 8, 92, 46, 3, 69] equal to 676, and the average is 84.5, rounded to 85.
 
 Start: 5:05am
-End: 05:35am
+End: 05:16am
 Cycles: 1
 """
 
