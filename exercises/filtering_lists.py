@@ -16,10 +16,23 @@ Example
     filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 
 Start: 9:25am
-End: 09:55am
+End: 09:37am
 Cycles: 1
 """
 
+def filter_list(array: list) -> list:
+    new_array = []
+    for element in array:
+        if isinstance(element, int):
+            new_array.append(element)
+        
+    return new_array
+
+if __name__ == "__main__":
+    array = [1,2,'aasf','1','123',123]
+
+    result = filter_list(array)
+    print(result)
 
 
 
