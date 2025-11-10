@@ -20,10 +20,23 @@ ints = [1, 0, -1]
 # are no indices where the left and right sums are equal
 
 Start: 6:20am
-End: 06:50am
+End: 06:32am
 Cycles: 1
 """
 
+def find_midpoint_sum(array: list) -> int:
+    index = 1
+    limit = len(array) - 1
 
+    while index < limit:    
+        if sum(array[:index]) == sum(array[index + 1:]): 
+            return index
 
+        index += 1
+
+if __name__ == "__main__":
+    array = [1, 0, -1] # [4, 1, 7, 9, 3, 9]
+
+    result = find_midpoint_sum(array)
+    print(result)
 
