@@ -16,8 +16,37 @@ n = 2: [1,  1, 1]
 n = 4: [1,  1, 1,  1, 2, 1,  1, 3, 3, 1]
 
 Start: 7:05am
-End: 07:35am
+End: 07:20am
 Cycles: 1
 """
+from sys import argv
+
+
+def generate_triangle(n: int) -> list:
+    if n <= 0:
+        return []
+
+    flattened_triangle = []
+    current_row = []
+
+    for i in range(n):
+        new_row = [1] * (i + 1)  # Initialize new row with 1s
+        if i > 1:
+            # Calculate middle elements based on the previous row
+            for j in range(1, i):
+                new_row[j] = current_row[j - 1] + current_row[j]
+        
+        flattened_triangle.extend(new_row)
+        current_row = new_row  # Update current_row for the next iteration
+
+    return flattened_triangle
+
+if __name__ == "__main__":
+    depth = int(argv[1])
+
+    result = generate_triangle(depth)
+    print(result)
+
+
 
 
