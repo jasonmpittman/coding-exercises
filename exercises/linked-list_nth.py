@@ -17,9 +17,54 @@ getNth(1 -> 2 -> 3 -> null, 1).data === 2
 
 
 Start: 6:10am
-End: 06:40am
+End: 06:22am
 Cycles: 1
 """
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
+
+    def display(self):
+        current = self.head
+        elements = []
+        while current:
+            elements.append(current.data)
+            current = current.next
+        print(" -> ".join(map(str, elements)))
+    
+    def get_nth(self, n):
+        current = self.head
+
+        for i in range(n):
+            current = current.next
+        
+        return current.data
+
+if __name__ == "__main__":
+    linked_list = LinkedList()
+    linked_list.append(1)
+    linked_list.append(2)
+    linked_list.append(3)
+
+    n = 3
+
+    result = linked_list.get_nth(n)
+    print(f'Element at {n} is: {result}')
 
 
 
